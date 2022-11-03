@@ -1,0 +1,275 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#073344;stroke:#FFA500;stroke-width:15;stroke-miterlimit:10;}
+	.st1{enable-background:new    ;}
+	.st2{fill:#825400;}
+	.st3{fill:#B47500;}
+	.st4{fill:#DF9000;}
+	.st5{clip-path:url(#SVGID_2_);enable-background:new    ;}
+	.st6{fill:#996300;}
+	.st7{fill:#946000;}
+	.st8{fill:#8F5C00;}
+	.st9{fill:#8A5900;}
+	.st10{fill:#855600;}
+	.st11{clip-path:url(#SVGID_4_);enable-background:new    ;}
+	.st12{clip-path:url(#SVGID_6_);enable-background:new    ;}
+	.st13{fill:#A86D00;}
+	.st14{fill:#A36A00;}
+	.st15{fill:#9E6600;}
+	.st16{clip-path:url(#SVGID_8_);enable-background:new    ;}
+	.st17{clip-path:url(#SVGID_10_);enable-background:new    ;}
+	.st18{clip-path:url(#SVGID_12_);enable-background:new    ;}
+	.st19{clip-path:url(#SVGID_14_);enable-background:new    ;}
+	.st20{clip-path:url(#SVGID_16_);enable-background:new    ;}
+	.st21{clip-path:url(#SVGID_18_);enable-background:new    ;}
+	.st22{clip-path:url(#SVGID_20_);enable-background:new    ;}
+	.st23{clip-path:url(#SVGID_22_);enable-background:new    ;}
+	.st24{clip-path:url(#SVGID_24_);enable-background:new    ;}
+	.st25{clip-path:url(#SVGID_26_);enable-background:new    ;}
+	.st26{clip-path:url(#SVGID_28_);enable-background:new    ;}
+	.st27{clip-path:url(#SVGID_30_);enable-background:new    ;}
+	.st28{clip-path:url(#SVGID_32_);enable-background:new    ;}
+	.st29{clip-path:url(#SVGID_34_);enable-background:new    ;}
+	.st30{clip-path:url(#SVGID_36_);enable-background:new    ;}
+	.st31{fill:#905D00;}
+	.st32{clip-path:url(#SVGID_38_);enable-background:new    ;}
+	.st33{clip-path:url(#SVGID_40_);enable-background:new    ;}
+	.st34{clip-path:url(#SVGID_42_);enable-background:new    ;}
+	.st35{clip-path:url(#SVGID_44_);enable-background:new    ;}
+	.st36{clip-path:url(#SVGID_46_);enable-background:new    ;}
+	.st37{clip-path:url(#SVGID_48_);enable-background:new    ;}
+	.st38{clip-path:url(#SVGID_50_);enable-background:new    ;}
+	.st39{clip-path:url(#SVGID_52_);enable-background:new    ;}
+	.st40{clip-path:url(#SVGID_54_);enable-background:new    ;}
+	.st41{clip-path:url(#SVGID_56_);enable-background:new    ;}
+	.st42{clip-path:url(#SVGID_58_);enable-background:new    ;}
+	.st43{clip-path:url(#SVGID_60_);enable-background:new    ;}
+	.st44{clip-path:url(#SVGID_62_);enable-background:new    ;}
+	.st45{clip-path:url(#SVGID_64_);enable-background:new    ;}
+	.st46{clip-path:url(#SVGID_66_);enable-background:new    ;}
+	.st47{clip-path:url(#SVGID_68_);enable-background:new    ;}
+	.st48{clip-path:url(#SVGID_70_);enable-background:new    ;}
+	.st49{clip-path:url(#SVGID_72_);enable-background:new    ;}
+	.st50{clip-path:url(#SVGID_74_);enable-background:new    ;}
+	.st51{clip-path:url(#SVGID_76_);enable-background:new    ;}
+	.st52{clip-path:url(#SVGID_78_);enable-background:new    ;}
+	.st53{clip-path:url(#SVGID_80_);enable-background:new    ;}
+	.st54{clip-path:url(#SVGID_82_);enable-background:new    ;}
+	.st55{clip-path:url(#SVGID_84_);enable-background:new    ;}
+	.st56{clip-path:url(#SVGID_86_);enable-background:new    ;}
+	.st57{clip-path:url(#SVGID_88_);enable-background:new    ;}
+	.st58{clip-path:url(#SVGID_90_);enable-background:new    ;}
+	.st59{clip-path:url(#SVGID_92_);enable-background:new    ;}
+	.st60{clip-path:url(#SVGID_94_);enable-background:new    ;}
+	.st61{clip-path:url(#SVGID_96_);enable-background:new    ;}
+	.st62{clip-path:url(#SVGID_98_);enable-background:new    ;}
+	.st63{clip-path:url(#SVGID_100_);enable-background:new    ;}
+	.st64{clip-path:url(#SVGID_102_);enable-background:new    ;}
+	.st65{clip-path:url(#SVGID_104_);enable-background:new    ;}
+	.st66{clip-path:url(#SVGID_106_);enable-background:new    ;}
+	.st67{clip-path:url(#SVGID_108_);enable-background:new    ;}
+	.st68{clip-path:url(#SVGID_110_);enable-background:new    ;}
+	.st69{clip-path:url(#SVGID_112_);enable-background:new    ;}
+	.st70{clip-path:url(#SVGID_114_);enable-background:new    ;}
+	.st71{clip-path:url(#SVGID_116_);enable-background:new    ;}
+	.st72{clip-path:url(#SVGID_118_);enable-background:new    ;}
+	.st73{clip-path:url(#SVGID_120_);enable-background:new    ;}
+	.st74{clip-path:url(#SVGID_122_);enable-background:new    ;}
+	.st75{clip-path:url(#SVGID_124_);enable-background:new    ;}
+	.st76{clip-path:url(#SVGID_126_);enable-background:new    ;}
+	.st77{clip-path:url(#SVGID_128_);enable-background:new    ;}
+	.st78{clip-path:url(#SVGID_130_);enable-background:new    ;}
+	.st79{clip-path:url(#SVGID_132_);enable-background:new    ;}
+	.st80{clip-path:url(#SVGID_134_);enable-background:new    ;}
+	.st81{clip-path:url(#SVGID_136_);enable-background:new    ;}
+	.st82{clip-path:url(#SVGID_138_);enable-background:new    ;}
+	.st83{clip-path:url(#SVGID_140_);enable-background:new    ;}
+	.st84{clip-path:url(#SVGID_142_);enable-background:new    ;}
+	.st85{clip-path:url(#SVGID_144_);enable-background:new    ;}
+	.st86{clip-path:url(#SVGID_146_);enable-background:new    ;}
+	.st87{clip-path:url(#SVGID_148_);enable-background:new    ;}
+	.st88{fill:#FFA500;}
+	.st89{fill:#073344;}
+	.st90{fill:#ECEEF1;}
+</style>
+<circle class="st0" cx="256" cy="256" r="204" id="id_143"></circle>
+<g>
+<g>
+<g class="st1">
+<g>
+<polygon class="st2" points="186.6,369.73 163.81,357.33 164.07,217.56 186.86,229.96 				" id="id_144"></polygon>
+</g>
+<g>
+<polygon class="st2" points="164.41,233.12 141.62,220.72 141.69,181.8 164.48,194.2 				" id="id_145"></polygon>
+</g>
+<g>
+<polygon class="st3" points="164.48,194.2 141.69,181.8 204.51,172.97 227.31,185.37 				" id="id_146"></polygon>
+</g>
+<g>
+<polygon class="st4" points="227.31,185.37 226.98,364.06 186.6,369.73 186.86,229.96 164.41,233.12 164.48,194.2 				" id="id_147"></polygon>
+</g>
+</g>
+<g class="st1">
+<g class="st1">
+<defs>
+<path id="SVGID_85_" class="st1" d="M327.54,246.16l22.79,12.4c-3.01-1.64-6.35-2.86-10.02-3.67l-22.79-12.4
+						C321.19,243.3,324.53,244.52,327.54,246.16z"></path>
+</defs>
+<clipPath id="SVGID_2_">
+<use xlink:href="#SVGID_85_" style="overflow:visible;"></use>
+</clipPath>
+<g class="st5">
+<path class="st13" d="M340.31,254.89l-22.79-12.4c0.53,0.12,1.06,0.24,1.58,0.38l22.79,12.4
+						C341.37,255.13,340.85,255.01,340.31,254.89" id="id_148"></path>
+<path class="st14" d="M341.89,255.27l-22.79-12.4c2.57,0.67,4.97,1.55,7.2,2.64l22.79,12.4
+						C346.86,256.82,344.46,255.94,341.89,255.27" id="id_149"></path>
+<path class="st15" d="M349.09,257.91l-22.79-12.4c0.42,0.21,0.83,0.42,1.24,0.64l22.79,12.4
+						C349.93,258.34,349.51,258.12,349.09,257.91" id="id_150"></path>
+</g>
+</g>
+<g class="st1">
+<defs>
+<path id="SVGID_87_" class="st1" d="M299.4,317.19l-22.79-12.4c3.32,1.8,7.54,2.35,12.69,1.63c5.9-0.83,10.47-3.31,13.73-7.44
+						c3.25-4.13,4.89-9.22,4.9-15.25c0.01-7.83-2.28-13.18-6.88-16.04c-0.22-0.14-0.45-0.27-0.68-0.39l22.79,12.4
+						c0.23,0.13,0.46,0.26,0.68,0.39c4.6,2.86,6.9,8.21,6.88,16.04c-0.01,6.03-1.65,11.12-4.9,15.25
+						c-3.27,4.12-7.84,6.61-13.73,7.44C306.94,319.54,302.71,319,299.4,317.19z"></path>
+</defs>
+<clipPath id="SVGID_4_">
+<use xlink:href="#SVGID_87_" style="overflow:visible;"></use>
+</clipPath>
+<g class="st11">
+<path class="st15" d="M299.4,317.19l-22.79-12.4c0.17,0.09,0.34,0.18,0.51,0.26l22.79,12.4
+						C299.73,317.37,299.56,317.29,299.4,317.19" id="id_151"></path>
+<path class="st14" d="M299.9,317.46l-22.79-12.4c0.9,0.44,1.87,0.8,2.9,1.07l22.79,12.4
+						C301.77,318.26,300.81,317.9,299.9,317.46" id="id_152"></path>
+<path class="st13" d="M302.8,318.53l-22.79-12.4c2.66,0.69,5.76,0.79,9.28,0.29c2.52-0.35,4.81-1.01,6.85-1.97l22.79,12.4
+						c-2.04,0.96-4.32,1.62-6.85,1.97C308.56,319.31,305.47,319.22,302.8,318.53" id="id_153"></path>
+<path class="st14" d="M318.93,316.85l-22.79-12.4c0.98-0.46,1.9-0.99,2.77-1.59l22.79,12.4
+						C320.83,315.85,319.91,316.38,318.93,316.85" id="id_154"></path>
+<path class="st15" d="M321.7,315.25l-22.79-12.4c0.66-0.46,1.29-0.95,1.88-1.49l22.79,12.4
+						C322.99,314.3,322.36,314.8,321.7,315.25" id="id_155"></path>
+<path class="st6" d="M323.58,313.77l-22.79-12.4c0.54-0.49,1.06-1.01,1.55-1.56l22.79,12.4
+						C324.64,312.76,324.13,313.28,323.58,313.77" id="id_156"></path>
+<path class="st7" d="M325.13,312.2l-22.79-12.4c0.23-0.27,0.46-0.54,0.69-0.82c0.25-0.32,0.49-0.64,0.73-0.98l22.79,12.4
+						c-0.23,0.33-0.47,0.66-0.73,0.98C325.59,311.66,325.37,311.94,325.13,312.2" id="id_157"></path>
+<path class="st8" d="M326.54,310.41l-22.79-12.4c0.49-0.7,0.94-1.43,1.35-2.18l22.79,12.4
+						C327.48,308.98,327.03,309.71,326.54,310.41" id="id_158"></path>
+<path class="st9" d="M327.89,308.22l-22.79-12.4c0.49-0.91,0.92-1.86,1.28-2.85l22.79,12.4
+						C328.81,306.36,328.38,307.31,327.89,308.22" id="id_159"></path>
+<path class="st10" d="M329.17,305.37l-22.79-12.4c1.02-2.78,1.54-5.86,1.54-9.24c0.01-7.83-2.28-13.18-6.88-16.04
+						c-0.22-0.14-0.45-0.27-0.68-0.39l22.79,12.4c0.23,0.13,0.46,0.26,0.68,0.39c4.6,2.86,6.9,8.21,6.88,16.04
+						C330.71,299.51,330.19,302.59,329.17,305.37" id="id_160"></path>
+</g>
+</g>
+<g class="st1">
+<defs>
+<path id="SVGID_89_" class="st1" d="M297.92,193.44l22.79,12.4c0.89,0.49,1.71,1.08,2.47,1.79c3.01,2.84,4.52,7.2,4.51,13.07
+						c-0.01,7.35-2.4,12.78-7.17,16.31c-4.76,3.52-11.01,5.83-18.72,6.91L279,231.51c7.71-1.08,13.96-3.39,18.72-6.91
+						c4.77-3.52,7.16-8.96,7.17-16.31c0.01-5.87-1.49-10.23-4.51-13.07C299.63,194.52,298.81,193.92,297.92,193.44z"></path>
+</defs>
+<clipPath id="SVGID_6_">
+<use xlink:href="#SVGID_89_" style="overflow:visible;"></use>
+</clipPath>
+<g class="st12">
+<path class="st13" d="M301.79,243.91L279,231.51c5.14-0.72,9.63-1.99,13.46-3.79l22.79,12.4
+						C311.42,241.92,306.93,243.19,301.79,243.91" id="id_161"></path>
+<path class="st14" d="M315.25,240.12l-22.79-12.4c1.63-0.77,3.14-1.63,4.53-2.59l22.79,12.4
+						C318.39,238.48,316.88,239.35,315.25,240.12" id="id_162"></path>
+<path class="st15" d="M319.78,237.52l-22.79-12.4c0.25-0.17,0.49-0.35,0.73-0.52c0.45-0.33,0.89-0.69,1.3-1.06l22.79,12.4
+						c-0.41,0.37-0.84,0.72-1.3,1.06C320.27,237.18,320.03,237.35,319.78,237.52" id="id_163"></path>
+<path class="st6" d="M321.81,235.94l-22.79-12.4c0.47-0.42,0.91-0.87,1.33-1.34l22.79,12.4
+						C322.72,235.07,322.28,235.52,321.81,235.94" id="id_164"></path>
+<path class="st7" d="M323.13,234.61l-22.79-12.4c0.4-0.45,0.77-0.93,1.12-1.42l22.79,12.4
+						C323.9,233.68,323.53,234.15,323.13,234.61" id="id_165"></path>
+<path class="st8" d="M324.25,233.19l-22.79-12.4c0.37-0.53,0.72-1.09,1.03-1.67l22.79,12.4
+						C324.97,232.1,324.62,232.65,324.25,233.19" id="id_166"></path>
+<path class="st9" d="M325.28,231.51l-22.79-12.4c0.39-0.73,0.74-1.5,1.03-2.31l22.79,12.4
+						C326.02,230.02,325.67,230.78,325.28,231.51" id="id_167"></path>
+<path class="st10" d="M326.31,229.21l-22.79-12.4c0.91-2.48,1.36-5.31,1.37-8.52c0.01-5.87-1.49-10.23-4.51-13.07
+						c-0.75-0.71-1.57-1.3-2.47-1.79l22.79,12.4c0.89,0.49,1.71,1.08,2.47,1.79c3.01,2.84,4.52,7.2,4.51,13.07
+						C327.68,223.89,327.22,226.73,326.31,229.21" id="id_168"></path>
+</g>
+</g>
+<g>
+<polygon class="st3" points="294.53,244.93 271.74,232.53 279,231.51 301.79,243.91 				" id="id_169"></polygon>
+</g>
+<g>
+<polygon class="st2" points="294.47,278.96 271.67,266.56 271.74,232.53 294.53,244.93 				" id="id_170"></polygon>
+</g>
+<g>
+<polygon class="st3" points="252.93,303.88 230.14,291.48 267.79,286.19 290.58,298.59 				" id="id_171"></polygon>
+</g>
+<g class="st1">
+<defs>
+<path id="SVGID_91_" class="st1" d="M275.18,348.4L252.39,336c-1.82-0.99-3.56-2.11-5.21-3.35
+						c-10.8-8.11-16.48-21.83-17.05-41.17l22.79,12.4c0.56,19.33,6.25,33.06,17.05,41.17C271.63,346.29,273.36,347.41,275.18,348.4z
+						"></path>
+</defs>
+<clipPath id="SVGID_8_">
+<use xlink:href="#SVGID_91_" style="overflow:visible;"></use>
+</clipPath>
+<g class="st16">
+<path class="st10" d="M275.18,348.4L252.39,336c-1.82-0.99-3.56-2.11-5.21-3.35c-10.8-8.11-16.48-21.83-17.05-41.17l22.79,12.4
+						c0.56,19.33,6.25,33.06,17.05,41.17C271.63,346.29,273.36,347.41,275.18,348.4" id="id_172"></path>
+</g>
+</g>
+<g class="st1">
+<defs>
+<path id="SVGID_93_" class="st1" d="M323.11,161.56l22.79,12.4c-1.6-0.87-3.3-1.65-5.09-2.34c-8.08-3.11-17.8-3.86-29.13-2.27
+						l-22.79-12.4c11.33-1.59,21.05-0.84,29.13,2.27C319.81,159.91,321.51,160.69,323.11,161.56z"></path>
+</defs>
+<clipPath id="SVGID_10_">
+<use xlink:href="#SVGID_93_" style="overflow:visible;"></use>
+</clipPath>
+<g class="st17">
+<path class="st13" d="M311.68,169.35l-22.79-12.4c9.27-1.3,17.45-1.04,24.55,0.8l22.79,12.4
+						C329.13,168.31,320.95,168.05,311.68,169.35" id="id_173"></path>
+<path class="st14" d="M336.23,170.15l-22.79-12.4c1.58,0.41,3.11,0.9,4.58,1.46c1.25,0.48,2.46,1.01,3.62,1.58l22.79,12.4
+						c-1.16-0.57-2.36-1.1-3.62-1.58C339.34,171.05,337.81,170.56,336.23,170.15" id="id_174"></path>
+<path class="st15" d="M344.43,173.2l-22.79-12.4c0.5,0.25,0.99,0.5,1.48,0.76l22.79,12.4
+						C345.42,173.7,344.93,173.44,344.43,173.2" id="id_175"></path>
+</g>
+</g>
+<g>
+<path class="st4" d="M311.68,169.35c11.33-1.59,21.05-0.84,29.13,2.27c8.07,3.11,14.19,8.04,18.34,14.8
+					c4.14,6.76,6.21,14.71,6.19,23.85c-0.02,10.76-2.54,19.89-7.53,27.36c-5,7.48-10.84,12.91-17.5,16.29l0,0.98
+					c8.61,1.89,15.41,6.07,20.39,12.55c4.97,6.48,7.45,15.35,7.43,26.61c-0.02,10.12-2.19,19.36-6.51,27.71
+					c-4.32,8.36-10.61,15.32-18.86,20.89c-8.25,5.56-18.04,9.14-29.39,10.73c-18.14,2.55-32.61-0.22-43.4-8.34
+					c-10.8-8.11-16.48-21.83-17.05-41.17l37.65-5.29c0.14,7.16,2.02,12.56,5.64,16.22c3.62,3.65,8.9,4.99,15.87,4.01
+					c5.9-0.83,10.47-3.31,13.73-7.44c3.25-4.13,4.89-9.22,4.9-15.25c0.01-7.83-2.28-13.18-6.88-16.04
+					c-4.61-2.85-11.97-3.57-22.11-2.15l-7.26,1.02l0.06-34.03l7.26-1.02c7.71-1.08,13.96-3.39,18.72-6.91
+					c4.77-3.52,7.16-8.96,7.17-16.31c0.01-5.87-1.49-10.23-4.51-13.07c-3.02-2.84-7.18-3.89-12.47-3.15
+					c-5.74,0.81-10.02,3.29-12.82,7.44c-2.81,4.15-4.44,9.03-4.9,14.63l-37.87,5.32c0.63-17.54,5.95-31.75,15.95-42.62
+					S294.59,171.75,311.68,169.35z" id="id_176"></path>
+</g>
+<g class="st1">
+<defs>
+<path id="SVGID_95_" class="st1" d="M255.11,231.87l-22.79-12.4c0.63-17.54,5.95-31.75,15.95-42.62
+						c10-10.87,23.54-17.5,40.62-19.9l22.79,12.4c-17.09,2.4-30.62,9.03-40.62,19.9S255.74,214.33,255.11,231.87z"></path>
+</defs>
+<clipPath id="SVGID_12_">
+<use xlink:href="#SVGID_95_" style="overflow:visible;"></use>
+</clipPath>
+<g class="st18">
+<path class="st10" d="M255.11,231.87l-22.79-12.4c0.31-8.62,1.76-16.44,4.33-23.45l22.79,12.4
+						C256.86,215.43,255.42,223.24,255.11,231.87" id="id_177"></path>
+<path class="st9" d="M259.44,208.41l-22.79-12.4c0.98-2.67,2.13-5.23,3.44-7.67l22.79,12.4
+						C261.57,203.18,260.42,205.74,259.44,208.41" id="id_178"></path>
+<path class="st8" d="M262.88,200.74l-22.79-12.4c1.06-1.97,2.23-3.87,3.51-5.69l22.79,12.4
+						C265.11,196.87,263.94,198.77,262.88,200.74" id="id_179"></path>
+<path class="st7" d="M266.39,195.05l-22.79-12.4c1.2-1.72,2.5-3.37,3.9-4.95l22.79,12.4
+						C268.89,191.69,267.59,193.34,266.39,195.05" id="id_180"></path>
+<path class="st6" d="M270.29,190.11l-22.79-12.4c0.25-0.29,0.51-0.57,0.77-0.86c1.26-1.37,2.58-2.67,3.95-3.91l22.79,12.4
+						c-1.37,1.24-2.69,2.54-3.95,3.91C270.8,189.54,270.54,189.82,270.29,190.11" id="id_181"></path>
+<path class="st15" d="M275.01,185.35l-22.79-12.4c1.85-1.66,3.79-3.2,5.84-4.62l22.79,12.4
+						C278.8,182.14,276.85,183.68,275.01,185.35" id="id_182"></path>
+<path class="st14" d="M280.85,180.73l-22.79-12.4c2.73-1.89,5.65-3.57,8.75-5.02l22.79,12.4
+						C286.5,177.16,283.58,178.83,280.85,180.73" id="id_183"></path>
+<path class="st13" d="M289.6,175.7l-22.79-12.4c6.55-3.09,13.91-5.2,22.08-6.35l22.79,12.4
+						C303.51,170.5,296.15,172.62,289.6,175.7" id="id_184"></path>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

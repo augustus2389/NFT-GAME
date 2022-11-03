@@ -1,0 +1,409 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        {},
+        {},
+        {},
+        {},
+        {}
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ],
+      "pictures": {
+        "rawFile": {
+          "path": "ArrowUnder.svg"
+        },
+        "src": "blob:http://localhost:3001/2e2eef01-3d42-4c09-a87c-bc703a81e5de",
+        "title": "ArrowUnder.svg"
+      }
+    },
+    {
+      "id": 2,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/hero_capsule.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_67979091e0441e3df7aa885eaa107e2032973869.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_b26f1852b68ab0af7fdd4932b1c9f78dc87a0325.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_2799a1fde932e739138de91f0910ada013ddfca3.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_01fdd60d88bc24f48f688b6624dc42ce493bd76a.600x338.jpg?t=1666767102"
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "German",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/hero_capsule.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_67979091e0441e3df7aa885eaa107e2032973869.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_b26f1852b68ab0af7fdd4932b1c9f78dc87a0325.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_2799a1fde932e739138de91f0910ada013ddfca3.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_01fdd60d88bc24f48f688b6624dc42ce493bd76a.600x338.jpg?t=1666767102"
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "German",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/hero_capsule.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_67979091e0441e3df7aa885eaa107e2032973869.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_b26f1852b68ab0af7fdd4932b1c9f78dc87a0325.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_2799a1fde932e739138de91f0910ada013ddfca3.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_01fdd60d88bc24f48f688b6624dc42ce493bd76a.600x338.jpg?t=1666767102"
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "German",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/hero_capsule.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_67979091e0441e3df7aa885eaa107e2032973869.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_b26f1852b68ab0af7fdd4932b1c9f78dc87a0325.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_2799a1fde932e739138de91f0910ada013ddfca3.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_01fdd60d88bc24f48f688b6624dc42ce493bd76a.600x338.jpg?t=1666767102"
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "German",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/hero_capsule.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_67979091e0441e3df7aa885eaa107e2032973869.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_b26f1852b68ab0af7fdd4932b1c9f78dc87a0325.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_2799a1fde932e739138de91f0910ada013ddfca3.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_01fdd60d88bc24f48f688b6624dc42ce493bd76a.600x338.jpg?t=1666767102"
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "German",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/hero_capsule.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_67979091e0441e3df7aa885eaa107e2032973869.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_b26f1852b68ab0af7fdd4932b1c9f78dc87a0325.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_2799a1fde932e739138de91f0910ada013ddfca3.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_01fdd60d88bc24f48f688b6624dc42ce493bd76a.600x338.jpg?t=1666767102"
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "German",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "PAYDAY 2",
+      "intro": "https://cdn.cloudflare.steamstatic.com/steam/apps/256665794/movie480.webm?t=1466161429",
+      "images": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/hero_capsule.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_67979091e0441e3df7aa885eaa107e2032973869.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_b26f1852b68ab0af7fdd4932b1c9f78dc87a0325.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_2799a1fde932e739138de91f0910ada013ddfca3.600x338.jpg?t=1666767102",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/218620/ss_01fdd60d88bc24f48f688b6624dc42ce493bd76a.600x338.jpg?t=1666767102"
+      ],
+      "price": 50,
+      "limitAge": 16,
+      "publisher": "Starbreeze Home",
+      "iconPublisher": "https://avatars.cloudflare.steamstatic.com/ebcd85b774e3fb547009e0c2fb2d12369d18eee2_full.jpg",
+      "date": "13 Aug, 2013",
+      "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
+      "type": [
+        "Co-op",
+        "Action",
+        "FPS",
+        "Heist"
+      ],
+      "about": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree. The CRIMENET network offers a huge range of dynamic contracts, and players are free to choose anything from small-time convenience store hits or kidnappings, to big league cyber-crime or emptying out major bank vaults for that epic PAYDAY. While in DC, why not participate in the local community, and run a few political errands? Up to four friends co-operate on the hits, and as the crew progresses the jobs become bigger, better and more rewarding. Along with earning more money and becoming a legendary criminal comes a character customization and crafting system that lets crews build and customize their own guns and gear.",
+      "language": [
+        "English",
+        "Vietnam",
+        "India",
+        "German",
+        "French"
+      ],
+      "system": [
+        {
+          "Os": "Window 10",
+          "Processor": "2.3 GHz Intel Quad Core Processor",
+          "Memory": "8 GB RAM",
+          "Graphics": "Nvidia & AMD (1GB VRAM)",
+          "DirectX®": "9.0c",
+          "Storage": "83 GB available space",
+          "Sound": "DirectX 9.0c compatible"
+        }
+      ]
+    },
+    {
+      "date": "f",
+      "id": 11
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Duy Hau",
+      "avatar": "https://scontent.fhan5-10.fna.fbcdn.net/v/t39.30808-1/277739598_1805644129628896_1458345998357600728_n.jpg?stp=c0.23.320.320a_dst-jpg_p320x320&_nc_cat=101&ccb=1-7&_nc_sid=7206a8&_nc_ohc=TqbszS9BeugAX-URSv4&tn=eJtxndjvgf3N5-5A&_nc_ht=scontent.fhan5-10.fna&oh=00_AfBBEB1MjM3g4L4sBAhLl0c5Ww2NRTumo_TJ2wGYEzjGZQ&oe=636698FE",
+      "email": "phanduyhau2389@gmail.com",
+      "password": "111",
+      "age": 25
+    },
+    {
+      "id": 2,
+      "name": "Trần Văn Báo",
+      "avatar": "https://lumiere-a.akamaihd.net/v1/images/h_blackpanther_mobile_19754_57fe2288.jpeg?region=0,0,640,480",
+      "email": "phanduyhau2389@gmail.com",
+      "password": "111",
+      "age": 24
+    },
+    {
+      "id": 3,
+      "name": "Nguyễn Văn B",
+      "avatar": "https://i0.wp.com/brainstomping.com/wp-content/uploads/2019/05/avengers-vengadores-endgame-iron-man-tony-stark-poster-robert-downey-jr.jpg?fit=790%2C1016&ssl=1&w=640",
+      "email": "nguyenvanb@gmail.com",
+      "password": "111",
+      "age": 25
+    },
+    {
+      "id": 4,
+      "name": "Nguyễn Thị Thơ",
+      "avatar": "https://image.thanhnien.vn/w660/Uploaded/2022/lxwpcqjwp/2021_06_18/bw-01_kkvu.jpeg",
+      "email": "nguyenvana@gmail.com",
+      "password": "111",
+      "age": 25
+    },
+    {
+      "name": "Phan Hậu",
+      "email": "phanduyhau2389@gmail.com",
+      "age": 123,
+      "password": "wqdqweqe",
+      "avatar": {
+        "rawFile": {
+          "path": "ads3.jpeg"
+        },
+        "src": "blob:http://localhost:3001/9b27724e-01ed-4a9e-a479-c4e35009ce38",
+        "title": "ads3.jpeg"
+      },
+      "id": 5
+    }
+  ],
+  "blogs": [
+    {}
+  ]
+}

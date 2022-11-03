@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+.input-form {
+  height: 40px;
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
+}
+.input-form input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 17px;
+  border-bottom: 2px solid silver;
+}
+.input-form input:focus ~ label,
+.input-form input:valid ~ label {
+  transform: translateY(-40px);
+  font-size: 15px;
+}
+.input-form label {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: grey;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.input-form .underline {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+}
+.input-form .underline:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: #202020;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-form input:focus ~ .underline:before,
+.input-form input:valid ~ .underline:before {
+  transform: scaleX(1);
+}
+.form-select {
+  background-color: transparent;
+  color: white;
+}

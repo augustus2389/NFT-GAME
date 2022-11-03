@@ -1,0 +1,26 @@
+.css-cb34tx-RaImageField-root .RaImageField-image {
+  margin: 0.25rem;
+  /* padding: 0; */
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 49%;
+  /* height: 100px; */
+  aspect-ratio: 9 / 9;
+  object-fit: cover !important;
+}
+.css-lz9mh9-MuiToolbar-root {
+  background-color: black;
+}
+.css-1qyfho2-RaSimpleFormIterator-root .RaSimpleFormIterator-line {
+  border-bottom: none !important;
+}
+.css-lawitd-MuiStack-root-RaLabeled-root-RaFileInput-root-RaImageInput-root
+  .RaFileInput-dropZone {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+}
+.css-1qyfho2-RaSimpleFormIterator-root > ul {
+  display: flex;
+}
