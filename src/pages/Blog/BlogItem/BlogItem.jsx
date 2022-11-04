@@ -5,7 +5,7 @@ import styled from "styled-components";
 const BlogImage = styled.div`
   max-width: 200px;
 `;
-const List = styled.li`
+const ListBlog = styled.li`
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin: 0;
   padding: 0;
@@ -72,8 +72,8 @@ function BlogItem() {
   return (
     <>
       <ul>
-        <List>
-          <Link /* to={`/blog/${id}`} */>
+        <ListBlog>
+          <Link to="/">
             <BlogItems>
               <BlogImage>
                 <ImageAvt
@@ -95,10 +95,10 @@ function BlogItem() {
               </Info>
             </BlogItems>
           </Link>
-        </List>
-        <List>
+        </ListBlog>
+        <ListBlog>
           <Link /* to={`/blog/${id}`} */>
-            <BlogItem>
+            <BlogItems>
               <BlogImage>
                 <ImageAvt
                   src="https://cdn2.unrealengine.com/ghostbusters-hands-on-launch-ghost-1920x1080-53cf65816102.png"
@@ -116,12 +116,12 @@ function BlogItem() {
                   <Span>Read More</Span>
                 </More>
               </Info>
-            </BlogItem>
+            </BlogItems>
           </Link>
-        </List>
-        <List>
+        </ListBlog>
+        <ListBlog>
           <Link /* to={`/blog/${id}`} */>
-            <BlogItem>
+            <BlogItems>
               <BlogImage>
                 <ImageAvt
                   src="https://cdn2.unrealengine.com/ghostbusters-hands-on-launch-ghost-1920x1080-53cf65816102.png"
@@ -139,12 +139,12 @@ function BlogItem() {
                   <Span>Read More</Span>
                 </More>
               </Info>
-            </BlogItem>
+            </BlogItems>
           </Link>
-        </List>
-        <List>
+        </ListBlog>
+        <ListBlog>
           <Link /* to={`/blog/${id}`} */>
-            <BlogItem>
+            <BlogItems>
               <BlogImage>
                 <ImageAvt
                   src="https://cdn2.unrealengine.com/ghostbusters-hands-on-launch-ghost-1920x1080-53cf65816102.png"
@@ -162,12 +162,12 @@ function BlogItem() {
                   <Span>Read More</Span>
                 </More>
               </Info>
-            </BlogItem>
+            </BlogItems>
           </Link>
-        </List>
-        <List>
+        </ListBlog>
+        <ListBlog>
           <Link /* to={`/blog/${id}`} */>
-            <BlogItem>
+            <BlogItems>
               <BlogImage>
                 <ImageAvt
                   src="https://cdn2.unrealengine.com/ghostbusters-hands-on-launch-ghost-1920x1080-53cf65816102.png"
@@ -185,12 +185,12 @@ function BlogItem() {
                   <Span>Read More</Span>
                 </More>
               </Info>
-            </BlogItem>
+            </BlogItems>
           </Link>
-        </List>
-        <List>
+        </ListBlog>
+        <ListBlog>
           <Link /* to={`/blog/${id}`} */>
-            <BlogItem>
+            <BlogItems>
               <BlogImage>
                 <ImageAvt
                   src="https://cdn2.unrealengine.com/ghostbusters-hands-on-launch-ghost-1920x1080-53cf65816102.png"
@@ -208,9 +208,9 @@ function BlogItem() {
                   <Span>Read More</Span>
                 </More>
               </Info>
-            </BlogItem>
+            </BlogItems>
           </Link>
-        </List>
+        </ListBlog>
       </ul>
     </>
   );

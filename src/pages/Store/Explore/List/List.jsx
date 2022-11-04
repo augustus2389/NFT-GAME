@@ -2,37 +2,37 @@ import React from "react";
 import styled from "styled-components";
 import warnnig from "../../../../asset/image/16.svg";
 
-const Card = styled.div`
+export const Card = styled.div`
   background-color: white;
   display: flex;
   margin: 20px 0;
   border-radius: 21px;
   flex-direction: column;
 `;
-const ImageCard = styled.img`
+export const ImageCard = styled.img`
   border-radius: 20px 20px 0 0;
   aspect-ratio: 10 / 9;
 `;
-const Info = styled.div`
+export const Info = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
 `;
-const Creator = styled.p`
+export const Creator = styled.p`
   color: #556772;
   margin: 0;
 `;
-const IconCreator = styled.img`
+export const IconCreator = styled.img`
   width: 20px;
   height: 20px;
 `;
-const Name = styled.p`
+export const Name = styled.p`
   font-weight: 700;
   font-size: 18px;
   color: black;
   margin: 0;
 `;
-const Button = styled.button`
+export const Button = styled.button`
   border: none;
   outline: 0px;
   cursor: pointer;
@@ -54,18 +54,18 @@ const Button = styled.button`
   border-radius: 11px;
   text-transform: uppercase;
 `;
-const Offer = styled.div`
+export const Offer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
-const IconWarnning = styled.img`
+export const IconWarnning = styled.img`
   margin: 10px;
   width: 25px;
   height: 25px;
 `;
-const InfoItem = styled.div`
+export const InfoItem = styled.div`
   padding: 20px 12px;
   display: flex;
   flex-direction: column;

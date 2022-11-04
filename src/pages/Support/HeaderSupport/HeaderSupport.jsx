@@ -1,75 +1,79 @@
 import React from "react";
 import styled from "styled-components";
-
-const IconSteam = styled.img`
-  width: 240px;
-  height: 80px;
-`;
-const AboutSteam = styled.div`
-  background: #1d2024;
-  background-image: radial-gradient(
-    ellipse farthest-side,
-    rgba(0, 111, 255, 0.15),
-    transparent
-  );
+import serverStatus from "../../../asset/image/serverstatus.svg";
+import iconSearch from "../../../asset/image/IconSearch.svg";
+const Header = styled.div`
   margin-top: 100px;
-  width: 800px;
+  padding-bottom: 30px;
+  background-color: #484848;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  padding-top: 30px;
+  background-image: linear-gradient(
+      180deg,
+      rgba(20, 20, 20, 0) 0%,
+      #141414 100%
+    ),
+    url(https://cdn2.unrealengine.com/header-background-3840x1300-e78b140f68a2.jpg);
 `;
-const Video = styled.video`
-  width: 100%;
+const HeaderCenter = styled.div`
+  margin: auto;
+  max-width: 1040px;
+`;
+const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+const Server = styled.div`
+  display: flex;
+  &:hover p {
+    text-decoration: underline;
+  }
+`;
+const StatusIcon = styled.img`
+  width: 15px;
   height: auto;
-  opacity: 0.8;
 `;
-const InfoSteam = styled.div`
-  margin: 130px;
-  font-size: 24px;
-  position: relative;
-  z-index: 8;
+const HelpCenter = styled.div``;
+const HelpInput = styled.input`
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  &::placeholder {
+    padding-left: 30px;
+  }
 `;
-const VideoIntro = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 4;
-  background-image: radial-gradient(
-    ellipse farthest-side,
-    rgba(0, 111, 255, 0.15),
-    transparent
-  );
+const IconSearch = styled.img`
+  width: 25px;
+  top: 7px;
+  left: 5px;
 `;
-const Note = styled.p`
-  width: 500px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 25px;
-  -webkit-line-clamp: 3;
-  height: 75px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-`;
-
 function HeaderSupport() {
   return (
-    <div className="header-support">
-      <AboutSteam>
-        <InfoSteam>
-          <IconSteam
-            src="https://cdn.cloudflare.steamstatic.com/store//about/logo_steam.svg"
-            alt=""
-          />
-          <Note>
-            Steam is the ultimate destination for playing, discussing, and
-            creating games.
-          </Note>
-        </InfoSteam>
-        <VideoIntro>
-          <Video
-            src="https://cdn.cloudflare.steamstatic.com/store/about/videos/about_hero_loop_web.webm"
-            autoPlay
-            muted
-          ></Video>
-        </VideoIntro>
-      </AboutSteam>
+    <div>
+      <Header>
+        <HeaderCenter>
+          <Title>
+            <h2>Welcome to Augustus Game Player Support</h2>
+            <Server>
+              <p className="fw-bold">SERVER STATUS: ALL SYSTEMS OPERATIONAL</p>
+              <StatusIcon src={serverStatus} alt="" />
+            </Server>
+          </Title>
+          <HelpCenter>
+            <form className="position-relative">
+              <HelpInput placeholder="SEARCH HELP CENTER..." />
+              <IconSearch
+                src={iconSearch}
+                alt=""
+                className="position-absolute"
+              />
+            </form>
+          </HelpCenter>
+        </HeaderCenter>
+      </Header>
     </div>
   );
 }

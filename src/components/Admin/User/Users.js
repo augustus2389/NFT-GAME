@@ -15,19 +15,22 @@ import {
 } from "react-admin";
 import "../user.scss";
 
-export const listUsers = (props) => (
-  <List {...props}>
-    <Datagrid>
-      <TextField source="id" />
-      <TextField source="name" />
-      <ImageField source="avatar" />
-      <TextField source="email" />
-      <TextField source="age" />
-      <EditButton basepath="/products" />
-      <DeleteButton basepath="/products" />
-    </Datagrid>
-  </List>
-);
+export const listUsers = (props) => {
+  console.log(props);
+  return (
+    <List {...props}>
+      <Datagrid>
+        <TextField source="id" />
+        <TextField source="name" />
+        <ImageField source="avatar.src" />
+        <TextField source="email" />
+        <TextField source="age" />
+        <EditButton basepath="/products" />
+        <DeleteButton basepath="/products" />
+      </Datagrid>
+    </List>
+  );
+};
 
 export const editUser = (props) => (
   <Edit {...props}>
@@ -50,7 +53,6 @@ export const createUser = (props) => (
       <ImageInput
         source="avatar"
         label="Related pictures"
-        labelMultiple
         accept="image/*"
         placeholder={<p>Drop your file here</p>}
       >

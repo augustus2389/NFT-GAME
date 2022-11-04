@@ -45,27 +45,26 @@ const Span = styled.span`
   transition: all 0.5s ease 0s;
   color: white;
 `;
-
+const LatestArticle = styled.div`
+  cursor: pointer;
+  margin: 100px 0 20px 0;
+  &:hover {
+    ${ImageNews} > ${Image} {
+      opacity: 0.3;
+    }
+  }
+  &:hover {
+    ${ImageNews} > ${Overlay} {
+      opacity: 1;
+    }
+  }
+  &:hover {
+    ${TitleNews} > ${More} > ${Span} {
+      border-bottom: 1px solid white;
+    }
+  }
+`;
 function Main() {
-  const LatestArticle = styled.div`
-    cursor: pointer;
-    margin: 100px 0 20px 0;
-    &:hover {
-      ${ImageNews} > ${Image} {
-        opacity: 0.3;
-      }
-    }
-    &:hover {
-      ${ImageNews} > ${Overlay} {
-        opacity: 1;
-      }
-    }
-    &:hover {
-      ${TitleNews} > ${More} > ${Span} {
-        border-bottom: 1px solid white;
-      }
-    }
-  `;
   return (
     <>
       <div className="col-lg-6">

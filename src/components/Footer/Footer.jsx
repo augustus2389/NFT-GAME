@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import logo from "../../asset/image/logo.png";
 
 const Image = styled.img`
-  width: auto;
-  height: 25px;
+  width: 60px;
+  height: auto;
+  margin: 0 10px;
 `;
 const TextFooter = styled.p`
   color: #8f98a0;
@@ -22,11 +24,8 @@ function Footer() {
     <section id="footer">
       <div className="container">
         <div className="row">
-          <div className="content__footer d-flex justify-content-center">
-            <Image
-              src="https://community.cloudflare.steamstatic.com/public/images/skin_1/footerLogo_valve.png?v=1"
-              alt=""
-            />
+          <div className="content__footer d-flex justify-content-center align-items-center">
+            <Image src={logo} alt="" />
 
             <div className="content-text">
               <TextFooter>

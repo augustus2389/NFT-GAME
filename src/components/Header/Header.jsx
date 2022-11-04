@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../asset/image/logo.png";
 import "./style.css";
 import user from "../../asset/image/user.svg";
@@ -10,17 +10,12 @@ const User = styled.img`
   height: auto;
 `;
 function Header() {
-  const navigate = useNavigate();
-
-  const handleClickNav = () => {
-    navigate("/Store");
-  };
   return (
     <>
       <section id="header">
         <div className="container">
           <div className="row">
-            <div className="col-lg-5">
+            <div className="col-lg-6">
               <div className="slogan d-flex justify-content-around align-items-center">
                 <div className="logo ">
                   <Link to="/">
@@ -37,7 +32,7 @@ function Header() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-7 ">
+            <div className="col-lg-6 ">
               <div className="action d-flex">
                 <nav className="menu navbar navbar-expand-lg">
                   <div className="container-fluid">
@@ -57,25 +52,24 @@ function Header() {
                     >
                       <ul className="navbar-nav">
                         <li className="nav-item">
-                          <button
-                            className="nav-link "
-                            onClick={handleClickNav}
-                          >
+                          <Link className="nav-link " to="/Store">
                             Store
-                          </button>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link button-29" to="/">
+                          <Link className="nav-link button-29" to="/Community">
                             Community
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link className="nav-link" to="/blog">
-                            Blog
+                          <Link className="nav-link" to="/products">
+                            About
                           </Link>
                         </li>
                         <li className="nav-item ">
-                          <Link className="nav-link">About</Link>
+                          <Link to="/support" className="nav-link">
+                            Support
+                          </Link>
                         </li>
                       </ul>
                     </div>

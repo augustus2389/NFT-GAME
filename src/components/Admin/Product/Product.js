@@ -31,7 +31,6 @@ export const listProducts = (props) => (
     </Datagrid>
   </List>
 );
-
 export const editProduct = (props) => (
   <Edit {...props}>
     <SimpleForm>
@@ -43,17 +42,7 @@ export const editProduct = (props) => (
           <TextInput helperText={false} />
         </SimpleFormIterator>
       </ArrayInput>
-      <ArrayInput source="images">
-        <SimpleFormIterator inline>
-          <ImageInput
-            source="pictures"
-            label="Related pictures"
-            accept="image/*"
-          >
-            <ImageField source="src" title="title" />
-          </ImageInput>
-        </SimpleFormIterator>
-      </ArrayInput>
+
       <ArrayInput source="system">
         <SimpleFormIterator inline disableAdd>
           <TextInput source="Os" helperText={false} />
@@ -70,7 +59,12 @@ export const editProduct = (props) => (
           <TextInput helperText={false} />
         </SimpleFormIterator>
       </ArrayInput>
-      <ImageInput source="pictures" label="Related pictures" accept="image/*">
+      <ImageInput
+        source="pictures"
+        label="Related pictures"
+        accept="image/*"
+        multiple
+      >
         <ImageField source="src" title="title" />
       </ImageInput>
     </SimpleForm>
