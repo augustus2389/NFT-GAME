@@ -14,14 +14,19 @@ import ad8 from "../../../asset/image/Product-Image/game6.jpeg";
 
 // import required modules
 import { EffectCards } from "swiper";
+import styled from "styled-components";
 
+const CustomSwiper = styled(Swiper)`
+  width: 240px;
+  height: 320px;
+`;
 export default function Hot() {
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-lg-4">
-            <Swiper
+            <CustomSwiper
               effect={"cards"}
               grabCursor={true}
               modules={[EffectCards]}
@@ -45,7 +50,7 @@ export default function Hot() {
               <SwiperSlide>
                 <img src={ad8} alt="" />
               </SwiperSlide>
-            </Swiper>
+            </CustomSwiper>
           </div>
           <div className="col-lg-8">
             <p style={{ color: "white", fontWeight: "700", fontSize: "35px" }}>

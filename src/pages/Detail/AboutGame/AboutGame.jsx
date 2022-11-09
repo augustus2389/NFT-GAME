@@ -48,7 +48,7 @@ const System = styled.ul`
   list-style-type: none;
   padding: 0;
 `;
-function AboutGame() {
+function AboutGame({ detail }) {
   return (
     <section className="about-game">
       <div className="row">
@@ -63,16 +63,7 @@ function AboutGame() {
             </div>
             <div className="review">
               <Tag>LAND, LOOT, SURVIVE!</Tag>
-              <Description>
-                Play PUBG: BATTLEGROUNDS for free. Land on strategic locations,
-                loot weapons and supplies, and survive to become the last team
-                standing across various, diverse Battlegrounds. Squad up and
-                join the Battlegrounds for the original Battle Royale experience
-                that only PUBG: BATTLEGROUNDS can offer. This content download
-                will also provide access to the BATTLEGROUNDS Test Server, which
-                requires a separate download to play. Optional in-game purchases
-                available.
-              </Description>
+              <Description>{detail?.about}</Description>
             </div>
           </div>
           <div className="requirements">
@@ -122,79 +113,83 @@ function AboutGame() {
         </div>
         <div className="col-lg-4">
           <Language>
-            <tr>
-              <CheckCol>Language:</CheckCol>
-            </tr>
-            <tr>
-              <LisTh></LisTh>
-              <LisTh>Full Audio</LisTh>
-              <LisTh>Subtitles</LisTh>
-              <LisTh>Subtitles</LisTh>
-            </tr>
-            <tr>
-              <List>English</List>
-              <List>
-                <Success src={success} />
-              </List>
-              <List></List>
-              <List></List>
-            </tr>
-            <tr>
-              <List>Korean</List>
-              <List>
-                <Success src={success} />
-              </List>
-              <List></List>
-              <List></List>
-            </tr>
-            <tr>
-              <List>French</List>
-              <List>
-                <Success src={success} />
-              </List>
-              <List></List>
-              <List></List>
-            </tr>
-            <tr>
-              <List>German</List>
-              <List>
-                <Success src={success} />
-              </List>
-              <List></List>
-              <List></List>
-            </tr>
-            <tr>
-              <List>Chinese</List>
-              <List>
-                <Success src={success} />
-              </List>
-              <List></List>
-              <List></List>
-            </tr>
+            <tbody>
+              <tr>
+                <CheckCol>Language:</CheckCol>
+              </tr>
+              <tr>
+                <LisTh></LisTh>
+                <LisTh>Full Audio</LisTh>
+                <LisTh>Subtitles</LisTh>
+                <LisTh>Subtitles</LisTh>
+              </tr>
+              <tr>
+                <List>English</List>
+                <List>
+                  <Success src={success} />
+                </List>
+                <List></List>
+                <List></List>
+              </tr>
+              <tr>
+                <List>Korean</List>
+                <List>
+                  <Success src={success} />
+                </List>
+                <List></List>
+                <List></List>
+              </tr>
+              <tr>
+                <List>French</List>
+                <List>
+                  <Success src={success} />
+                </List>
+                <List></List>
+                <List></List>
+              </tr>
+              <tr>
+                <List>German</List>
+                <List>
+                  <Success src={success} />
+                </List>
+                <List></List>
+                <List></List>
+              </tr>
+              <tr>
+                <List>Chinese</List>
+                <List>
+                  <Success src={success} />
+                </List>
+                <List></List>
+                <List></List>
+              </tr>
+            </tbody>
           </Language>
           <Language>
-            <tr>
-              <List>TITLE: </List>
-              <List>PUBG: BATTLEGROUNDS</List>
-            </tr>
-            <tr>
-              <List>GENRE: </List>
-              <List>
-                Action, Adventure, Free to Play, Massively Multiplayer
-              </List>
-            </tr>
-            <tr>
-              <List>DEVELOPER: </List>
-              <List>KRAFTON, Inc.</List>
-            </tr>
-            <tr>
-              <List>PUBLISHER: </List>
-              <List>KRAFTON, Inc.</List>
-            </tr>
-            <tr>
-              <List>RELEASE DATE: </List>
-              <List>21 Dec, 2017</List>
-            </tr>
+            <tbody>
+              <tr>
+                <List>TITLE: </List>
+                <List>PUBG: BATTLEGROUNDS</List>
+              </tr>
+              <tr>
+                <List>GENRE: </List>
+                <List>
+                  Action, Adventure, Free to Play, Massively Multiplayer
+                </List>
+              </tr>
+              <tr>
+                <List>DEVELOPER: </List>
+                <List>KRAFTON, Inc.</List>
+              </tr>
+              <tr>
+                <List>PUBLISHER: </List>
+                <List>KRAFTON, Inc.</List>
+              </tr>
+              <tr>
+                <List>RELEASE DATE: </List>
+                <List>21 Dec, 2017</List>
+              </tr>
+            </tbody>
           </Language>
         </div>
       </div>

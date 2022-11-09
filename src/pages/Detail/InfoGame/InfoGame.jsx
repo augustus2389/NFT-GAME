@@ -4,14 +4,19 @@ import styled from "styled-components";
 import backHome from "../../../asset/image/back.svg";
 import tick from "../../../asset/image/tick.svg";
 import warnning from "../../../asset/image/16.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchProduct } from "../../../redux/productSlice";
 
 const Description = styled.p`
   color: #000;
   font-size: 16px;
   line-height: 22px;
 `;
-const Back = styled.a`
+const TextBack = styled.p`
   color: rgb(17, 153, 250);
+`;
+const Back = styled.a`
   text-align: left;
   display: flex;
   align-items: center;
@@ -70,7 +75,7 @@ const Button = styled.button`
     rgb(17, 153, 250) 0%,
     rgb(17, 208, 250) 100%
   );
-  color: rgb(255, 255, 255);
+  color: white;
   border-radius: 4px;
   height: 48px;
   min-width: 128px;
@@ -137,51 +142,52 @@ const NameText = styled.p`
   font-size: 16px;
 `;
 
-function InfoGame() {
+function InfoGame({ detail }) {
+  const cart = useSelector((state) => state.productList.products);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProduct());
+  }, []);
+
+  const handleAddToCart = () => {};
   return (
     <>
       <Represent>
-        <Back>
-          {" "}
+        <Back to="/">
           <IconBack src={backHome} alt="" />
-          <Link to="/">Back</Link>
+          <TextBack>Back</TextBack>
         </Back>
         <Name>
-          <NameText>PUBG: BATTLEGROUNDS</NameText>
+          <NameText>{detail?.title}</NameText>
           <IconAgeLimit src={warnning} alt="" />
         </Name>
         <Creator>
           <div className="create-avatar position-relative">
-            <IconCreator src="https://file.mk.co.kr/meet/neds/2020/03/image_readtop_2020_237977_15834692904113775.jpg" />
+            <IconCreator src={detail?.iconPublisher} />
             <Tick src={tick} />
           </div>
           <CreatorInfo>
             <TextInfo>Creator</TextInfo>
-            <NameCreate>KRAFTON InC</NameCreate>
+            <NameCreate>{detail?.publisher}</NameCreate>
           </CreatorInfo>
           <div className="creator-info">
             <TextInfo>RELEASE DATE:</TextInfo>
-            <NameCreate>21 Dec, 2017</NameCreate>
+            <NameCreate>{detail?.date}</NameCreate>
           </div>
         </Creator>
         <Action>
           <Button>
-            <Link to="./CheckOut">buy for 15$</Link>
+            <Link onClick={handleAddToCart} className="text-white">
+              buy for {detail?.price}$
+            </Link>
           </Button>
-          <ButtonOffer>make offer</ButtonOffer>
+          <ButtonOffer>Add to wishlist</ButtonOffer>
         </Action>
-        <Description>
-          Play PUBG: BATTLEGROUNDS for free. Land on strategic locations, loot
-          weapons and supplies, and survive to become the last team standing
-          across various, diverse Battlegrounds. Squad up and join the
-          Battlegrounds for the original Battle Royale experience that only
-          PUBG: BATTLEGROUNDS can offer
-        </Description>
+        <Description>{detail?.description}</Description>
         <Tag>
-          <LinkTag>Survival</LinkTag>
-          <LinkTag>Action</LinkTag>
-          <LinkTag>Battle Royal</LinkTag>
-          <LinkTag>Multiplayer</LinkTag>
+          <LinkTag>{detail?.type}</LinkTag>
         </Tag>
       </Represent>
     </>

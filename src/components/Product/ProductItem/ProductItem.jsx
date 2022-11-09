@@ -12,30 +12,29 @@ import {
   Offer,
 } from "../../../pages/Store/Explore/List/List";
 import warnnig from "../../../asset/image/16.svg";
+import { Link } from "react-router-dom";
 
 function ProductItem({ product }) {
   return (
     <div className="col-lg-3 col-6">
-      <Card>
-        {!!product?.pictures && <ImageCard src={product?.pictures[0].src} />}
-
-        <InfoItem>
-          <Info>
-            <IconCreator
-              src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-              alt=""
-            />
-            <Creator>{product.publisher}</Creator>
-          </Info>
-          <Offer>
-            <Name>{product.title}</Name>
-            <IconWarnning src={warnnig} alt="" />
-          </Offer>
-          <Offer>
-            <Button>Make Offer : {product.price}$ </Button>
-          </Offer>
-        </InfoItem>
-      </Card>
+      <Link to={`/${product.id}`}>
+        <Card>
+          {product?.images && <ImageCard src={product.images[0]} />}
+          <InfoItem>
+            <Info>
+              <IconCreator src={product.iconPublisher} alt="" />
+              <Creator>{product.publisher}</Creator>
+            </Info>
+            <Offer>
+              <Name>{product.title}</Name>
+              <IconWarnning src={warnnig} alt="" />
+            </Offer>
+            <Offer>
+              <Button>Make Offer : {product.price}$ </Button>
+            </Offer>
+          </InfoItem>
+        </Card>
+      </Link>
     </div>
   );
 }
