@@ -12,7 +12,7 @@ import Typiccal from "./Typical/Typiccal";
 function Home() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("hhttps://json-server-augustus-game.herokuapp.com/products")
+    fetch("https://json-server-augustus-game.herokuapp.com/products")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
