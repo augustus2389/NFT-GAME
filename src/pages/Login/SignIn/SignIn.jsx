@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../../asset/image/logo.png";
 import { addToAuth, fetchAuth } from "../../../redux/authSlice";
-import { addToCart } from "../../../redux/cartSlice";
+
 import "./style.css";
 
 const FromLogin = styled.div`
@@ -82,11 +82,11 @@ function SignIn() {
 
   const onSubmit = async (data) => {
     const emailExist = await axios.get(
-      `http://localhost:3000/users?Email=${data.Email}`
+      `https://json-server-augustus-game.herokuapp.com/users?Email=${data.Email}`
     );
     if (emailExist.data.length) {
       const res = await axios.get(
-        `http://localhost:3000/users?Email=${data.Email}&Password=${data.Password}`
+        `https://json-server-augustus-game.herokuapp.com/users?Email=${data.Email}&Password=${data.Password}`
       );
       console.log(res.data);
       if (!res.data.length) {
