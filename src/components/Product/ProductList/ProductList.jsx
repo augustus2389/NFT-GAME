@@ -5,7 +5,7 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
   console.log(productList);
   useEffect(() => {
-    fetch("http://localhost:3000/products")
+    fetch("https://json-server-augustus-game.herokuapp.com/products")
       .then((response) => response.json())
       .then((data) => setProductList(data));
   }, []);

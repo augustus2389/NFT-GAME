@@ -77,12 +77,12 @@ function SignUp() {
   });
   const onSubmit = async (data) => {
     const emailExist = await axios.get(
-      `http://localhost:3000/users?Email=${data.Email}`
+      `https://json-server-augustus-game.herokuapp.com/users?Email=${data.Email}`
     );
 
     if (!emailExist.data.length) {
       axios
-        .post("http://localhost:3000/users", data)
+        .post("https://json-server-augustus-game.herokuapp.com/users", data)
         .then((data) => console.log(data.data));
     } else {
       setEmail(false);
