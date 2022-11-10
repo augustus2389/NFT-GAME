@@ -1,10 +1,12 @@
 // import { CountrySelect } from "@atlaskit/select";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../../asset/image/logo.png";
 import "./style.scss";
+import Upload from "./Upload/Upload";
 
 const FromLogin = styled.div`
   margin: 150px auto;
@@ -67,13 +69,25 @@ const Name = styled.div`
   gap: 70px;
 `;
 function SignUp() {
+  const [email, setEmail] = useState(true);
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       address: {},
     },
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    const emailExist = await axios.get(
+      `http://localhost:3000/users?Email=${data.Email}`
+    );
 
+    if (!emailExist.data.length) {
+      axios
+        .post("http://localhost:3000/users", data)
+        .then((data) => console.log(data.data));
+    } else {
+      setEmail(false);
+    }
+  };
   const [option, setOption] = useState([]);
 
   useEffect(() => {
@@ -141,6 +155,7 @@ function SignUp() {
               })}
             />
             <div className="underline"></div>
+            {!email && <p className="text-danger ">Emaill already exist</p>}
             <label>Email</label>
           </div>
           <div className="input-form">
@@ -148,6 +163,7 @@ function SignUp() {
             <div className="underline"></div>
             <label>Password</label>
           </div>
+          <Upload />
           <ContinueButton> Continue </ContinueButton>
         </form>
         <Note>

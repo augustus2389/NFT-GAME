@@ -16,7 +16,7 @@
 }
 .input-form input:focus ~ label,
 .input-form input:valid ~ label {
-  transform: translateY(-40px);
+  transform: translateY(-32px);
   font-size: 15px;
 }
 .input-form label {

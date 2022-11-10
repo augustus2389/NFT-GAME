@@ -1,7 +1,7 @@
+/* eslint-disable array-callback-return */
 import React from "react";
 import "./intro.css";
 import wish from "../../../asset/image/wishlist.svg";
-
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,11 +9,21 @@ import "swiper/css";
 import { Autoplay, Navigation } from "swiper";
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
+
 const Container = styled.div`
   max-width: 1024px;
   margin: auto;
 `;
-const Media = styled.div``;
+const Ads = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+const Media = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+`;
 const Text = styled.div`
   padding: 50px;
   position: absolute;
@@ -64,13 +74,17 @@ const IconWish = styled.img`
   width: 25px !important;
   height: auto !important;
 `;
+const IntroImage = styled.img`
+  border-radius: 4px;
+`;
 
-function Intro() {
+function Intro({ data }) {
   const divStyle = {
     marginBottom: "100px",
-    marginTop: "50px",
+    marginTop: "35px",
     aspectRatio: "12/6",
   };
+
   return (
     <section id="intro">
       <div className="container">
@@ -84,41 +98,41 @@ function Intro() {
             // autoplay={true}
             className="mySwiper slide"
           >
-            <SwiperSlide>
-              <Media>
-                <div className="ads position-relative">
-                  <img
-                    src="https://cdn2.unrealengine.com/egs-genshin-impact-3-2-carousel-desktop-1248x702-a1f382c2ccf2.jpg?h=1080&resize=1&w=1920"
-                    alt=""
-                  />
-                  <Text>
-                    <IconGame>
-                      <img
-                        src="https://cdn2.unrealengine.com/egs-genshinimpact-mihoyolimited-ic1-400x400-0a1ff1b6cf40.png?h=270&resize=1&w=480"
-                        alt=""
-                      />
-                    </IconGame>
-                    <TextFont>
-                      {" "}
-                      A strategy/action RPG. Create a character, engage in
-                      diplomacy, craft, trade and conquer new lands in a vast
-                      medieval sandbox. Raise armies to lead into battle and
-                      fight alongside your troops in massive real-time battles
-                    </TextFont>
-                    <div>
-                      <p>Starting at 20 $</p>
-                      <ButtonDiv>
-                        <ButtonBuy>BUY NOW</ButtonBuy>
-                        <Wish>
-                          <IconWish src={wish} alt="" />
-                          <ButtonWish>Add to wishlist</ButtonWish>
-                        </Wish>
-                      </ButtonDiv>
-                    </div>
-                  </Text>
-                </div>
-              </Media>
-            </SwiperSlide>
+            {data.map((dat) => {
+              if (!!dat?.intro) {
+                return (
+                  <SwiperSlide key={dat.id}>
+                    <Media>
+                      <Ads className="ads position-relative">
+                        <IntroImage src={dat?.intro} alt="" />
+                        <Text>
+                          <IconGame>
+                            <motion.img
+                              initial={{ opacity: 0, x: "100%" }}
+                              animate={{ opacity: 1, x: "0" }}
+                              exit={{ opacity: 0, x: "-100%" }}
+                              src={dat?.iconGame}
+                              alt=""
+                            />
+                          </IconGame>
+                          <TextFont>{dat.description}</TextFont>
+                          <div>
+                            <p>Starting at 20 $</p>
+                            <ButtonDiv>
+                              <ButtonBuy>BUY NOW</ButtonBuy>
+                              <Wish>
+                                <IconWish src={wish} alt="" />
+                                <ButtonWish>Add to wishlist</ButtonWish>
+                              </Wish>
+                            </ButtonDiv>
+                          </div>
+                        </Text>
+                      </Ads>
+                    </Media>
+                  </SwiperSlide>
+                );
+              }
+            })}
           </Swiper>
         </Container>
       </div>

@@ -1,8 +1,13 @@
-import React from "react";
+import Password from "antd/lib/input/Password";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../../asset/image/logo.png";
+import { addToAuth, fetchAuth } from "../../../redux/authSlice";
+import { addToCart } from "../../../redux/cartSlice";
 import "./style.css";
 
 const FromLogin = styled.div`
@@ -62,9 +67,38 @@ const Title = styled.p`
   letter-spacing: 0.5px;
 `;
 function SignIn() {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+  const [checkEmail, setCheckEmail] = useState(true);
+  const [checkPassWord, setCheckPassWord] = useState(true);
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => console.log(data);
+  const { auths } = useSelector((state) => state.auth);
+  console.log(auths);
+  useEffect(() => {
+    dispatch(fetchAuth);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onSubmit = async (data) => {
+    const emailExist = await axios.get(
+      `http://localhost:3000/users?Email=${data.Email}`
+    );
+    if (emailExist.data.length) {
+      const res = await axios.get(
+        `http://localhost:3000/users?Email=${data.Email}&Password=${data.Password}`
+      );
+      console.log(res.data);
+      if (!res.data.length) {
+        setCheckPassWord(false);
+        return;
+      }
+      // navigate("/");
+      dispatch(addToAuth(data));
+    } else {
+      setCheckEmail(false);
+    }
+  };
   return (
     <FromLogin>
       <Form>
@@ -73,6 +107,7 @@ function SignIn() {
           <Title>Sign In</Title>
         </Logo>
         <form
+          autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
           className="d-flex flex-column justify-content-around"
         >
@@ -87,11 +122,15 @@ function SignIn() {
             />
             <div className="underline"></div>
             <label>Email Adress</label>
+            {!checkEmail && <p className="text-danger">Email incorrect</p>}
           </InputForm>
           <InputForm className="input-form">
             <input type="password" required {...register("Password")} />
             <div className="underline"></div>
             <label>Password</label>
+            {!checkPassWord && (
+              <p className="text-danger">Password incorrect</p>
+            )}
           </InputForm>
           {/* <Input
             type="text"

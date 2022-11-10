@@ -1,0 +1,35 @@
+.swiper-button-prev {
+  background-image: url(../../../asset/image/arrowleft.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  top: 25px !important;
+  left: 95% !important;
+  width: 15px !important;
+  padding: 10px;
+}
+.swiper-button-prev::after {
+  display: none;
+}
+.swiper-button-prev:hover {
+  background-color: grey;
+  border-radius: 50%;
+}
+.swiper-button-next {
+  background-image: url(../../../asset/image/arrowright.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  width: 15px !important;
+  padding: 10px;
+  top: 25px !important;
+  right: 0% !important;
+}
+.swiper-button-next::after {
+  width: 5px;
+  display: none;
+}
+.swiper-button-next:hover {
+  background-color: grey;
+  border-radius: 50%;
+}

@@ -10,7 +10,8 @@ import Blog from "./pages/Blog/Blog";
 import Login from "./pages/Login/Login";
 import CheckOut from "./pages/Checkout/CheckOut";
 import SignUp from "./pages/Login/SignUp/SignUp";
-import AdminGame from "./components/Admin/Admin";
+import SignIn from "./pages/Login/SignIn/SignIn";
+import Wishlist from "./pages/Wishlist/Wishlist";
 
 function App() {
   return (
@@ -20,12 +21,14 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/Store" element={<Store />} />
-            <Route path="/Community" element={<Blog />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/support" element={<Support />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/CheckOut" element={<CheckOut />} />
-            <Route path=":productId" element={<Detail />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/detail/:productId" element={<Detail />} />
+            <Route path="/Wishlist" element={<Wishlist />} />
             {/* <Route path="/products" element={<AdminGame />} /> */}
           </Route>
         </Routes>

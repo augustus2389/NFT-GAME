@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import backHome from "../../../asset/image/back.svg";
 import tick from "../../../asset/image/tick.svg";
 import warnning from "../../../asset/image/16.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchProduct } from "../../../redux/productSlice";
+import { addToCart, fetchCart } from "../../../redux/cartSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 const Description = styled.p`
   color: #000;
@@ -115,12 +115,13 @@ const Represent = styled.div`
 const Tag = styled.div`
   display: flex;
   gap: 20px;
+  margin-top: 10px;
 `;
 const LinkTag = styled.p`
   border: 1px solid #1199fa;
   border-radius: 4px;
   color: #1199fa;
-  padding: 10px 5px;
+  padding: 10px;
   background-color: white;
   cursor: pointer;
   text-transform: capitalize; ;
@@ -142,18 +143,46 @@ const NameText = styled.p`
   font-size: 16px;
 `;
 
-function InfoGame({ detail }) {
-  const cart = useSelector((state) => state.productList.products);
-
+function InfoGame({ detail, checkId }) {
+  const { carts } = useSelector((state) => state.cart);
+  console.log(checkId);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProduct());
+    dispatch(fetchCart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const handleAddToCart = () => {};
+  const handleAddToCart = () => {
+    const IsExist = carts.some((cart) => cart.id === +checkId);
+    if (IsExist) {
+      toast.warn("This game has already been added to cart!", {
+        // position: toast.POSITION.TOP_CENTER,
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    dispatch(addToCart(detail));
+    toast.success("This game has been added cart", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
   return (
     <>
+      <ToastContainer></ToastContainer>
       <Represent>
         <Back to="/">
           <IconBack src={backHome} alt="" />
@@ -187,7 +216,9 @@ function InfoGame({ detail }) {
         </Action>
         <Description>{detail?.description}</Description>
         <Tag>
-          <LinkTag>{detail?.type}</LinkTag>
+          {detail?.type.map((type, index) => (
+            <LinkTag key={index}>{type}</LinkTag>
+          ))}
         </Tag>
       </Represent>
     </>

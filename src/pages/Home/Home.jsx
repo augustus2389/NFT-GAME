@@ -2,11 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import Product from "../../components/Product/Product";
-import Hot from "./Hot/Hot";
+import Catalog from "./Catalog/Catalog";
+import Catory from "./Catory/Catory";
+import Free from "./Free/Free";
 import Intro from "./Intro/Intro";
+import Popular from "./Popular/Popular";
+import Typiccal from "./Typical/Typiccal";
 
 function Home() {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3000/products")
       .then((response) => response.json())
@@ -15,8 +19,12 @@ function Home() {
   return (
     <>
       <Intro data={data} />
-      <Hot />
-      <Product />
+      <Free />
+      <Catory />
+      <Catalog />
+      <Popular />
+      <Typiccal />
+      {/* <Product /> */}
     </>
   );
 }

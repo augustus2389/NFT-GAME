@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -8,6 +8,9 @@ import { IconContext } from "react-icons";
 import logo from "../../asset/image/logo.png";
 import styled from "styled-components";
 import user from "../../asset/image/user.svg";
+import SecondarybHeader from "./SubHeader/SubHeader";
+import { userApi } from "../../api/userApi";
+import { useSelector } from "react-redux";
 
 const Logo = styled.div`
   display: flex;
@@ -24,10 +27,13 @@ const LogoUser = styled.img`
   margin: 0 10px;
 `;
 function Navbar() {
+  const { auths } = useSelector((state) => state.auth);
+
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
-
+  useEffect(() => {
+    userApi.getUser().then((data) => console.log(data));
+  }, []);
   return (
     <section id="header">
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -59,11 +65,14 @@ function Navbar() {
             })}
           </ul>
           <User>
-            <LogoUser src={user} alt="" />
-            <p>Sign In</p>
+            <Link to="/signin" className="d-flex">
+              <LogoUser src={user} alt="" />
+              <p>Sign In</p>
+            </Link>
           </User>
         </nav>
       </IconContext.Provider>
+      <SecondarybHeader />
     </section>
   );
 }

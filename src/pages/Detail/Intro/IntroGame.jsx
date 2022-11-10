@@ -4,17 +4,15 @@ import { Carousel } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import "bootstrap/dist/css/bootstrap.css";
 
-const IntroGame = ({ detail }) => {
-  console.log(detail);
+const IntroGame = ({ videos }) => {
   return (
     <div className="App">
       <Carousel>
-        {detail?.videos.map((videoObj, index) => {
-          console.log(detail?.videos);
+        {videos.map((video, index) => {
           return (
             <Carousel.Item key={index}>
               <ReactPlayer
-                url={videoObj}
+                url={video}
                 pip={true}
                 controls={true}
                 playing={true}
