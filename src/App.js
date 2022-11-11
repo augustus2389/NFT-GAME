@@ -20,15 +20,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/Store" element={<Store />} />
+            <Route path="/store" element={<Store />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/support" element={<Support />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/CheckOut" element={<CheckOut />} />
+            <Route path="/checkOut" element={<CheckOut />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/detail/:productId" element={<Detail />} />
-            <Route path="/Wishlist" element={<Wishlist />} />
+            <Route path="/wishlist" element={<Wishlist />} />
             {/* <Route path="/products" element={<AdminGame />} /> */}
           </Route>
         </Routes>

@@ -1,4 +1,3 @@
-import Password from "antd/lib/input/Password";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

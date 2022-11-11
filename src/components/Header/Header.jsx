@@ -28,12 +28,9 @@ const LogoUser = styled.img`
 `;
 function Navbar() {
   const { auths } = useSelector((state) => state.auth);
-
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-  useEffect(() => {
-    userApi.getUser().then((data) => console.log(data));
-  }, []);
+
   return (
     <section id="header">
       <IconContext.Provider value={{ color: "#fff" }}>

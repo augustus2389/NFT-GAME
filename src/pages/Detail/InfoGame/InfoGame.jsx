@@ -145,7 +145,6 @@ const NameText = styled.p`
 
 function InfoGame({ detail, checkId }) {
   const { carts } = useSelector((state) => state.cart);
-  console.log(checkId);
   const dispatch = useDispatch();
 
   useEffect(() => {

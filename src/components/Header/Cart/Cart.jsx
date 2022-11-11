@@ -34,7 +34,7 @@ function Cart() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     cartApi.getCart().then((data) => setCart(data));
-  });
+  }, []);
   return (
     <>
       <ActionCart>

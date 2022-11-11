@@ -17,7 +17,6 @@ function Detail() {
     const fetchPost = async (id) => {
       let res = await productApi.getProductById(id);
       setDetail(res);
-      console.log(res);
     };
     fetchPost(checkId);
     // eslint-disable-next-line react-hooks/exhaustive-deps

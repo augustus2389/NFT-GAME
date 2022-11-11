@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://json-server-augustus-game.herokuapp.com",
+  baseURL: "http://localhost:3000",
   headers: { "Content-Type": "application/json; charset=UTF-8" },
 });
 

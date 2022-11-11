@@ -8,6 +8,10 @@ import { fetchCart, removeCart } from "../../redux/cartSlice";
 import empty from "../../asset/image/empty.svg";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+import Paypal from "../Paypal/Paypal";
+import ModalComponent from "../Paypal/Modal/Modal";
+
 const Container = styled.div`
   max-width: 1040px;
   margin: auto;
@@ -144,7 +148,6 @@ function CheckOut() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(subTotal);
-
   return (
     <section id="checkout">
       <Container>
@@ -175,7 +178,7 @@ function CheckOut() {
                   </InfoCheckOut>
                   <Total>
                     <div>
-                      <p>{cart.price}</p>
+                      <p>{cart.price} $</p>
                       <Date>RELEASE DATE: {cart.date}</Date>
                     </div>
                     <ActionType>
@@ -209,7 +212,10 @@ function CheckOut() {
                   <p>Subtotal</p>
                   <p>{subTotal} $</p>
                 </TextCheckout>
-                <ButtonCheckout>Check out</ButtonCheckout>
+                {/* <ButtonCheckout onClick={() => setModalIsOpen(true)}>
+                  Check out
+                </ButtonCheckout> */}
+                <ModalComponent />
               </CheckoutForm>
             </div>
           </div>
