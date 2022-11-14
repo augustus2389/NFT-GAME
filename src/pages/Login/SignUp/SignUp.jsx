@@ -130,7 +130,7 @@ function SignUp() {
               <input
                 type="text"
                 required
-                {...register("Last name", { required: true, maxLength: 80 })}
+                {...register("LastName", { required: true, maxLength: 80 })}
               />
               <div className="underline"></div>
               <label>Last name</label>
@@ -139,7 +139,7 @@ function SignUp() {
               <input
                 type="text"
                 required
-                {...register("First name", { required: true, maxLength: 80 })}
+                {...register("FirstName", { required: true, maxLength: 80 })}
               />
               <div className="underline"></div>
               <label>First name</label>

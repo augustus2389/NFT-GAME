@@ -1,0 +1,42 @@
+.modal-header {
+  border: none;
+}
+
+#cvc,
+#expiryDate,
+#cardNumber {
+  margin-top: 10px;
+  margin-right: 20px;
+  color: gray;
+}
+#usercheckout {
+  width: 15px;
+  height: auto;
+}
+.modal-title {
+  font-size: 14px;
+  display: flex;
+}
+.modal-title p {
+  color: black !important;
+}
+.cardvisit {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+#card {
+  width: 30px;
+  margin: 0 10px;
+}
+.mutilple-card {
+  display: flex;
+  justify-content: space-between;
+}
+.mutilple-card img {
+  width: 30px;
+  margin: 0 3px;
+}
+.mutilple-card p {
+  color: black;
+}

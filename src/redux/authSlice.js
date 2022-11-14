@@ -15,8 +15,13 @@ const authSlice = createSlice({
   initialState: {
     isLogin: false,
     auths: [],
+    account: {},
   },
-  reducers: {},
+  reducers: {
+    setAccountSuccess(state, action) {
+      state.account = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAuth.pending, (state, action) => {
       state.status = "loading";
@@ -26,8 +31,10 @@ const authSlice = createSlice({
       state.auths = action.payload;
     });
     builder.addCase(addToAuth.fulfilled, (state, action) => {
-      state.auths.push(action.payload);
+      state.account = action.payload;
     });
   },
 });
+
+export const { setAccountSuccess } = authSlice.actions;
 export default authSlice.reducer;

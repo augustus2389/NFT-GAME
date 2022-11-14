@@ -6,7 +6,7 @@ import empty from "../../asset/image/empty.svg";
 import { Link } from "react-router-dom";
 import FilterType from "./Filter/FilterGenre";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWish } from "../../redux/wishlistSlice";
+import { fetchWish, removeWish } from "../../redux/wishlistSlice";
 
 const Container = styled.div`
   max-width: 1040px;
@@ -145,12 +145,13 @@ function Wishlist() {
   const dispatch = useDispatch();
   // const { carts } = useSelector((state) => state.cart);
   const { wishs } = useSelector((state) => state.wish);
-  console.log(wishs);
   useEffect(() => {
     dispatch(fetchWish());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const handleRemoveWishlist = (id) => {
+    dispatch(removeWish(id));
+  };
   return (
     <section id="checkout">
       <Container>
@@ -165,7 +166,7 @@ function Wishlist() {
                 </Empty> */}
 
               {wishs.map((wish) => (
-                <WishItem>
+                <WishItem key={wish.id}>
                   <ItemImage>
                     <Image src={wish.avatar} alt="" />
                   </ItemImage>
@@ -180,12 +181,13 @@ function Wishlist() {
                   </InfoCheckOut>
                   <Total>
                     <div>
-                      <p>{wish.price}</p>
+                      <p>{wish.price} </p>
                       <Date>RELEASE DATE: {wish.date}</Date>
                     </div>
                     <ActionType>
-                      <Type> Remove</Type>
-
+                      <Type onClick={() => handleRemoveWishlist(wish.id)}>
+                        Remove
+                      </Type>
                       <AddToCart>Add To Cart</AddToCart>
                     </ActionType>
                   </Total>

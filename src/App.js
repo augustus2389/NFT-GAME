@@ -12,6 +12,10 @@ import CheckOut from "./pages/Checkout/CheckOut";
 import SignUp from "./pages/Login/SignUp/SignUp";
 import SignIn from "./pages/Login/SignIn/SignIn";
 import Wishlist from "./pages/Wishlist/Wishlist";
+import PrivateRoutes from "./pages/Private/PrivateRoutes/PrivateRoutes";
+import OrderHistory from "./pages/Private/OrderHistory/OrderHistory";
+import SecurityAccount from "./pages/Private/SecurityAccount/SecurityAccount";
+import Profile from "./pages/Private/Profile/Profile";
 
 function App() {
   return (
@@ -29,6 +33,12 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/detail/:productId" element={<Detail />} />
             <Route path="/wishlist" element={<Wishlist />} />
+
+            <Route element={<PrivateRoutes />}>
+              <Route path="/history" element={<OrderHistory />} />
+              <Route path="/security" element={<SecurityAccount />} />
+              <Route path="/profile" element={<Profile />} />
+            </Route>
             {/* <Route path="/products" element={<AdminGame />} /> */}
           </Route>
         </Routes>

@@ -1,16 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import cartApi from "../../api/cartApi";
 import window from "../../asset/image/window.svg";
 import wishlist from "../../asset/image/wishlist.svg";
 import { fetchCart, removeCart } from "../../redux/cartSlice";
 import empty from "../../asset/image/empty.svg";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { motion } from "framer-motion";
-import Paypal from "../Paypal/Paypal";
 import ModalComponent from "../Paypal/Modal/Modal";
+import { addToWish } from "../../redux/wishlistSlice";
 
 const Container = styled.div`
   max-width: 1040px;
@@ -146,7 +143,10 @@ function CheckOut() {
       return total + product.price;
     }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [carts]);
+  const handleAddToWishlist = (id) => {
+    dispatch(addToWish);
+  };
   console.log(subTotal);
   return (
     <section id="checkout">
@@ -183,11 +183,14 @@ function CheckOut() {
                     </div>
                     <ActionType>
                       <Type>
-                        <IconPlus src={wishlist} alt="" />
+                        <IconPlus
+                          src={wishlist}
+                          alt=""
+                          onClick={() => handleAddToWishlist(cart.id)}
+                        />
                         Move to wishlist
                       </Type>
                       <Type onClick={() => handleRemoveCart(cart.id)}>
-                        {" "}
                         Remove
                       </Type>
                     </ActionType>

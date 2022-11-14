@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import Product from "../../components/Product/Product";
 import Catalog from "./Catalog/Catalog";
 import Catory from "./Catory/Catory";
 import Free from "./Free/Free";
@@ -24,7 +23,6 @@ function Home() {
       <Catalog />
       <Popular />
       <Typiccal />
-      {/* <Product /> */}
     </>
   );
 }

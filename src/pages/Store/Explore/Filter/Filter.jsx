@@ -76,6 +76,16 @@ function Filter() {
   const toggling = () => {
     setIsOpen(!isOpen);
   };
+  const [checked, setChecked] = useState([]);
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
   const onOptionClicked = (value) => () => {
     setSelectedOption(value);
     setIsOpen(false);
@@ -122,32 +132,27 @@ function Filter() {
               <DropDownList>
                 <ListItem>
                   <label htmlFor="">
-                    {" "}
-                    <input type="checkbox" /> Action
+                    <input type="checkbox" onChange={handleCheck} /> Action
                   </label>
                 </ListItem>
                 <ListItem>
                   <label htmlFor="">
-                    {" "}
-                    <input type="checkbox" /> Adventure
+                    <input type="checkbox" onChange={handleCheck} /> Adventure
                   </label>
                 </ListItem>
                 <ListItem>
                   <label htmlFor="">
-                    {" "}
-                    <input type="checkbox" /> RPG
+                    <input type="checkbox" onChange={handleCheck} /> RPG
                   </label>
                 </ListItem>
                 <ListItem>
                   <label htmlFor="">
-                    {" "}
-                    <input type="checkbox" /> Casual
+                    <input type="checkbox" onChange={handleCheck} /> Casual
                   </label>
                 </ListItem>
                 <ListItem>
                   <label htmlFor="">
-                    {" "}
-                    <input type="checkbox" /> Simulation
+                    <input type="checkbox" onChange={handleCheck} /> Simulation
                   </label>
                 </ListItem>
               </DropDownList>

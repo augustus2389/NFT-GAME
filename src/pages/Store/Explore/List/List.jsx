@@ -1,63 +1,41 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import warnnig from "../../../../asset/image/16.svg";
+import { fetchProduct } from "../../../../redux/productSlice";
+import wishlist from "../../../../asset/image/wishlist.svg";
+import useScrollPosition from "../../../../hooks/useScrollPosition";
 
-export const Card = styled.div`
-  background-color: white;
-  display: flex;
-  margin: 20px 0;
-  border-radius: 21px;
-  flex-direction: column;
-`;
 export const ImageCard = styled.img`
   border-radius: 20px 20px 0 0;
-  aspect-ratio: 10 / 9;
+  aspect-ratio: 7 / 9;
 `;
 export const Info = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+  color: white;
 `;
 export const Creator = styled.p`
   color: #556772;
   margin: 0;
 `;
+const Image = styled.div``;
 export const IconCreator = styled.img`
   width: 20px;
   height: 20px;
 `;
 export const Name = styled.p`
   font-weight: 700;
-  font-size: 18px;
-  color: black;
+  font-size: 16px;
+  color: white;
   margin: 0;
 `;
-export const Button = styled.button`
-  border: none;
-  outline: 0px;
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.3em;
-  text-decoration: none;
-  background: linear-gradient(
-    90deg,
-    rgb(17, 153, 250) 0%,
-    rgb(17, 208, 250) 100%
-  );
-  color: rgb(255, 255, 255);
-  border-radius: 11px;
-  text-transform: uppercase;
-`;
+
 export const Offer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 30px;
 `;
 
 export const IconWarnning = styled.img`
@@ -71,203 +49,75 @@ export const InfoItem = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
-
+const BaseGame = styled.p`
+  background-color: gray;
+  color: white;
+  font-size: 12px;
+  padding: 0 10px;
+  width: 45%;
+  border-radius: 4px;
+`;
+const IconWishList = styled.img`
+  display: none;
+  width: 15px;
+  position: absolute;
+  z-index: 10;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+`;
+export const Card = styled.div`
+  display: flex;
+  margin: 20px 0;
+  border-radius: 21px;
+  flex-direction: column;
+  &:hover {
+    ${Image} > ${IconWishList} {
+      display: block;
+    }
+  }
+`;
 function List() {
+  const { products, isLoadding } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
+  const productRef = useRef();
+  console.log("abc", productRef.current?.offsetTop);
+  useEffect(() => {
+    dispatch(fetchProduct());
+  }, []);
+  const postion = useScrollPosition();
+  console.log(postion);
   return (
     <div className="list">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
-          <div className="col-lg-4">
-            <Card>
-              <ImageCard src="https://cdn.cloudflare.steamstatic.com/steam/apps/108600/hero_capsule.jpg?t=1664904563" />
-              <InfoItem>
-                <Info>
-                  <IconCreator
-                    src="https://avatars.cloudflare.steamstatic.com/40a85b52747a78b26e393e3f9e58f319194b1b33_full.jpg"
-                    alt=""
-                  />
-                  <Creator>KRAFTON InC</Creator>
-                </Info>
-                <Offer>
-                  <Name>Days Gone</Name>
-                  <IconWarnning src={warnnig} alt="" />
-                </Offer>
-                <Offer>
-                  <Button>Make Offer : 50$ </Button>
-                </Offer>
-              </InfoItem>
-            </Card>
-          </div>
+          {products.map((product) => (
+            <div key={product.id} className="col-lg-3">
+              <Card>
+                <Image className="position-relative">
+                  <ImageCard src={product.avatar} />
+                  <IconWishList src={wishlist} alt="" />
+                </Image>
+                <InfoItem>
+                  <Info>
+                    <IconCreator src={product.iconPublisher} alt="" />
+                    <Creator>{product.publisher}</Creator>
+                  </Info>
+                  <BaseGame>Base Game</BaseGame>
+                  <Offer>
+                    <Name>{product.title}</Name>
+                  </Offer>
+                  <Offer>
+                    <p>{product.price}$ </p>
+                  </Offer>
+                </InfoItem>
+              </Card>
+            </div>
+          ))}
         </div>
       </div>
+      <div ref={productRef}></div>
     </div>
   );
 }

@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../../asset/image/logo.png";
-import { addToAuth, fetchAuth } from "../../../redux/authSlice";
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import { setAccountSuccess } from "../../../redux/authSlice";
 
 import "./style.css";
 
@@ -67,17 +68,16 @@ const Title = styled.p`
 `;
 function SignIn() {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, watch } = useForm();
   const [checkEmail, setCheckEmail] = useState(true);
   const [checkPassWord, setCheckPassWord] = useState(true);
   const dispatch = useDispatch();
+  const [auths, setAuth] = useState([]);
+  const [email, setEmail] = useLocalStorage("EmailAddress", "");
+  const [password, setPassword] = useLocalStorage("Password", "");
+  const [checked, setChecked] = useLocalStorage("Checkbox", false);
 
-  const { auths } = useSelector((state) => state.auth);
-  console.log(auths);
-  useEffect(() => {
-    dispatch(fetchAuth);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const email2 = watch("Email");
 
   const onSubmit = async (data) => {
     const emailExist = await axios.get(
@@ -87,13 +87,14 @@ function SignIn() {
       const res = await axios.get(
         `https://json-server-augustus-game.herokuapp.com/users?Email=${data.Email}&Password=${data.Password}`
       );
-      console.log(res.data);
       if (!res.data.length) {
         setCheckPassWord(false);
         return;
       }
-      // navigate("/");
-      dispatch(addToAuth(data));
+      setAuth(res.data[0]);
+      localStorage.setItem("auth", JSON.stringify(auths));
+      dispatch(setAccountSuccess(res.data[0]));
+      navigate("/");
     } else {
       setCheckEmail(false);
     }
@@ -141,6 +142,10 @@ function SignIn() {
             placeholder="Password"
             {...register("Password")}
           /> */}
+          <label htmlFor="">
+            <input type="checkbox" defaultChecked={checked} />
+            Remember me
+          </label>
           <Forgot>Forgot Your Password</Forgot>
           <LoginButton>Login In Now</LoginButton>
         </form>

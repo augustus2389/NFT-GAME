@@ -15,7 +15,7 @@ export const addToWish = createAsyncThunk(
 export const removeWish = createAsyncThunk(
   "wishList/fetchRemoveWish",
   async (id) => {
-    await axiosClient.delete(`/wish/${id}`);
+    await axiosClient.delete(`/wishlist/${id}`);
     return id;
   }
 );

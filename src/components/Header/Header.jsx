@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -7,27 +7,21 @@ import "./Header.scss";
 import { IconContext } from "react-icons";
 import logo from "../../asset/image/logo.png";
 import styled from "styled-components";
-import user from "../../asset/image/user.svg";
 import SecondarybHeader from "./SubHeader/SubHeader";
-import { userApi } from "../../api/userApi";
-import { useSelector } from "react-redux";
+import HeaderAccount from "./HeaderAccount/HeaderAccount";
 
 const Logo = styled.div`
   display: flex;
   align-items: center;
   width: 70px;
 `;
-const User = styled.div`
-  display: flex;
-  width: 100px;
-  align-items: center;
-`;
-const LogoUser = styled.img`
-  width: 25px;
-  margin: 0 10px;
+const Download = styled(Link)`
+  background-color: #0078f2;
+  color: white;
+  font-size: 12px;
+  padding: 20px 40px;
 `;
 function Navbar() {
-  const { auths } = useSelector((state) => state.auth);
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -61,12 +55,20 @@ function Navbar() {
               );
             })}
           </ul>
-          <User>
-            <Link to="/signin" className="d-flex">
-              <LogoUser src={user} alt="" />
-              <p>Sign In</p>
-            </Link>
-          </User>
+          <div className="d-flex  ">
+            <HeaderAccount />
+
+            <Download
+              role="menuitem"
+              tabIndex="0"
+              to="https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncher.dmg?trackingId=b1557f5a2e1644ffb1f7a2dd63d06b65"
+              className="focusable accent-bg-color accent-bg-color-hover"
+            >
+              <span className="accent-text-color accent-text-color-hover">
+                Download
+              </span>
+            </Download>
+          </div>
         </nav>
       </IconContext.Provider>
       <SecondarybHeader />

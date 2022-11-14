@@ -129,7 +129,6 @@ function Catory({ data }) {
       avatar: wishListItem.avatar,
       date: wishListItem.date,
     };
-    console.log(newItem);
     dispatch(addToWish(newItem));
     toast.success("This game has been added cart", {
       position: "bottom-right",
