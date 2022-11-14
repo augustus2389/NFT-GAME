@@ -14,7 +14,10 @@ import { useState } from "react";
 import productApi from "../../../api/productApi";
 
 const Info = styled.div`
-  padding: 10px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
 const divStyle = {
   width: "100%",
@@ -24,29 +27,7 @@ const divStyle = {
     "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
   padding: "90px 10px",
 };
-const Button = styled.button`
-  margin-bottom: 10px;
-  border: none;
-  outline: 0px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.3em;
-  text-decoration: none;
-  background: linear-gradient(
-    90deg,
-    rgb(17, 153, 250) 0%,
-    rgb(17, 208, 250) 100%
-  );
-  color: rgb(255, 255, 255);
-  border-radius: 4px;
-  width: 100%;
-  text-transform: uppercase;
-`;
+
 const AgeLimit = styled.img`
   margin: 10px 0;
   width: 20px !important;
@@ -83,6 +64,22 @@ const MostTitle = styled.p`
   position: absolute;
   top: 10px;
 `;
+const BaseGame = styled.p`
+  color: gray;
+  font-size: 12px;
+`;
+const TitleGame = styled.span`
+  color: #f5f5f5;
+  font-size: 14px;
+`;
+const Now = styled.p`
+  text-transform: uppercase;
+  font-size: 9px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(245, 245, 245);
+  padding: 5px 10px;
+  width: 50%;
+`;
 export default function Popular() {
   const [popular, setPopular] = useState([]);
   useEffect(() => {
@@ -96,7 +93,7 @@ export default function Popular() {
           spaceBetween={10}
           navigation={true}
           loop={true}
-          autoplay={true}
+          // autoplay={true}
           pagination={{
             el: ".swiper-pagination",
             type: "totalClass",
@@ -128,19 +125,15 @@ export default function Popular() {
                 flexDirection: "column",
                 aspectRatio: "16/20",
                 borderRadius: "20px",
+                backgroundColor: "transparent",
               }}
             >
               <SuggestImage src={most.avatar} alt="" />
               <Info>
-                <Title>
-                  <TitleText>{most.title}</TitleText>
-                  <p style={{ color: "black", fontSize: "14px" }}>
-                    {most.price}
-                  </p>
-                </Title>
-                <Price>
-                  <Button>Make Offer</Button>
-                </Price>
+                <BaseGame>BASE GAME</BaseGame>
+                <TitleGame>{most.title}</TitleGame>
+                <Now>now on august</Now>
+                <p>{most.price} $</p>
               </Info>
             </SwiperSlide>
           ))}

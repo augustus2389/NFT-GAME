@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import searchIcon from "../../../asset/image/IconSearch.svg";
+import searchIcon from "../../../asset/image/search.svg";
 import Cart from "../Cart/Cart";
+import SearchProduct, { ListSearch } from "./SearchProduct/SearchProduct";
 const Search = styled.div`
   display: flex;
   height: 40px;
@@ -12,10 +14,10 @@ const Search = styled.div`
   position: relative;
 `;
 const Input = styled.input`
-  background-color: transparent;
+  border: none;
+  background: rgb(32, 32, 32);
   outline: none;
   padding: 10px 40px;
-  border: 1px solid gray;
   border-radius: 10px;
   color: rgb(245, 245, 245);
   width: 100%;
@@ -29,13 +31,12 @@ const SearchItem = styled.div`
   left: 5%;
 `;
 const SearchIcon = styled.img`
-  max-width: 25px;
+  max-width: 18px;
 `;
 const SubMenu = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-
   display: flex;
   z-index: 2;
   background-color: rgb(18, 18, 18);
@@ -68,9 +69,21 @@ const SubHeader = styled.div`
   width: 100%;
   margin: auto;
   justify-content: space-between;
+  /* &:hover {
+    ${ListSearch} {
+      display: block;
+    }
+  } */
 `;
 
 function SecondarybHeader() {
+  const [showProductList, setShowProductList] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+    setShowProductList(true);
+  };
   return (
     <>
       <SubMenu>
@@ -80,7 +93,12 @@ function SecondarybHeader() {
               <SearchItem>
                 <SearchIcon src={searchIcon} alt="" />
               </SearchItem>
-              <Input type="text" placeholder="Search item" />
+              {showProductList && <SearchProduct input={inputText} />}
+              <Input
+                type="text"
+                placeholder="Search item"
+                onChange={inputHandler}
+              />
             </Search>
             <Menu>
               <List
@@ -109,5 +127,4 @@ function SecondarybHeader() {
     </>
   );
 }
-
 export default SecondarybHeader;

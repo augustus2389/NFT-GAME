@@ -5,6 +5,8 @@ import Catalog from "./Catalog/Catalog";
 import Catory from "./Catory/Catory";
 import Free from "./Free/Free";
 import Intro from "./Intro/Intro";
+import More from "./More/More";
+import Next from "./Next/Next";
 import Popular from "./Popular/Popular";
 import Typiccal from "./Typical/Typiccal";
 
@@ -18,8 +20,10 @@ function Home() {
   return (
     <>
       <Intro data={data} />
+      <Next />
       <Free />
       <Catory data={data} />
+      <More />
       <Catalog />
       <Popular />
       <Typiccal />

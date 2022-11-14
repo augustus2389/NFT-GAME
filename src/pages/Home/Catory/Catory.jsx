@@ -84,12 +84,7 @@ const TagInfo = styled.div``;
 function Catory({ data }) {
   const { wishs } = useSelector((state) => state.wish);
   const dispatch = useDispatch();
-  const [wishList, setWishList] = useState([]);
 
-  useEffect(() => {
-    authApi.getAuth().then((data) => setWishList[data]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   const [gameTop, setTop] = useState([]);
   const [gameMost, setMost] = useState([]);
   const [gameNew, setNew] = useState([]);
