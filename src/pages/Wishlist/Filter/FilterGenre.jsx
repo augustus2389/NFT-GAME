@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import filter from "../../../asset/image/filter.svg";
 import Arrow from "../../../asset/image/ArrowUnder.svg";
@@ -6,6 +6,8 @@ import ArrowUp from "../../../asset/image/ArrowUp.svg";
 import "./FilterType.scss";
 import FilterFuture from "./FilterFeature";
 import FilterForm from "./FilterPlatForm";
+import productApi from "../../../api/productApi";
+import axios from "axios";
 
 const FilterIcon = styled.img`
   width: 15px;
@@ -65,15 +67,32 @@ const Text = styled.p`
   font-size: 14px;
   color: gray;
 `;
+const TypeList = [
+  { value: "action", label: "Action" },
+  { value: "adventure", label: "Adventure" },
+  { value: "rpg", label: "RPG" },
+  { value: "casual", label: "Casual" },
+  { value: "simulation", label: "Simulation" },
+  { value: "rpg", label: "RPG" },
+  { value: "rpg", label: "RPG" },
+];
 function FilterType() {
   const [arrow, setArrows] = useState(Arrow);
   const [isOpen, setIsOpen] = useState(true);
   const toggling = () => {
     setIsOpen(!isOpen);
   };
-
+  const [filter, setFilter] = useState("");
+  useEffect(() => {
+    productApi.getProducts().then((data) => setFilter(data));
+  }, []);
   // Changing State when volume increases/decreases
-
+  const handleChange = async (e) => {
+    const { value, checked } = e.target;
+    // const product = await axios.get(
+    //   `https://json-server-augustus-game.herokuapp.com/products?q=${value}`
+    // );
+  };
   return (
     <>
       <DropDownFilter>
@@ -85,44 +104,19 @@ function FilterType() {
           {isOpen && (
             <DropDownListContainer>
               <DropDownList>
-                <ListItem>
-                  <Label htmlFor="action">
-                    Action
-                    <input type="checkbox" className="inputCheck" id="action" />
-                  </Label>
-                </ListItem>
-                <ListItem>
-                  <Label htmlFor="adventure">
-                    Adventure
-                    <input
-                      type="checkbox"
-                      className="inputCheck"
-                      id="adventure"
-                    />
-                  </Label>
-                </ListItem>
-                <ListItem>
-                  <Label htmlFor="RPG">
-                    RPG{" "}
-                    <input type="checkbox" className="inputCheck" id="RPG" />
-                  </Label>
-                </ListItem>
-                <ListItem>
-                  <Label htmlFor="casual">
-                    Casual{" "}
-                    <input type="checkbox" className="inputCheck" id="casual" />
-                  </Label>
-                </ListItem>
-                <ListItem>
-                  <Label htmlFor="simulation">
-                    Simulation{" "}
-                    <input
-                      type="checkbox"
-                      className="inputCheck"
-                      id="simulation"
-                    />
-                  </Label>
-                </ListItem>
+                {TypeList.map((type, index) => (
+                  <ListItem key={index}>
+                    <Label>
+                      {type.label}
+                      <input
+                        type="checkbox"
+                        className="inputCheck"
+                        onChange={handleChange}
+                        value={type.value}
+                      />
+                    </Label>
+                  </ListItem>
+                ))}
               </DropDownList>
             </DropDownListContainer>
           )}

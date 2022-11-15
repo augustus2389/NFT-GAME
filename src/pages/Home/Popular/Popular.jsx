@@ -1,12 +1,8 @@
 import React from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import agelimit from "../../../asset/image/13.svg";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "./style.scss";
-// import required modules
 import { Autoplay, Navigation, Pagination } from "swiper";
 import styled from "styled-components";
 import { useEffect } from "react";
@@ -28,30 +24,6 @@ const divStyle = {
   padding: "90px 10px",
 };
 
-const AgeLimit = styled.img`
-  margin: 10px 0;
-  width: 20px !important;
-  height: 20px !important;
-`;
-const Title = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  justify-content: space-around;
-`;
-const TitleText = styled.p`
-  font-size: 14px;
-  color: #8f98a0;
-  font-weight: 700;
-  width: 100px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-`;
-const Price = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
 const SuggestImage = styled.img`
   border-radius: 20px 20px 0 0;
 `;

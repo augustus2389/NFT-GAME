@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import searchIcon from "../../../asset/image/search.svg";
@@ -80,9 +79,13 @@ function SecondarybHeader() {
   const [showProductList, setShowProductList] = useState(false);
   const [inputText, setInputText] = useState("");
   const inputHandler = (e) => {
-    var lowerCase = e.target.value.toLowerCase();
+    const lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
-    setShowProductList(true);
+    if (lowerCase === "") {
+      setShowProductList(false);
+    } else {
+      setShowProductList(true);
+    }
   };
   return (
     <>

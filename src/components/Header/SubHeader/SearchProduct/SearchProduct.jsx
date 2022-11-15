@@ -57,6 +57,7 @@ function SearchProduct(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProduct());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { products } = useSelector((state) => state.product);
   const filteredData = products.filter((el) => {

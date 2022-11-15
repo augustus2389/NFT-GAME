@@ -73,9 +73,6 @@ function SignIn() {
   const [checkPassWord, setCheckPassWord] = useState(true);
   const dispatch = useDispatch();
   const [auths, setAuth] = useState([]);
-  const [email, setEmail] = useLocalStorage("EmailAddress", "");
-  const [password, setPassword] = useLocalStorage("Password", "");
-  const [checked, setChecked] = useLocalStorage("Checkbox", false);
 
   const email2 = watch("Email");
 
@@ -143,7 +140,7 @@ function SignIn() {
             {...register("Password")}
           /> */}
           <label htmlFor="">
-            <input type="checkbox" defaultChecked={checked} />
+            <input type="checkbox" />
             Remember me
           </label>
           <Forgot>Forgot Your Password</Forgot>

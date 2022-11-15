@@ -81,7 +81,6 @@ const OnlineImage = styled.img`
 `;
 function HeaderAccount() {
   const { account } = useSelector((state) => state.auth);
-  console.log(account);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAuth());

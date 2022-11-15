@@ -97,6 +97,7 @@ function Catory({ data }) {
   useEffect(() => {
     productApi.getProductByNew().then((data) => setNew(data));
   }, []);
+  const eventgame = gameTop.filter((a) => a.id < 14);
 
   const handleAddToWishList = (id) => {
     console.log(data, id);
@@ -148,7 +149,7 @@ function Catory({ data }) {
                   <Heading>Top Seller</Heading>
                   <ButtonMore>View more</ButtonMore>
                 </HeaderCatory>
-                {gameTop.map((top) => (
+                {eventgame.map((top) => (
                   <CatgoryItem key={top.id}>
                     <Seller>
                       <TagSeller>

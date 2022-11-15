@@ -279,14 +279,20 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
-function ModalComponent() {
+function ModalComponent({ cart }) {
   const [modalShow, setModalShow] = useState(false);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Check Out
-      </Button>
+      {cart.length === 0 ? (
+        <Button variant="primary" disabled onClick={() => setModalShow(true)}>
+          Check Out
+        </Button>
+      ) : (
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+          Check Out
+        </Button>
+      )}
 
       <MyVerticallyCenteredModal
         show={modalShow}

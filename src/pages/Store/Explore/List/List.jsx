@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import wishlist from "../../../../asset/image/wishlist.svg";
+
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchProduct } from "../../../../redux/productSlice";
-import wishlist from "../../../../asset/image/wishlist.svg";
-import useScrollPosition from "../../../../hooks/useScrollPosition";
 
 export const ImageCard = styled.img`
   border-radius: 20px 20px 0 0;
@@ -77,49 +78,84 @@ export const Card = styled.div`
     }
   }
 `;
-function List() {
-  const { products, isLoadding } = useSelector((state) => state.product);
-  const dispatch = useDispatch();
+export const ListSearch = styled.div`
+  position: absolute;
+  width: 600px;
+  height: 200px;
+  /* display: none; */
+  overflow-y: auto;
+  top: 50px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 30%) 0px 5px 10px;
+  background: rgb(32, 32, 32);
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: gray;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: black;
+  }
 
-  const productRef = useRef();
-  console.log("abc", productRef.current?.offsetTop);
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #555;
+  }
+`;
+
+function ListProduct(props) {
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProduct());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const postion = useScrollPosition();
-  console.log(postion);
+  const { products } = useSelector((state) => state.product);
+  const filteredData = products.filter((el) => {
+    //if no input the return the original
+    if (props.input === "") {
+      return el;
+    }
+    //return the item which contains the user input
+    else {
+      return el.title.toLowerCase().includes(props.input);
+    }
+  });
+
   return (
     <div className="list">
       <div className="container">
         <div className="row">
-          {products.map((product) => (
+          {filteredData.map((product) => (
             <div key={product.id} className="col-lg-3">
-              <Card>
-                <Image className="position-relative">
-                  <ImageCard src={product.avatar} />
-                  <IconWishList src={wishlist} alt="" />
-                </Image>
-                <InfoItem>
-                  <Info>
-                    <IconCreator src={product.iconPublisher} alt="" />
-                    <Creator>{product.publisher}</Creator>
-                  </Info>
-                  <BaseGame>Base Game</BaseGame>
-                  <Offer>
-                    <Name>{product.title}</Name>
-                  </Offer>
-                  <Offer>
-                    <p>{product.price}$ </p>
-                  </Offer>
-                </InfoItem>
-              </Card>
+              <Link to={`/detail/${decodeURI(product.title)}-${product.id}`}>
+                <Card>
+                  <Image className="position-relative">
+                    <ImageCard src={product.avatar} />
+                    <IconWishList src={wishlist} alt="" />
+                  </Image>
+                  <InfoItem>
+                    <Info>
+                      <IconCreator src={product.iconPublisher} alt="" />
+                      <Creator>{product.publisher}</Creator>
+                    </Info>
+                    <BaseGame>Base Game</BaseGame>
+                    <Offer>
+                      <Name>{product.title}</Name>
+                    </Offer>
+                    <Offer>
+                      <p>{product.price}$ </p>
+                    </Offer>
+                  </InfoItem>
+                </Card>
+              </Link>
             </div>
           ))}
         </div>
       </div>
-      <div ref={productRef}></div>
     </div>
   );
 }
 
-export default List;
+export default ListProduct;

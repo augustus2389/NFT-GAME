@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import FilterType from "../../Wishlist/Filter/FilterGenre";
 import search from "../../../asset/image/search.svg";
-import List from "./List/List";
+import ListProduct from "./List/List";
 
 const Input = styled.input`
   background-color: rgb(32, 32, 32);
@@ -24,15 +24,21 @@ const IconSearch = styled.img`
   left: 3%;
 `;
 function Explore() {
+  const [inputText, setInputText] = useState("");
+  const inputHandler = (e) => {
+    const lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+
   return (
     <>
       <div className="row">
         <div className="col-lg-9">
-          <List />
+          <ListProduct input={inputText} />
         </div>
         <div className="col-lg-3 ">
           <FilterItem>
-            <Input type="text" placeholder="Keywords" />
+            <Input type="text" placeholder="Keywords" onChange={inputHandler} />
             <IconSearch src={search} alt="" />
           </FilterItem>
           <FilterType />

@@ -4,12 +4,11 @@ import simpleRestProvider from "ra-data-simple-rest";
 import { createProduct, editProduct, listProducts } from "./Product/Product";
 import { createUser, editUser, listUsers } from "./User/Users";
 import { editBlog, listBlogs } from "./Blogs/Blogs";
-import myDataProvider from "./dataProvider";
 
 function AdminGame() {
   return (
     <>
-      <Admin dataProvider={myDataProvider}>
+      <Admin dataProvider={simpleRestProvider("http://localhost:3000")}>
         <Resource
           name="products"
           list={listProducts}

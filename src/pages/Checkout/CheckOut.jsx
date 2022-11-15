@@ -218,7 +218,7 @@ function CheckOut() {
                 {/* <ButtonCheckout onClick={() => setModalIsOpen(true)}>
                   Check out
                 </ButtonCheckout> */}
-                <ModalComponent />
+                <ModalComponent cart={carts} />
               </CheckoutForm>
             </div>
           </div>

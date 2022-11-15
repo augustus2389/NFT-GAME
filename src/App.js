@@ -16,6 +16,7 @@ import PrivateRoutes from "./pages/Private/PrivateRoutes/PrivateRoutes";
 import OrderHistory from "./pages/Private/OrderHistory/OrderHistory";
 import SecurityAccount from "./pages/Private/SecurityAccount/SecurityAccount";
 import Profile from "./pages/Private/Profile/Profile";
+import AdminGame from "./components/Admin/Admin";
 
 function App() {
   return (
@@ -39,7 +40,6 @@ function App() {
               <Route path="/security" element={<SecurityAccount />} />
               <Route path="/profile" element={<Profile />} />
             </Route>
-            {/* <Route path="/products" element={<AdminGame />} /> */}
           </Route>
         </Routes>
       </div>
