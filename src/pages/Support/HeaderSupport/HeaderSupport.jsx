@@ -4,7 +4,6 @@ import serverStatus from "../../../asset/image/serverstatus.svg";
 import iconSearch from "../../../asset/image/IconSearch.svg";
 import { Link } from "react-router-dom";
 const Header = styled.div`
-  margin-top: 100px;
   padding-bottom: 30px;
   background-color: #484848;
   background-repeat: no-repeat;
@@ -79,13 +78,18 @@ const TagName = styled.div`
   width: 100%;
   font-weight: 800;
 `;
+export const TextTitle = styled.p`
+  color: white !important;
+`;
 function HeaderSupport() {
   return (
     <div>
       <Header>
         <HeaderCenter>
           <Title>
-            <h2>Welcome to Augustus Game Player Support</h2>
+            <h2 className="text-white">
+              Welcome to Augustus Game Player Support
+            </h2>
             <Server>
               <p className="fw-bold">SERVER STATUS: ALL SYSTEMS OPERATIONAL</p>
               <StatusIcon src={serverStatus} alt="" />
@@ -119,7 +123,7 @@ function HeaderSupport() {
                         />
                       </TagGame>
                       <TagName>
-                        <p>Game</p>
+                        <TextTitle>Game</TextTitle>
                       </TagName>
                     </CatogryTag>
                   </Link>
@@ -139,7 +143,7 @@ function HeaderSupport() {
                         />
                       </TagGame>
                       <TagName>
-                        <p>Account</p>
+                        <TextTitle>Account</TextTitle>
                       </TagName>
                     </CatogryTag>
                   </Link>
@@ -159,7 +163,7 @@ function HeaderSupport() {
                         />
                       </TagGame>
                       <TagName>
-                        <p>Enterprise</p>
+                        <TextTitle>Enterprise</TextTitle>
                       </TagName>
                     </CatogryTag>
                   </Link>

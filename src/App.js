@@ -17,6 +17,7 @@ import OrderHistory from "./pages/Private/OrderHistory/OrderHistory";
 import SecurityAccount from "./pages/Private/SecurityAccount/SecurityAccount";
 import Profile from "./pages/Private/Profile/Profile";
 import AdminGame from "./components/Admin/Admin";
+import FAQ from "./pages/FAQ/FAQ";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/detail/:productId" element={<Detail />} />
             <Route path="/wishlist" element={<Wishlist />} />
-
+            <Route path="/FAQ" element={<FAQ />} />
             <Route element={<PrivateRoutes />}>
               <Route path="/history" element={<OrderHistory />} />
               <Route path="/security" element={<SecurityAccount />} />

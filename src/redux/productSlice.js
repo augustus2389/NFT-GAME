@@ -8,14 +8,26 @@ export const fetchProduct = createAsyncThunk(
     return response;
   }
 );
+export const fetchProductBySearch = createAsyncThunk(
+  "product/fetchProductBySearch",
+  async (data) => {
+    const response = await axiosClient.get(`/products?q=${data}`);
+    return response;
+  }
+);
 
 const productSlice = createSlice({
   name: "product",
   initialState: {
     isLoading: true,
     products: [],
+    filterList: [],
   },
-  reducers: {},
+  reducers: {
+    setFilter(state, action) {
+      state.action = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProduct.pending, (state, action) => {
       state.status = "loading";
@@ -29,6 +41,24 @@ const productSlice = createSlice({
     builder.addCase(fetchProduct.rejected, (state, action) => {
       state.isLoading = false;
     });
+    builder.addCase(fetchProductBySearch.fulfilled, (state, action) => {
+      const productFilter = action.payload.filter((product) => {
+        if (state.filterList.length === 0) {
+          return true;
+        }
+        return product.type.some((t) => {
+          if (state.filterList.some((fl) => fl === t)) {
+            return true;
+          }
+          return false;
+        });
+      });
+      console.log(productFilter);
+      state.products = productFilter;
+    });
   },
 });
+
+export const { setFilter } = productSlice.actions;
+
 export default productSlice.reducer;

@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import styled from "styled-components";
-import { authApi } from "../../../api/authApi";
 import productApi from "../../../api/productApi";
 import wishlist from "../../../asset/image/wishlist.svg";
-import { addToWish, fetchWish } from "../../../redux/wishlistSlice";
+import { addToWish, removeWish } from "../../../redux/wishlistSlice";
+import wishlistTick from "../../../asset/image/wishlistTick.svg";
 
 const Container = styled.div`
   max-width: 1024px;
@@ -21,13 +21,7 @@ const Seller = styled.div`
   margin: 20px 0;
 `;
 const IconWishList = styled.img`
-  display: none;
   width: 15px;
-  position: absolute;
-  z-index: 10;
-  top: 5%;
-  right: 5%;
-  cursor: pointer;
 `;
 const TagSeller = styled.div`
   width: 60px;
@@ -63,10 +57,18 @@ const ButtonMore = styled.button`
     background-color: gray;
   }
 `;
+const ActionWish = styled.div`
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+`;
 const CatgoryItem = styled.div`
   position: relative;
   &:hover {
-    ${Seller} > ${TagSeller} > ${IconWishList} {
+    ${Seller} > ${TagSeller} > ${ActionWish} {
       display: block;
     }
   }
@@ -97,16 +99,16 @@ function Catory({ data }) {
   useEffect(() => {
     productApi.getProductByNew().then((data) => setNew(data));
   }, []);
+
   const eventgame = gameTop.filter((a) => a.id < 14);
 
-  const handleAddToWishList = (id) => {
-    console.log(data, id);
+  const handleActionWishList = (id) => {
+    setIsOpen(!isOpen);
     const wishListItem = data.find((wish) => wish.id === id);
-    console.log(wishListItem);
     const IsExist = wishs.some((wish) => wish.id === id);
+    console.log(IsExist);
     if (IsExist) {
-      toast.warn("This game has already been added to cart!", {
-        // position: toast.POSITION.TOP_CENTER,
+      toast.warn("This game removed the game from to Wishlist!", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -116,17 +118,10 @@ function Catory({ data }) {
         progress: undefined,
         theme: "dark",
       });
+      dispatch(removeWish(id));
       return;
     }
-    const newItem = {
-      id: wishListItem.id,
-      title: wishListItem.title,
-      price: wishListItem.price,
-      avatar: wishListItem.avatar,
-      date: wishListItem.date,
-    };
-    dispatch(addToWish(newItem));
-    toast.success("This game has been added cart", {
+    toast.success("This game has been added Wishlist", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -136,104 +131,125 @@ function Catory({ data }) {
       progress: undefined,
       theme: "dark",
     });
+    const newItem = {
+      id: wishListItem.id,
+      title: wishListItem.title,
+      price: wishListItem.price,
+      avatar: wishListItem.avatar,
+      date: wishListItem.date,
+    };
+    dispatch(addToWish(newItem));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
+  const [isOpen, setIsOpen] = useState(true);
   return (
-    <section id="catory">
-      <div className="container">
-        <Container>
-          <div className="row">
-            <div className="col-lg-4">
-              <TopSeller>
-                <HeaderCatory>
-                  <Heading>Top Seller</Heading>
-                  <ButtonMore>View more</ButtonMore>
-                </HeaderCatory>
-                {eventgame.map((top) => (
-                  <CatgoryItem key={top.id}>
-                    <Seller>
-                      <TagSeller>
-                        <Image src={top.avatar} alt="" />
-                        <IconWishList
-                          src={wishlist}
-                          alt=""
-                          onClick={() => handleAddToWishList(top.id)}
-                        />
-                      </TagSeller>
-                      <TagInfo>
-                        <p>{top.title}</p>
-                        <p>{top.price}</p>
-                      </TagInfo>
-                    </Seller>
-                    <LinkPerfect
-                      to={`/detail/${decodeURI(top.title)}-${top.id}`}
-                    />
-                  </CatgoryItem>
-                ))}
-              </TopSeller>
+    <>
+      <ToastContainer></ToastContainer>
+      <section id="catory">
+        <div className="container">
+          <Container>
+            <div className="row">
+              <div className="col-lg-4">
+                <TopSeller>
+                  <HeaderCatory>
+                    <Heading>Top Seller</Heading>
+                    <ButtonMore>View more</ButtonMore>
+                  </HeaderCatory>
+                  {eventgame.map((top) => (
+                    <CatgoryItem key={top.id}>
+                      <Seller>
+                        <TagSeller>
+                          <Image src={top.avatar} alt="" />
+                          <ActionWish
+                            onClick={() => handleActionWishList(top.id)}
+                          >
+                            {isOpen ? (
+                              <IconWishList src={wishlist} alt="" />
+                            ) : (
+                              <IconWishList src={wishlistTick} alt="" />
+                            )}
+                          </ActionWish>
+                        </TagSeller>
+                        <TagInfo>
+                          <p>{top.title}</p>
+                          <p>{top.price}</p>
+                        </TagInfo>
+                      </Seller>
+                      <LinkPerfect
+                        to={`/detail/${decodeURI(top.title)}-${top.id}`}
+                      />
+                    </CatgoryItem>
+                  ))}
+                </TopSeller>
+              </div>
+              <div className="col-lg-4">
+                <TopSeller>
+                  <HeaderCatory>
+                    <Heading>Most Played</Heading>
+                    <ButtonMore>View more</ButtonMore>
+                  </HeaderCatory>
+                  {gameMost.map((most) => (
+                    <CatgoryItem key={most.id}>
+                      <Seller>
+                        <TagSeller>
+                          <Image src={most.avatar} alt="" />
+                          <ActionWish
+                            onClick={() => handleActionWishList(most.id)}
+                          >
+                            <IconWishList src={wishlist} alt="" />
+                          </ActionWish>
+                          {/* <IconWishList
+                            src={wishlistTick}
+                            alt=""
+                            onClick={() => handleRemoveToWishList(most.id)}
+                          /> */}
+                        </TagSeller>
+                        <TagInfo>
+                          <p>{most.title}</p>
+                          <p>{most.price}</p>
+                        </TagInfo>
+                      </Seller>
+                      <LinkPerfect
+                        to={`/detail/${decodeURI(most.title)}-${most.id}`}
+                      />
+                    </CatgoryItem>
+                  ))}
+                </TopSeller>
+              </div>
+              <div className="col-lg-4">
+                <TopSeller>
+                  <HeaderCatory>
+                    <Heading>New Gaming</Heading>
+                    <ButtonMore>View more</ButtonMore>
+                  </HeaderCatory>
+                  {gameNew.map((game) => (
+                    <CatgoryItem key={game.id}>
+                      <Seller>
+                        <TagSeller>
+                          <Image src={game.avatar} alt="" />
+                          <ActionWish
+                            onClick={() => handleActionWishList(game.id)}
+                          >
+                            <IconWishList src={wishlist} alt="" />
+                          </ActionWish>
+                        </TagSeller>
+                        <TagInfo>
+                          <p>{game.title}</p>
+                          <p>{game.price}</p>
+                        </TagInfo>
+                      </Seller>
+                      <LinkPerfect
+                        to={`/detail/${decodeURI(game.title)}-${game.id}`}
+                      />
+                    </CatgoryItem>
+                  ))}
+                </TopSeller>
+              </div>
             </div>
-            <div className="col-lg-4">
-              <TopSeller>
-                <HeaderCatory>
-                  <Heading>Most Played</Heading>
-                  <ButtonMore>View more</ButtonMore>
-                </HeaderCatory>
-                {gameMost.map((most) => (
-                  <CatgoryItem key={most.id}>
-                    <Seller>
-                      <TagSeller>
-                        <Image src={most.avatar} alt="" />
-                        <IconWishList
-                          src={wishlist}
-                          alt=""
-                          onClick={() => handleAddToWishList(most.id)}
-                        />
-                      </TagSeller>
-                      <TagInfo>
-                        <p>{most.title}</p>
-                        <p>{most.price}</p>
-                      </TagInfo>
-                    </Seller>
-                    <LinkPerfect
-                      to={`/detail/${decodeURI(most.title)}-${most.id}`}
-                    />
-                  </CatgoryItem>
-                ))}
-              </TopSeller>
-            </div>
-            <div className="col-lg-4">
-              <TopSeller>
-                <HeaderCatory>
-                  <Heading>New Gaming</Heading>
-                  <ButtonMore>View more</ButtonMore>
-                </HeaderCatory>
-                {gameNew.map((game) => (
-                  <CatgoryItem key={game.id}>
-                    <Seller>
-                      <TagSeller>
-                        <Image src={game.avatar} alt="" />
-                        <IconWishList
-                          src={wishlist}
-                          alt=""
-                          onClick={() => handleAddToWishList(game.id)}
-                        />
-                      </TagSeller>
-                      <TagInfo>
-                        <p>{game.title}</p>
-                        <p>{game.price}</p>
-                      </TagInfo>
-                    </Seller>
-                    <LinkPerfect
-                      to={`/detail/${decodeURI(game.title)}-${game.id}`}
-                    />
-                  </CatgoryItem>
-                ))}
-              </TopSeller>
-            </div>
-          </div>
-        </Container>
-      </div>
-    </section>
+          </Container>
+        </div>
+      </section>
+    </>
   );
 }
 

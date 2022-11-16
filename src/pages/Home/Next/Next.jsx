@@ -29,7 +29,6 @@ function Next() {
   useEffect(() => {
     productApi.getProductBySeller().then((data) => setTop(data));
   }, []);
-  console.log(gameTop);
   const a = gameTop.filter((a) => a.id > 23);
   return (
     <section id="next">

@@ -8,6 +8,7 @@ import empty from "../../asset/image/empty.svg";
 import { Link } from "react-router-dom";
 import ModalComponent from "../Paypal/Modal/Modal";
 import { addToWish } from "../../redux/wishlistSlice";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const Container = styled.div`
   max-width: 1040px;
@@ -125,7 +126,7 @@ const CustomLink = styled(Link)`
 function CheckOut() {
   const dispatch = useDispatch();
   const { carts } = useSelector((state) => state.cart);
-
+  const { account } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(fetchCart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -147,7 +148,7 @@ function CheckOut() {
   const handleAddToWishlist = (id) => {
     dispatch(addToWish);
   };
-  console.log(subTotal);
+
   return (
     <section id="checkout">
       <Container>

@@ -4,7 +4,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { fetchProduct } from "../../../../redux/productSlice";
+import {
+  fetchProduct,
+  fetchProductBySearch,
+  setFilter,
+} from "../../../../redux/productSlice";
 
 export const ImageCard = styled.img`
   border-radius: 20px 20px 0 0;
@@ -89,7 +93,6 @@ export const ListSearch = styled.div`
   box-shadow: rgb(0 0 0 / 30%) 0px 5px 10px;
   background: rgb(32, 32, 32);
   ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: gray;
   }
@@ -100,34 +103,37 @@ export const ListSearch = styled.div`
 
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
   }
 `;
 
-function ListProduct(props) {
+function ListProduct({ input }) {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchProduct());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const { products } = useSelector((state) => state.product);
-  const filteredData = products.filter((el) => {
-    //if no input the return the original
-    if (props.input === "") {
-      return el;
-    }
-    //return the item which contains the user input
-    else {
-      return el.title.toLowerCase().includes(props.input);
-    }
-  });
+  const { products, filterList } = useSelector((state) => state.product);
 
+  useEffect(() => {
+    dispatch(fetchProductBySearch(input));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [input, filterList]);
+  // const filteredData = products.filter((el) => {
+  //   //if no input the return the original
+  //   if (input === "") {
+  //     return el;
+  //   }
+  //   //return the item which contains the user input
+  //   else {
+  //     return el.title.toLowerCase().includes(input);
+  //   }
+  // });
+
+  // useEffect(() => {
+  //   dispatch(setFilter(filteredData));
+  // }, []);
   return (
     <div className="list">
       <div className="container">
         <div className="row">
-          {filteredData.map((product) => (
+          {products.map((product) => (
             <div key={product.id} className="col-lg-3">
               <Link to={`/detail/${decodeURI(product.title)}-${product.id}`}>
                 <Card>

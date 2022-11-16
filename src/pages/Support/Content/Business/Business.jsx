@@ -57,7 +57,9 @@ function Business() {
   return (
     <section id="business">
       <Container className="container">
-        <h2>Business</h2>
+        <h2 h2 className="text-white">
+          Business
+        </h2>
         <div className="row">
           <div className="col-lg-12">
             <Company>

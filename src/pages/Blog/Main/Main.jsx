@@ -47,7 +47,7 @@ const Span = styled.span`
 `;
 const LatestArticle = styled.div`
   cursor: pointer;
-  margin: 100px 0 20px 0;
+  margin: 30px 0 20px 0;
   &:hover {
     ${ImageNews} > ${Image} {
       opacity: 0.3;

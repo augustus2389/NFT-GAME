@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import filter from "../../../asset/image/filter.svg";
 import Arrow from "../../../asset/image/ArrowUnder.svg";
 import ArrowUp from "../../../asset/image/ArrowUp.svg";
 import "./FilterType.scss";
 import FilterFuture from "./FilterFeature";
 import FilterForm from "./FilterPlatForm";
 import productApi from "../../../api/productApi";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { fetchProductBySearch } from "../../../redux/productSlice";
 
 const FilterIcon = styled.img`
   width: 15px;
@@ -74,8 +74,8 @@ const TypeList = [
   { value: "casual", label: "Casual" },
   { value: "simulation", label: "Simulation" },
   { value: "rpg", label: "RPG" },
-  { value: "rpg", label: "RPG" },
 ];
+
 function FilterType() {
   const [arrow, setArrows] = useState(Arrow);
   const [isOpen, setIsOpen] = useState(true);
@@ -87,12 +87,16 @@ function FilterType() {
     productApi.getProducts().then((data) => setFilter(data));
   }, []);
   // Changing State when volume increases/decreases
+  const dispatch = useDispatch();
   const handleChange = async (e) => {
     const { value, checked } = e.target;
+    dispatch(fetchProductBySearch(value));
+    console.log(`${value}`);
     // const product = await axios.get(
     //   `https://json-server-augustus-game.herokuapp.com/products?q=${value}`
     // );
   };
+
   return (
     <>
       <DropDownFilter>

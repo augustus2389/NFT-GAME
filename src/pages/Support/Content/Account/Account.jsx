@@ -38,7 +38,7 @@ function Account() {
     <section id="account">
       <Container className="container">
         <div className="row">
-          <h2>Account</h2>
+          <h2 className="text-white">Account</h2>
           <div className="col-lg-6">
             <Link to="/">
               <CatogryTag>

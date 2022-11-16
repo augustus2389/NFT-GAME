@@ -1,8 +1,8 @@
 // import { CountrySelect } from "@atlaskit/select";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../../asset/image/logo.png";
 import "./style.scss";
@@ -68,25 +68,80 @@ const Name = styled.div`
   display: flex;
   gap: 70px;
 `;
+const CreateAvatar = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+const Avatar = styled.img`
+  width: 100px;
+  border-radius: 50%;
+  height: 100px;
+`;
+
 function SignUp() {
+  const [image, setImage] = useState([]);
+  const inputFileRef = useRef();
+  const handleImageChange = (file) => {
+    return new Promise((resolve, reject) => {
+      let reader = new FileReader();
+
+      reader.onloadend = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // const handleUpload = () => {
+  //   const formData = new FormData();
+  //   formData.append("file", inputFileRef.current.files[0]);
+  //   console.log(inputFileRef.current.files[0]);
+  //   axios({
+  //     method: "post",
+  //     url: "http://103.237.147.34:8888/api/v1/users/1/files/sd",
+  //     headers: { "Content-Type": "multipart/form-data" },
+  //     data: formData,
+  //   }).then((data) => {
+  //     console.log(data.data);
+  //   });
+  // };
+
+  const handleChangeInputFile = async (e) => {
+    const imageUrl = await handleImageChange(e.target.files[0]);
+    setImage(imageUrl);
+  };
+  const navigate = useNavigate();
   const [email, setEmail] = useState(true);
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       address: {},
     },
   });
+  const [uploadImage, setUpload] = useState("");
+
   const onSubmit = async (data) => {
     const emailExist = await axios.get(
-      `https://json-server-augustus-game.herokuapp.com/users?Email=${data.Email}`
+      `http://localhost:3000/users?Email=${data.Email}`
     );
 
     if (!emailExist.data.length) {
       axios
-        .post("https://json-server-augustus-game.herokuapp.com/users", data)
+        .post("http://localhost:3000/users", data)
         .then((data) => console.log(data.data));
+      navigate("/signin");
     } else {
       setEmail(false);
     }
+
+    const formData = new FormData();
+    formData.append("file", inputFileRef.current.files[0]);
+    axios({
+      method: "post",
+      url: "http://103.237.147.34:8888/api/v1/users/2/files",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: formData,
+    });
   };
   const [option, setOption] = useState([]);
 
@@ -95,7 +150,6 @@ function SignUp() {
       .then((response) => response.json())
       .then((data) => setOption(data));
   }, []);
-
   return (
     <FromLogin>
       <Form>
@@ -108,6 +162,19 @@ function SignUp() {
           className="d-flex flex-column justify-content-around"
         >
           <div className="div">
+            <CreateAvatar>
+              <Avatar src={image} alt="" />
+              <input
+                type="file"
+                multiple
+                className="custom-file-input"
+                ref={inputFileRef}
+                onChange={handleChangeInputFile}
+              />
+              <div>
+                <input type="url" required {...register("avatar")} />
+              </div>
+            </CreateAvatar>
             <div className="input-form">
               <div className="underline"></div>
               {/* <label>Password</label> */}
@@ -163,7 +230,8 @@ function SignUp() {
             <div className="underline"></div>
             <label>Password</label>
           </div>
-          <Upload />
+
+          {/* <Upload /> */}
           <ContinueButton> Continue </ContinueButton>
         </form>
         <Note>

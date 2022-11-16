@@ -9,7 +9,6 @@ export const addToAuth = createAsyncThunk("auth/fetchAddCart", async (data) => {
   const response = await axiosClient.post("/auths", data);
   return response;
 });
-
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -20,6 +19,11 @@ const authSlice = createSlice({
   reducers: {
     setAccountSuccess(state, action) {
       state.account = action.payload;
+      state.isLogin = true;
+    },
+    setLogout(state, action) {
+      state.account = {};
+      state.isLogin = false;
     },
   },
   extraReducers: (builder) => {
@@ -32,9 +36,10 @@ const authSlice = createSlice({
     });
     builder.addCase(addToAuth.fulfilled, (state, action) => {
       state.account = action.payload;
+      state.isLogin = true;
     });
   },
 });
 
-export const { setAccountSuccess } = authSlice.actions;
+export const { setAccountSuccess, setLogout } = authSlice.actions;
 export default authSlice.reducer;

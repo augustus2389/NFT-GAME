@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./modal.scss";
@@ -7,6 +7,9 @@ import Card from "../../../asset/image/card.svg";
 import styled from "styled-components";
 import { FieldSet, InputField } from "fannypack";
 import { usePaymentInputs } from "react-payment-inputs";
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCart } from "../../../redux/cartSlice";
 
 const CardVisit = styled.div`
   background-color: #f2f2f2;
@@ -19,7 +22,7 @@ const OderrSummary = styled.div`
   height: 500px;
 `;
 const DropdownCardInfo = styled.ul`
-  padding: 0;
+  padding: 10px;
   transition: all 3s linear;
 `;
 
@@ -94,6 +97,8 @@ const Credit = styled.div`
 `;
 
 function MyVerticallyCenteredModal(props) {
+  const dispatch = useDispatch();
+  const { account } = useSelector((state) => state.auth);
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => {
     setIsOpen(!isOpen);
@@ -101,6 +106,21 @@ function MyVerticallyCenteredModal(props) {
   const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps } =
     usePaymentInputs();
   const { erroredInputs, touchedInputs } = meta;
+  const { carts } = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(fetchCart);
+  }, []);
+  const subTotal = useMemo(() => {
+    return carts.reduce((total, product) => {
+      console.log(product.price);
+      if (isNaN(product.price)) {
+        return total;
+      }
+      return total + product.price;
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [carts]);
   return (
     <Modal
       {...props}
@@ -111,7 +131,7 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Header closeButton>
         <Modal.Title>
           <img id="usercheckout" src={userCheckOut} alt="" />
-          <p>Name User</p>
+          <p>{account.LastName}</p>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -152,57 +172,7 @@ function MyVerticallyCenteredModal(props) {
                           />
                         </div>
                       </div>
-                      <FieldSet isHorizontal>
-                        <InputField
-                          // Here is where React Payment Inputs injects itself into the input element.
-                          {...getCardNumberProps()}
-                          placeholder="**** **** **** ****"
-                          label="Card number"
-                          inputRef={getCardNumberProps().ref}
-                          // You can retrieve error state by making use of the error & touched attributes in `meta`.
-                          state={
-                            erroredInputs.cardNumber && touchedInputs.cardNumber
-                              ? "danger"
-                              : undefined
-                          }
-                          validationText={
-                            touchedInputs.cardNumber && erroredInputs.cardNumber
-                          }
-                          maxWidth="15rem"
-                          className="inputfiled"
-                        />
-                        <InputField
-                          {...getExpiryDateProps()}
-                          label="Expiry date"
-                          inputRef={getExpiryDateProps().ref}
-                          state={
-                            erroredInputs.expiryDate && touchedInputs.expiryDate
-                              ? "danger"
-                              : undefined
-                          }
-                          validationText={
-                            touchedInputs.expiryDate && erroredInputs.expiryDate
-                          }
-                          maxWidth="8rem"
-                          className="inputfiled"
-                        />
-                        <InputField
-                          {...getCVCProps()}
-                          placeholder="123"
-                          label="CVC"
-                          inputRef={getCVCProps().ref}
-                          state={
-                            erroredInputs.cvc && touchedInputs.cvc
-                              ? "danger"
-                              : undefined
-                          }
-                          validationText={
-                            touchedInputs.cvc && erroredInputs.cvc
-                          }
-                          maxWidth="5rem"
-                          className="inputfiled"
-                        />
-                      </FieldSet>
+
                       <Text>
                         By choosing to save your payment information, this
                         payment method will be selected as the default for all
@@ -222,39 +192,19 @@ function MyVerticallyCenteredModal(props) {
           <div className="col-lg-4">
             <OderrSummary>
               <span>ODER SUMMARY</span>
-              <Oder>
-                <ImageOder
-                  src="https://cdn1.epicgames.com/offer/0c6aee83b9b64372bf44a043001325f2/EGS_NARAKABLADEPOINT_24Entertainment_S2_1200x1600-88f4e1f1ee1ffa8f7a85bf4e3a492e7e"
-                  alt=""
-                />
-                <InfoOrder>
-                  <p className="text-black">NARAKA: BLADEPOINT</p>
-                  <PriceOrder>50 $</PriceOrder>
-                </InfoOrder>
-              </Oder>
-              <Oder>
-                <ImageOder
-                  src="https://cdn1.epicgames.com/offer/0c6aee83b9b64372bf44a043001325f2/EGS_NARAKABLADEPOINT_24Entertainment_S2_1200x1600-88f4e1f1ee1ffa8f7a85bf4e3a492e7e"
-                  alt=""
-                />
-                <InfoOrder>
-                  <p className="text-black">NARAKA: BLADEPOINT</p>
-                  <PriceOrder>50 $</PriceOrder>
-                </InfoOrder>
-              </Oder>
-              <Oder>
-                <ImageOder
-                  src="https://cdn1.epicgames.com/offer/0c6aee83b9b64372bf44a043001325f2/EGS_NARAKABLADEPOINT_24Entertainment_S2_1200x1600-88f4e1f1ee1ffa8f7a85bf4e3a492e7e"
-                  alt=""
-                />
-                <InfoOrder>
-                  <p className="text-black">NARAKA: BLADEPOINT</p>
-                  <PriceOrder>50 $</PriceOrder>
-                </InfoOrder>
-              </Oder>
+              {carts.map((cart) => (
+                <Oder key={cart.id}>
+                  <ImageOder src={cart.avatar} alt={cart.title} />
+                  <InfoOrder>
+                    <p className="text-black">{cart.title}</p>
+                    <PriceOrder>{cart.price} $</PriceOrder>
+                  </InfoOrder>
+                </Oder>
+              ))}
+
               <Total>
                 <TotalFont>Price</TotalFont>
-                <TotalFont>50 $</TotalFont>
+                <TotalFont>{subTotal} $</TotalFont>
               </Total>
               <hr
                 style={{ color: "black", width: "90%", margin: "10px auto" }}
@@ -262,7 +212,7 @@ function MyVerticallyCenteredModal(props) {
 
               <Total>
                 <TotalFont className="fw-bold">Total</TotalFont>
-                <TotalFont className="fw-bold">50 $</TotalFont>
+                <TotalFont className="fw-bold">{subTotal} $</TotalFont>
               </Total>
               <Credit>
                 <TotalFont className="fw-bold">Payment Details</TotalFont>
@@ -271,6 +221,7 @@ function MyVerticallyCenteredModal(props) {
                   <TotalFont>13 $</TotalFont>
                 </CreditCard>
               </Credit>
+              <button className="button-22">make payment</button>
             </OderrSummary>
           </div>
         </div>
@@ -280,6 +231,8 @@ function MyVerticallyCenteredModal(props) {
 }
 
 function ModalComponent({ cart }) {
+  const [order, setOrder] = useLocalStorage("oders", "");
+  const { account } = useSelector((state) => state.auth);
   const [modalShow, setModalShow] = useState(false);
 
   return (

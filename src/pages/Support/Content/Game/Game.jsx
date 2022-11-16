@@ -43,7 +43,7 @@ function Game() {
   return (
     <section id="content-game">
       <Container className="container">
-        <h2>Games</h2>
+        <h2 className="text-white">Games</h2>
 
         <div className="row">
           <div className="col-lg-6 col-sm-12">

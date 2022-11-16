@@ -10,13 +10,13 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Store",
-    path: "/store",
+    title: "FAQ",
+    path: "/FAQ",
     cName: "nav-text",
   },
   {
-    title: "News",
-    path: "/blog",
+    title: "Help",
+    path: "/support",
     cName: "nav-text",
   },
 ];

@@ -1,11 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import productApi from "../../../api/productApi";
-import { fetchProduct } from "../../../redux/productSlice";
 
 const Container = styled.div`
   max-width: 1024px;

@@ -1,11 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../../asset/image/logo.png";
-import useLocalStorage from "../../../hooks/useLocalStorage";
 import { setAccountSuccess } from "../../../redux/authSlice";
 
 import "./style.css";
@@ -68,28 +67,25 @@ const Title = styled.p`
 `;
 function SignIn() {
   const navigate = useNavigate();
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit } = useForm();
   const [checkEmail, setCheckEmail] = useState(true);
   const [checkPassWord, setCheckPassWord] = useState(true);
   const dispatch = useDispatch();
-  const [auths, setAuth] = useState([]);
-
-  const email2 = watch("Email");
-
   const onSubmit = async (data) => {
     const emailExist = await axios.get(
-      `https://json-server-augustus-game.herokuapp.com/users?Email=${data.Email}`
+      `https://json-server-augustus-game.herokuapp.com/users?email=${data.Email}`
     );
+    console.log(emailExist);
     if (emailExist.data.length) {
       const res = await axios.get(
-        `https://json-server-augustus-game.herokuapp.com/users?Email=${data.Email}&Password=${data.Password}`
+        `https://json-server-augustus-game.herokuapp.com/users?email=${data.Email}&password=${data.Password}`
       );
       if (!res.data.length) {
         setCheckPassWord(false);
         return;
       }
-      setAuth(res.data[0]);
-      localStorage.setItem("auth", JSON.stringify(auths));
+      console.log(res.data[0]);
+      localStorage.setItem("auth", JSON.stringify(res.data[0]));
       dispatch(setAccountSuccess(res.data[0]));
       navigate("/");
     } else {
@@ -129,16 +125,6 @@ function SignIn() {
               <p className="text-danger">Password incorrect</p>
             )}
           </InputForm>
-          {/* <Input
-            type="text"
-            placeholder="Email Address"
-            {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            {...register("Password")}
-          /> */}
           <label htmlFor="">
             <input type="checkbox" />
             Remember me

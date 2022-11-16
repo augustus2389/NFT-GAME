@@ -64,7 +64,7 @@ function Navbar() {
               to="https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncher.dmg?trackingId=b1557f5a2e1644ffb1f7a2dd63d06b65"
               className="focusable accent-bg-color accent-bg-color-hover"
             >
-              <span className="accent-text-color accent-text-color-hover">
+              <span className="accent-text-color accent-text-color-hover fw-bold">
                 Download
               </span>
             </Download>

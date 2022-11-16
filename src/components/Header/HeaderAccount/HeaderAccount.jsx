@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { fetchAuth } from "../../../redux/authSlice";
+import { fetchAuth, setLogout } from "../../../redux/authSlice";
 import user from "../../../asset/image/user.svg";
-import Arrow from "../../../asset/image/ArrowUnder.svg";
-import userLogin from "../../../asset/image/userLogin.svg";
 import online from "../../../asset/image/online.svg";
 
 const User = styled.div`
@@ -27,36 +25,27 @@ const DropDownContainer = styled.div`
 
 const DropDownHeader = styled.div``;
 
-const DropDownListContainer = styled.ul`
-  padding: 0;
-  /* transition: all 3s linear; */
-  position: absolute;
-  top: 40px;
-  left: -60px;
-  background-color: #2a2a2a;
-  z-index: 12;
-  padding: 0 30px;
-  border-radius: 4px;
-`;
-
 const DropDownList = styled.form`
+  cursor: pointer;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   color: #3faffa;
   font-size: 1.3rem;
   font-weight: 500;
-  &:first-child {
-  }
 `;
 
 const ListItem = styled.li`
   list-style: none;
   font-size: 12px;
-  width: 100px;
+  width: 50px;
+  cursor: pointer;
   text-align: center;
   color: gray;
   margin-bottom: 0.8em;
+  &:hover {
+    color: white;
+  }
 `;
 
 const Text = styled.p`
@@ -79,8 +68,19 @@ const OnlineImage = styled.img`
   top: 40%;
   left: 30%;
 `;
+const DropDownListContainer = styled.ul`
+  padding: 0;
+  position: absolute;
+  top: 50px;
+  left: -35px;
+  background-color: #2a2a2a;
+  z-index: 12;
+  padding: 0 30px;
+  border-radius: 4px;
+`;
 function HeaderAccount() {
-  const { account } = useSelector((state) => state.auth);
+  const { account, isLogin } = useSelector((state) => state.auth);
+  console.log(account);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAuth());
@@ -90,15 +90,27 @@ function HeaderAccount() {
   const toggling = () => {
     setIsOpen(!isOpen);
   };
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("auth"));
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+  const handleLogOut = () => {
+    localStorage.removeItem("auth");
+    dispatch(setLogout());
+    // window.location.reload();
+  };
   return (
     <User>
-      {!account.id && (
+      {!isLogin && (
         <Link to="/signin" className="d-flex">
           <LogoUser src={user} alt="" />
           <p>Sign In</p>
         </Link>
       )}
-      {account.id && (
+      {isLogin && (
         <DropDownAccount>
           <DropDownContainer>
             <DropDownHeader onClick={toggling}>
@@ -119,7 +131,7 @@ function HeaderAccount() {
                   <ListItem>Account</ListItem>
                   <ListItem>Wishlist</ListItem>
                   <ListItem>History</ListItem>
-                  <ListItem>Sign Out</ListItem>
+                  <ListItem onClick={handleLogOut}>Sign Out</ListItem>
                 </DropDownList>
               </DropDownListContainer>
             )}

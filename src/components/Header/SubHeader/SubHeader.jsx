@@ -87,6 +87,7 @@ function SecondarybHeader() {
       setShowProductList(true);
     }
   };
+
   return (
     <>
       <SubMenu>
