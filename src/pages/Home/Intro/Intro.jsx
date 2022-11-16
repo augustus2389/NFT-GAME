@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import React from "react";
-import "./intro.css";
+import "./intro.scss";
 import wish from "../../../asset/image/wishlist.svg";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -25,9 +25,9 @@ const Media = styled.div`
   border-radius: 10px;
 `;
 const Text = styled.div`
-  padding: 50px;
+  padding: 40px 20px;
   position: absolute;
-  top: 0%;
+  top: -10%;
   text-align: left;
   bottom: 0;
   display: flex;
@@ -35,6 +35,10 @@ const Text = styled.div`
   justify-content: space-around;
 `;
 const TextFont = styled.p`
+  color: rgb(245, 245, 245);
+  text-shadow: 0.5px 0.5px 0.5px rgb(0 0 0 / 25%);
+  font-weight: 600;
+  cursor: pointer;
   font-size: 18px;
   width: 50%;
 `;
@@ -42,6 +46,7 @@ const IconGame = styled.div`
   max-width: 200px;
 `;
 const ButtonDiv = styled.div`
+  margin: 10px 0;
   display: flex;
 `;
 const ButtonWish = styled.button`
@@ -75,7 +80,7 @@ const IconWish = styled.img`
   height: auto !important;
 `;
 const IntroImage = styled.img`
-  border-radius: 4px;
+  border-radius: 20px;
 `;
 
 function Intro({ data }) {

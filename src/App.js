@@ -7,7 +7,6 @@ import "swiper/css/bundle";
 import Store from "./pages/Store/Store";
 import Support from "./pages/Support/Support";
 import Blog from "./pages/Blog/Blog";
-import Login from "./pages/Login/Login";
 import CheckOut from "./pages/Checkout/CheckOut";
 import SignUp from "./pages/Login/SignUp/SignUp";
 import SignIn from "./pages/Login/SignIn/SignIn";
@@ -29,7 +28,6 @@ function App() {
             <Route path="/store" element={<Store />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/support" element={<Support />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/checkOut" element={<CheckOut />} />
             <Route path="/signin" element={<SignIn />} />

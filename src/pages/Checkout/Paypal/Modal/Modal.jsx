@@ -2,14 +2,15 @@ import { useEffect, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./modal.scss";
-import userCheckOut from "../../../asset/image/userCheckOut.svg";
-import Card from "../../../asset/image/card.svg";
+import userCheckOut from "../../../../asset/image/userCheckOut.svg";
+import Card from "../../../../asset/image/card.svg";
 import styled from "styled-components";
-import { FieldSet, InputField } from "fannypack";
-import { usePaymentInputs } from "react-payment-inputs";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import useLocalStorage from "../../../../hooks/useLocalStorage";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCart } from "../../../redux/cartSlice";
+import { fetchCart } from "../../../../redux/cartSlice";
+import { fetchAuth } from "../../../../redux/authSlice";
+import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
+import images from "react-payment-inputs/images";
 
 const CardVisit = styled.div`
   background-color: #f2f2f2;
@@ -26,7 +27,7 @@ const DropdownCardInfo = styled.ul`
   transition: all 3s linear;
 `;
 
-const DropDownList = styled.form`
+const DropDownList = styled.div`
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -96,16 +97,31 @@ const Credit = styled.div`
   padding: 20px;
 `;
 
+const ERROR_MESSAGES = {
+  emptyCardNumber: "The card number is invalid",
+  invalidCardNumber: "The card number is invalid",
+  emptyExpiryDate: "The expiration date is invalid",
+  monthOutOfRange: "The expiration month must be between 01 and 12",
+  yearOutOfRange: "The year of expiration cannot be in the past",
+  dateOutOfRange: "The expiration date cannot be in the past",
+  invalidExpiryDate: "The expiration date is invalid",
+  emptyCVC: "The security code is invalid",
+  invalidCVC: "The security code is invalid",
+};
+
 function MyVerticallyCenteredModal(props) {
   const dispatch = useDispatch();
   const { account } = useSelector((state) => state.auth);
+  const [order, setOrder] = useLocalStorage("oders", "");
+
+  useEffect(() => {
+    dispatch(fetchAuth());
+  }, []);
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => {
     setIsOpen(!isOpen);
   };
-  const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps } =
-    usePaymentInputs();
-  const { erroredInputs, touchedInputs } = meta;
+
   const { carts } = useSelector((state) => state.cart);
 
   useEffect(() => {
@@ -113,7 +129,6 @@ function MyVerticallyCenteredModal(props) {
   }, []);
   const subTotal = useMemo(() => {
     return carts.reduce((total, product) => {
-      console.log(product.price);
       if (isNaN(product.price)) {
         return total;
       }
@@ -121,6 +136,49 @@ function MyVerticallyCenteredModal(props) {
     }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [carts]);
+  const [cardNumber, setCardNumber] = useState();
+  const [expiryDate, setExpiry] = useState();
+  const [cvc, setCVC] = useState();
+  const [checked, setChecked] = useState(true);
+  const isDisable = true;
+  const {
+    wrapperProps,
+    getCardImageProps,
+    getCardNumberProps,
+    getExpiryDateProps,
+    getCVCProps,
+  } = usePaymentInputs({
+    errorMessages: ERROR_MESSAGES,
+  });
+
+  const handleSubmit = (data) => {
+    if (account.id) {
+      const newOrder = {
+        id: account.lenght + 1,
+        userId: account.id,
+        items: data,
+        createAt: new Date(),
+        payMethod: "Card Credit",
+      };
+      setOrder(newOrder);
+    }
+    if (wrapperProps.error) {
+      setChecked(!isDisable);
+    } else {
+      setChecked(isDisable);
+    }
+  };
+  console.log(order);
+  const handleChange = (e) => {
+    const target = e.target;
+    if (target.name === "cardNumber") {
+      setCardNumber(target.value);
+    } else if (target.name === "expiryDate") {
+      setExpiry(target.value);
+    } else if (target.name === "cvc") {
+      setCVC(target.value);
+    }
+  };
   return (
     <Modal
       {...props}
@@ -172,7 +230,18 @@ function MyVerticallyCenteredModal(props) {
                           />
                         </div>
                       </div>
-
+                      <div>
+                        <PaymentInputsWrapper {...wrapperProps}>
+                          <svg {...getCardImageProps({ images })} />
+                          <input
+                            {...getCardNumberProps({ onChange: handleChange })}
+                          />
+                          <input
+                            {...getExpiryDateProps({ onChange: handleChange })}
+                          />
+                          <input {...getCVCProps({ onChange: handleChange })} />
+                        </PaymentInputsWrapper>
+                      </div>
                       <Text>
                         By choosing to save your payment information, this
                         payment method will be selected as the default for all
@@ -201,7 +270,6 @@ function MyVerticallyCenteredModal(props) {
                   </InfoOrder>
                 </Oder>
               ))}
-
               <Total>
                 <TotalFont>Price</TotalFont>
                 <TotalFont>{subTotal} $</TotalFont>
@@ -221,7 +289,9 @@ function MyVerticallyCenteredModal(props) {
                   <TotalFont>13 $</TotalFont>
                 </CreditCard>
               </Credit>
-              <button className="button-22">make payment</button>
+              <button disabled className="button-22" onClick={handleSubmit}>
+                make payment
+              </button>
             </OderrSummary>
           </div>
         </div>
@@ -231,7 +301,6 @@ function MyVerticallyCenteredModal(props) {
 }
 
 function ModalComponent({ cart }) {
-  const [order, setOrder] = useLocalStorage("oders", "");
   const { account } = useSelector((state) => state.auth);
   const [modalShow, setModalShow] = useState(false);
 

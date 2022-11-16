@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { fetchAuth, setLogout } from "../../../redux/authSlice";
 import user from "../../../asset/image/user.svg";
@@ -80,12 +80,8 @@ const DropDownListContainer = styled.ul`
 `;
 function HeaderAccount() {
   const { account, isLogin } = useSelector((state) => state.auth);
-  console.log(account);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAuth());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => {
     setIsOpen(!isOpen);
@@ -100,8 +96,8 @@ function HeaderAccount() {
   const handleLogOut = () => {
     localStorage.removeItem("auth");
     dispatch(setLogout());
-    // window.location.reload();
   };
+
   return (
     <User>
       {!isLogin && (
@@ -128,9 +124,15 @@ function HeaderAccount() {
             {isOpen && (
               <DropDownListContainer>
                 <DropDownList>
-                  <ListItem>Account</ListItem>
-                  <ListItem>Wishlist</ListItem>
-                  <ListItem>History</ListItem>
+                  <ListItem>
+                    <Link to={"/profile"}>Account</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to={"/wishlist"}>Wishlist</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to={"/history"}>History</Link>
+                  </ListItem>
                   <ListItem onClick={handleLogOut}>Sign Out</ListItem>
                 </DropDownList>
               </DropDownListContainer>

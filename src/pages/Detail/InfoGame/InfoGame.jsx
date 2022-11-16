@@ -7,6 +7,7 @@ import warnning from "../../../asset/image/16.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, fetchCart } from "../../../redux/cartSlice";
 import { toast, ToastContainer } from "react-toastify";
+import { addToWish } from "../../../redux/wishlistSlice";
 
 const Description = styled.p`
   color: #000;
@@ -116,14 +117,19 @@ const Tag = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 10px;
+  max-width: 300px;
+  white-space: nowrap;
 `;
 const LinkTag = styled.p`
   border: 1px solid #1199fa;
   border-radius: 4px;
   color: #1199fa;
   padding: 10px;
+  display: flex;
+  align-items: center;
   background-color: white;
   cursor: pointer;
+  text-align: center;
   text-transform: capitalize; ;
 `;
 const Name = styled.div`
@@ -144,9 +150,10 @@ const NameText = styled.p`
 `;
 
 function InfoGame({ detail, checkId }) {
+  const { wishs } = useSelector((state) => state.wish);
   const { carts } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
+  const { isLogin } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(fetchCart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -179,6 +186,42 @@ function InfoGame({ detail, checkId }) {
       theme: "dark",
     });
   };
+  const handleActionWishList = (id) => {
+    const IsExist = wishs.some((wish) => wish.id === id);
+    console.log(IsExist);
+    if (IsExist) {
+      toast.warn("This game has already been added to Wishlist!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    toast.success("This game has been added Wishlist", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+    const newItem = {
+      id: detail.id,
+      title: detail.title,
+      price: detail.price,
+      avatar: detail.avatar,
+      date: detail.date,
+    };
+    dispatch(addToWish(newItem));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
   return (
     <>
       <ToastContainer></ToastContainer>
@@ -207,11 +250,19 @@ function InfoGame({ detail, checkId }) {
         </Creator>
         <Action>
           <Button>
-            <Link onClick={handleAddToCart} className="text-white">
-              buy for {detail?.price}$
-            </Link>
+            {isLogin ? (
+              <Link onClick={handleAddToCart} className="text-white">
+                buy for {detail?.price}$
+              </Link>
+            ) : (
+              <Link to={"/login"} className="text-white">
+                buy for {detail?.price}$
+              </Link>
+            )}
           </Button>
-          <ButtonOffer>Add to wishlist</ButtonOffer>
+          <ButtonOffer onClick={() => handleActionWishList(detail?.id)}>
+            Add to wishlist
+          </ButtonOffer>
         </Action>
         <Description>{detail?.description}</Description>
         <Tag>

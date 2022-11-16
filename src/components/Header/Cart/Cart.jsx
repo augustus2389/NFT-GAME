@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import cartApi from "../../../api/cartApi";
@@ -32,28 +33,32 @@ const CountCart = styled.p`
 `;
 function Cart() {
   const [cart, setCart] = useState([]);
+  const { account, isLogin } = useSelector((state) => state.auth);
+  console.log(account);
   useEffect(() => {
     cartApi.getCart().then((data) => setCart(data));
   }, []);
   return (
     <>
-      <ActionCart>
-        <TextCart
-          to="/wishlist"
-          className={({ isActive }) => (isActive ? "active" : "inactive")}
-        >
-          Wishlist
-        </TextCart>
-        <div className="d-flex">
+      {isLogin && (
+        <ActionCart>
           <TextCart
-            to="/checkout"
+            to="/wishlist"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
-            Cart
+            Wishlist
           </TextCart>
-          <CountCart>{cart.length}</CountCart>
-        </div>
-      </ActionCart>
+          <div className="d-flex">
+            <TextCart
+              to="/checkout"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              Cart
+            </TextCart>
+            <CountCart>{cart.length}</CountCart>
+          </div>
+        </ActionCart>
+      )}
     </>
   );
 }

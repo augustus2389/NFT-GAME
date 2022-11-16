@@ -1,30 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { registerUser } from "./userAction";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axiosClient from "../api/axiosClient";
 
-const initialState = {
-  loading: false,
-  userInfo: {}, // for user object
-  userToken: null, // for storing the JWT
-  error: null,
-  success: false, // for monitoring the registration process.
-};
+export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
+  const response = await axiosClient.get("/users");
+  return response;
+});
+export const addUser = createAsyncThunk("user/fetchAddUser", async (data) => {
+  const response = await axiosClient.post("/users", data);
+  return response;
+});
+export const editUser = createAsyncThunk("user/editUser", async (data) => {
+  const response = await axiosClient.put(`/users/${data.id}`);
+  return response;
+});
+
 const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: {
+    users: [],
+  },
   reducers: {},
-  extraReducers: {
-    [registerUser.pending]: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    [registerUser.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.success = true; // registration successful
-    },
-    [registerUser.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.error = payload;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(fetchUser.pending, (state, action) => {
+      state.status = "loading";
+    });
+    builder.addCase(fetchUser.fulfilled, (state, action) => {
+      state.status = "success";
+      state.users = action.payload;
+    });
+    builder.addCase(addUser.fulfilled, (state, action) => {
+      state.users.push(action.payload);
+    });
+    builder.addCase(editUser.fulfilled, (state, action) => {
+      let index = state.users.findIndex(
+        (user) => user.id === action.payload.id
+      );
+      state.users[index] = action.payload;
+    });
   },
 });
 
