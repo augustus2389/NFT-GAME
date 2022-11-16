@@ -107,10 +107,10 @@ function SignUp() {
   //   });
   // };
 
-  const handleChangeInputFile = async (e) => {
-    const imageUrl = await handleImageChange(e.target.files[0]);
-    setImage(imageUrl);
-  };
+  // const handleChangeInputFile = async (e) => {
+  //   const imageUrl = await handleImageChange(e.target.files[0]);
+  //   setImage(imageUrl);
+  // };
   const navigate = useNavigate();
   const [email, setEmail] = useState(true);
   const { register, handleSubmit, control } = useForm({
@@ -118,7 +118,7 @@ function SignUp() {
       address: {},
     },
   });
-  const [uploadImage, setUpload] = useState("");
+  // const [uploadImage, setUpload] = useState("");
 
   const onSubmit = async (data) => {
     const emailExist = await axios.get(
@@ -134,14 +134,14 @@ function SignUp() {
       setEmail(false);
     }
 
-    const formData = new FormData();
-    formData.append("file", inputFileRef.current.files[0]);
-    axios({
-      method: "post",
-      url: "http://103.237.147.34:8888/api/v1/users/2/files",
-      headers: { "Content-Type": "multipart/form-data" },
-      data: formData,
-    });
+    // const formData = new FormData();
+    // formData.append("file", inputFileRef.current.files[0]);
+    // axios({
+    //   method: "post",
+    //   url: "http://103.237.147.34:8888/api/v1/users/2/files",
+    //   headers: { "Content-Type": "multipart/form-data" },
+    //   data: formData,
+    // });
   };
   const [option, setOption] = useState([]);
 
@@ -162,7 +162,7 @@ function SignUp() {
           className="d-flex flex-column justify-content-around"
         >
           <div className="div">
-            <CreateAvatar>
+            {/* <CreateAvatar>
               <Avatar src={image} alt="" />
               <input
                 type="file"
@@ -174,7 +174,7 @@ function SignUp() {
               <div>
                 <input type="url" required {...register("avatar")} />
               </div>
-            </CreateAvatar>
+            </CreateAvatar> */}
             <div className="input-form">
               <div className="underline"></div>
               {/* <label>Password</label> */}

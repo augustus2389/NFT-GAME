@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axiosClient from "../../../api/axiosClient";
 import logo from "../../../asset/image/logo.png";
 import { setAccountSuccess } from "../../../redux/authSlice";
 
@@ -72,21 +73,18 @@ function SignIn() {
   const [checkPassWord, setCheckPassWord] = useState(true);
   const dispatch = useDispatch();
   const onSubmit = async (data) => {
-    const emailExist = await axios.get(
-      `https://json-server-augustus-game.herokuapp.com/users?email=${data.Email}`
-    );
-    console.log(emailExist);
-    if (emailExist.data.length) {
-      const res = await axios.get(
-        `https://json-server-augustus-game.herokuapp.com/users?email=${data.Email}&password=${data.Password}`
+    const emailExist = await axiosClient(`/users?email=${data.Email}`);
+
+    if (emailExist.length) {
+      const res = await axiosClient(
+        `/users?email=${data.Email}&password=${data.Password}`
       );
-      if (!res.data.length) {
+      if (!res.length) {
         setCheckPassWord(false);
         return;
       }
-      console.log(res.data[0]);
-      localStorage.setItem("auth", JSON.stringify(res.data[0]));
-      dispatch(setAccountSuccess(res.data[0]));
+      localStorage.setItem("auth", JSON.stringify(res[0]));
+      dispatch(setAccountSuccess(res[0]));
       navigate("/");
     } else {
       setCheckEmail(false);
