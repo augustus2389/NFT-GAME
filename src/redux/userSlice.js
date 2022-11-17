@@ -10,7 +10,7 @@ export const addUser = createAsyncThunk("user/fetchAddUser", async (data) => {
   return response;
 });
 export const editUser = createAsyncThunk("user/editUser", async (data) => {
-  const response = await axiosClient.put(`/users/${data.id}`);
+  const response = await axiosClient.put(`/users/${data.id}`, data);
   return response;
 });
 

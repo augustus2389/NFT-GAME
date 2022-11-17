@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { editUser } from "../../../redux/userSlice";
+import { editUser } from "../../../components/Admin/User/Users";
 
 const Profiles = styled.div`
   padding: 20px;
@@ -41,9 +41,10 @@ function Profile() {
     },
   });
   const onSubmit = (data) => {
-    // const a = dispatch(editUser(data));
-    // console.log(a);
-    // const editUser = account.find((user) => user.id === id);
+    console.log(data);
+    dispatch(editUser(data));
+
+    // const editUsers = account.filter((user) => user.id === data.id);
   };
 
   return (

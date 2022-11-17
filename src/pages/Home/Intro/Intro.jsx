@@ -10,6 +10,7 @@ import { Autoplay, Navigation } from "swiper";
 import styled from "styled-components";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   max-width: 1024px;
@@ -107,33 +108,35 @@ function Intro({ data }) {
               if (!!dat?.intro) {
                 return (
                   <SwiperSlide key={dat.id}>
-                    <Media>
-                      <Ads className="ads position-relative">
-                        <IntroImage src={dat?.intro} alt="" />
-                        <Text>
-                          <IconGame>
-                            <motion.img
-                              initial={{ opacity: 0, x: "100%" }}
-                              animate={{ opacity: 1, x: "0" }}
-                              exit={{ opacity: 0, x: "-100%" }}
-                              src={dat?.iconGame}
-                              alt=""
-                            />
-                          </IconGame>
-                          <TextFont>{dat.description}</TextFont>
-                          <div>
-                            <p>Starting at 20 $</p>
-                            <ButtonDiv>
-                              <ButtonBuy>BUY NOW</ButtonBuy>
-                              <Wish>
-                                <IconWish src={wish} alt="" />
-                                <ButtonWish>Add to wishlist</ButtonWish>
-                              </Wish>
-                            </ButtonDiv>
-                          </div>
-                        </Text>
-                      </Ads>
-                    </Media>
+                    <Link to={`/detail/${decodeURI(dat.title)}-${dat.id}`}>
+                      <Media>
+                        <Ads className="ads position-relative">
+                          <IntroImage src={dat?.intro} alt="" />
+                          <Text>
+                            <IconGame>
+                              <motion.img
+                                initial={{ opacity: 0, x: "100%" }}
+                                animate={{ opacity: 1, x: "0" }}
+                                exit={{ opacity: 0, x: "-100%" }}
+                                src={dat?.iconGame}
+                                alt=""
+                              />
+                            </IconGame>
+                            <TextFont>{dat.description}</TextFont>
+                            <div>
+                              <p>Starting at 20 $</p>
+                              <ButtonDiv>
+                                <ButtonBuy>BUY NOW</ButtonBuy>
+                                <Wish>
+                                  <IconWish src={wish} alt="" />
+                                  <ButtonWish>Add to wishlist</ButtonWish>
+                                </Wish>
+                              </ButtonDiv>
+                            </div>
+                          </Text>
+                        </Ads>
+                      </Media>
+                    </Link>
                   </SwiperSlide>
                 );
               }

@@ -86,7 +86,7 @@ const TagInfo = styled.div``;
 function Catory({ data }) {
   const { wishs } = useSelector((state) => state.wish);
   const dispatch = useDispatch();
-
+  const { isLogin } = useSelector((state) => state.auth);
   const [gameTop, setTop] = useState([]);
   const [gameMost, setMost] = useState([]);
   const [gameNew, setNew] = useState([]);
@@ -160,15 +160,26 @@ function Catory({ data }) {
                       <Seller>
                         <TagSeller>
                           <Image src={top.avatar} alt="" />
-                          <ActionWish
-                            onClick={() => handleActionWishList(top.id)}
-                          >
-                            {isOpen ? (
-                              <IconWishList src={wishlist} alt="" />
-                            ) : (
-                              <IconWishList src={wishlistTick} alt="" />
-                            )}
-                          </ActionWish>
+                          {isLogin && (
+                            <ActionWish
+                              onClick={() => handleActionWishList(top.id)}
+                            >
+                              {isOpen ? (
+                                <IconWishList src={wishlist} alt="" />
+                              ) : (
+                                <IconWishList src={wishlistTick} alt="" />
+                              )}
+                            </ActionWish>
+                          )}
+                          {!isLogin && (
+                            <ActionWish
+                              onClick={() => handleActionWishList(top.id)}
+                            >
+                              <Link to={"/signin"}>
+                                <IconWishList src={wishlist} alt="" />
+                              </Link>
+                            </ActionWish>
+                          )}
                         </TagSeller>
                         <TagInfo>
                           <p>{top.title}</p>
@@ -193,16 +204,26 @@ function Catory({ data }) {
                       <Seller>
                         <TagSeller>
                           <Image src={most.avatar} alt="" />
-                          <ActionWish
-                            onClick={() => handleActionWishList(most.id)}
-                          >
-                            <IconWishList src={wishlist} alt="" />
-                          </ActionWish>
-                          {/* <IconWishList
-                            src={wishlistTick}
-                            alt=""
-                            onClick={() => handleRemoveToWishList(most.id)}
-                          /> */}
+                          {isLogin && (
+                            <ActionWish
+                              onClick={() => handleActionWishList(most.id)}
+                            >
+                              {isOpen ? (
+                                <IconWishList src={wishlist} alt="" />
+                              ) : (
+                                <IconWishList src={wishlistTick} alt="" />
+                              )}
+                            </ActionWish>
+                          )}
+                          {!isLogin && (
+                            <ActionWish
+                              onClick={() => handleActionWishList(most.id)}
+                            >
+                              <Link to={"/signin"}>
+                                <IconWishList src={wishlist} alt="" />
+                              </Link>
+                            </ActionWish>
+                          )}
                         </TagSeller>
                         <TagInfo>
                           <p>{most.title}</p>
@@ -227,11 +248,26 @@ function Catory({ data }) {
                       <Seller>
                         <TagSeller>
                           <Image src={game.avatar} alt="" />
-                          <ActionWish
-                            onClick={() => handleActionWishList(game.id)}
-                          >
-                            <IconWishList src={wishlist} alt="" />
-                          </ActionWish>
+                          {isLogin && (
+                            <ActionWish
+                              onClick={() => handleActionWishList(game.id)}
+                            >
+                              {isOpen ? (
+                                <IconWishList src={wishlist} alt="Icon" />
+                              ) : (
+                                <IconWishList src={wishlistTick} alt="Icon" />
+                              )}
+                            </ActionWish>
+                          )}
+                          {!isLogin && (
+                            <ActionWish
+                              onClick={() => handleActionWishList(game.id)}
+                            >
+                              <Link to={"/signin"}>
+                                <IconWishList src={wishlist} alt="" />
+                              </Link>
+                            </ActionWish>
+                          )}
                         </TagSeller>
                         <TagInfo>
                           <p>{game.title}</p>
