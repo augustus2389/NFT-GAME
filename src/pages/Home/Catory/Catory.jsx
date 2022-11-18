@@ -21,7 +21,7 @@ const Seller = styled.div`
   margin: 20px 0;
 `;
 const IconWishList = styled.img`
-  width: 15px;
+  width: 15px !important;
 `;
 const TagSeller = styled.div`
   width: 60px;
@@ -58,7 +58,7 @@ const ButtonMore = styled.button`
   }
 `;
 const ActionWish = styled.div`
-  display: none;
+  /* display: none; */
   position: absolute;
   z-index: 10;
   top: 5%;
@@ -90,6 +90,8 @@ function Catory({ data }) {
   const [gameTop, setTop] = useState([]);
   const [gameMost, setMost] = useState([]);
   const [gameNew, setNew] = useState([]);
+  const [isOpen, setIsOpen] = useState(true);
+
   useEffect(() => {
     productApi.getProductBySeller().then((data) => setTop(data));
   }, []);
@@ -141,7 +143,6 @@ function Catory({ data }) {
     dispatch(addToWish(newItem));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
-  const [isOpen, setIsOpen] = useState(true);
   return (
     <>
       <ToastContainer></ToastContainer>
@@ -153,7 +154,11 @@ function Catory({ data }) {
                 <TopSeller>
                   <HeaderCatory>
                     <Heading>Top Seller</Heading>
-                    <ButtonMore>View more</ButtonMore>
+                    <ButtonMore>
+                      <Link className="text-white" to={"/store?tag=Top"}>
+                        View more
+                      </Link>
+                    </ButtonMore>
                   </HeaderCatory>
                   {eventgame.map((top) => (
                     <CatgoryItem key={top.id}>
@@ -183,7 +188,7 @@ function Catory({ data }) {
                         </TagSeller>
                         <TagInfo>
                           <p>{top.title}</p>
-                          <p>{top.price}</p>
+                          <p>{top.price} $</p>
                         </TagInfo>
                       </Seller>
                       <LinkPerfect
@@ -197,7 +202,11 @@ function Catory({ data }) {
                 <TopSeller>
                   <HeaderCatory>
                     <Heading>Most Played</Heading>
-                    <ButtonMore>View more</ButtonMore>
+                    <ButtonMore>
+                      <Link className="text-white" to={"/store?tag=Most"}>
+                        View more
+                      </Link>
+                    </ButtonMore>
                   </HeaderCatory>
                   {gameMost.map((most) => (
                     <CatgoryItem key={most.id}>
@@ -227,7 +236,7 @@ function Catory({ data }) {
                         </TagSeller>
                         <TagInfo>
                           <p>{most.title}</p>
-                          <p>{most.price}</p>
+                          <p>{most.price} $</p>
                         </TagInfo>
                       </Seller>
                       <LinkPerfect
@@ -241,7 +250,11 @@ function Catory({ data }) {
                 <TopSeller>
                   <HeaderCatory>
                     <Heading>New Gaming</Heading>
-                    <ButtonMore>View more</ButtonMore>
+                    <ButtonMore>
+                      <Link className="text-white" to={"/store?tag=Seller"}>
+                        View more
+                      </Link>
+                    </ButtonMore>
                   </HeaderCatory>
                   {gameNew.map((game) => (
                     <CatgoryItem key={game.id}>
@@ -271,7 +284,7 @@ function Catory({ data }) {
                         </TagSeller>
                         <TagInfo>
                           <p>{game.title}</p>
-                          <p>{game.price}</p>
+                          <p>{game.price} $</p>
                         </TagInfo>
                       </Seller>
                       <LinkPerfect

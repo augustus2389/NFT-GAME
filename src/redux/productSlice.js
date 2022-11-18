@@ -27,6 +27,9 @@ const productSlice = createSlice({
     setFilter(state, action) {
       state.action = action.payload;
     },
+    setProductListNew(state, action) {
+      state.products = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProduct.pending, (state, action) => {
@@ -46,12 +49,14 @@ const productSlice = createSlice({
         if (state.filterList.length === 0) {
           return true;
         }
-        return product.type.some((t) => {
+        return product.type.every((t) => {
           if (state.filterList.some((fl) => fl === t)) {
             return true;
           }
           return false;
         });
+        // const filter = []
+        // filter = state.products.filter(item=> item.title = )
       });
       console.log(productFilter);
       state.products = productFilter;
@@ -59,6 +64,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { setFilter } = productSlice.actions;
+export const { setFilter, setProductListNew } = productSlice.actions;
 
 export default productSlice.reducer;

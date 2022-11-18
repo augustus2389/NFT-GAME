@@ -1,7 +1,6 @@
 import React from "react";
 import { Overlay } from "react-bootstrap";
 import styled from "styled-components";
-import "./main.css";
 
 const ImageNews = styled.div`
   position: relative;

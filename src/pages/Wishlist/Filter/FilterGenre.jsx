@@ -88,7 +88,7 @@ function FilterType() {
   }, []);
   // Changing State when volume increases/decreases
   const dispatch = useDispatch();
-  const handleChange = async (e) => {
+  const handleChange = (e) => {
     const { value, checked } = e.target;
     dispatch(fetchProductBySearch(value));
     console.log(`${value}`);

@@ -34,7 +34,6 @@ const CountCart = styled.p`
 function Cart() {
   const { account, isLogin } = useSelector((state) => state.auth);
   const { carts } = useSelector((state) => state.cart);
-  console.log(account);
 
   return (
     <>

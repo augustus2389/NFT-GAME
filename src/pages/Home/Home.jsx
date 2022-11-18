@@ -22,7 +22,6 @@ function Home() {
   const [isFetching, setIsFetching] = useState(true);
   useEffect(() => {
     setTimeout(function () {
-      console.log("Delayed for 5 second.");
       setIsFetching(false);
     }, 2000);
   }, []);
@@ -48,7 +47,7 @@ function Home() {
       <Free />
       <Catory data={data} />
       <More />
-      <Catalog />
+      <Catalog data={data} />
       <Popular />
       <Typiccal />
     </>

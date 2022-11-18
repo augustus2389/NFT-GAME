@@ -16,6 +16,7 @@ import OrderHistory from "./pages/Private/OrderHistory/OrderHistory";
 import FAQ from "./pages/FAQ/FAQ";
 import EditSuccess from "./pages/Private/Profile/EditSuccess/EditSuccess";
 import EditProfile from "./pages/Private/Profile/Profile";
+import Admin from "./components/Admin/Admin";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path="/history" element={<OrderHistory />} />
               <Route path="/profile" element={<EditSuccess />} />
               <Route path="/editprofile" element={<EditProfile />} />
+              <Route path="/admin" element={<Admin />} />
             </Route>
           </Route>
         </Routes>

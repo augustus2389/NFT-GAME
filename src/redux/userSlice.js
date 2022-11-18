@@ -13,6 +13,10 @@ export const editUser = createAsyncThunk("user/editUser", async (data) => {
   const response = await axiosClient.put(`/users/${data.id}`, data);
   return response;
 });
+export const removeUser = createAsyncThunk("user/removeUser", async (id) => {
+  await axiosClient.delete(`/users/${id}`);
+  return id;
+});
 
 const userSlice = createSlice({
   name: "user",
@@ -36,6 +40,10 @@ const userSlice = createSlice({
         (user) => user.id === action.payload.id
       );
       state.users[index] = action.payload;
+    });
+    builder.addCase(removeUser.fulfilled, (state, action) => {
+      let index = state.users.findIndex((cart) => cart.id === action.payload);
+      state.users.splice(index, 1);
     });
   },
 });

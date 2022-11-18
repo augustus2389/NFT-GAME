@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useState } from "react";
 import productApi from "../../../api/productApi";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   padding: 10px 0;
@@ -23,9 +24,22 @@ const divStyle = {
     "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
   padding: "90px 10px",
 };
-
+const ActionWish = styled.div`
+  /* display: none; */
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+`;
 const SuggestImage = styled.img`
   border-radius: 20px 20px 0 0;
+`;
+const MostPopular = styled.div`
+  &:hover {
+    ${SuggestImage} > ${ActionWish} {
+      display: block !important;
+    }
+  }
 `;
 const Container = styled.div`
   max-width: 1024px;
@@ -52,6 +66,7 @@ const Now = styled.p`
   padding: 5px 10px;
   width: 50%;
 `;
+
 export default function Popular() {
   const [popular, setPopular] = useState([]);
   useEffect(() => {
@@ -100,7 +115,12 @@ export default function Popular() {
                 backgroundColor: "transparent",
               }}
             >
-              <SuggestImage src={most.avatar} alt="" />
+              <Link to={`/detail/${decodeURI(most.title)}-${most.id}`}>
+                <MostPopular>
+                  <SuggestImage src={most.avatar} alt="" />
+                </MostPopular>
+              </Link>
+
               <Info>
                 <BaseGame>BASE GAME</BaseGame>
                 <TitleGame>{most.title}</TitleGame>

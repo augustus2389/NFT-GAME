@@ -82,7 +82,6 @@ const DropDownListContainer = styled.ul`
 function HeaderAccount() {
   const { account, isLogin } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.user);
-  console.log(users);
 
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -138,6 +137,9 @@ function HeaderAccount() {
                   </ListItem>
                   <ListItem>
                     <Link to={"/history"}>History</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to={"/admin"}>Admin</Link>
                   </ListItem>
                   <ListItem onClick={handleLogOut}>Sign Out</ListItem>
                 </DropDownList>

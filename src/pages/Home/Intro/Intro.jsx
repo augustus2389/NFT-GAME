@@ -1,7 +1,8 @@
 /* eslint-disable array-callback-return */
-import React from "react";
+import React, { useState } from "react";
 import "./intro.scss";
 import wish from "../../../asset/image/wishlist.svg";
+import wishlistTick from "../../../asset/image/wishlistTick.svg";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -11,6 +12,9 @@ import styled from "styled-components";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { addToWish, removeWish } from "../../../redux/wishlistSlice";
 
 const Container = styled.div`
   max-width: 1024px;
@@ -75,6 +79,7 @@ const ButtonBuy = styled.button`
 const Wish = styled.div`
   display: flex;
   align-items: center;
+  z-index: 10;
 `;
 const IconWish = styled.img`
   width: 25px !important;
@@ -85,12 +90,54 @@ const IntroImage = styled.img`
 `;
 
 function Intro({ data }) {
+  const [isOpen, setIsOpen] = useState(true);
+  const { wishs } = useSelector((state) => state.wish);
+  const { isLogin } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const divStyle = {
     marginBottom: "100px",
     marginTop: "35px",
     aspectRatio: "12/6",
   };
-
+  const handleActionWishList = (id) => {
+    setIsOpen(!isOpen);
+    const wishListItem = data.find((wish) => wish.id === id);
+    const IsExist = wishs.some((wish) => wish.id === id);
+    console.log(IsExist);
+    if (IsExist) {
+      toast.warn("This game removed the game from to Wishlist!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      dispatch(removeWish(id));
+      return;
+    }
+    toast.success("This game has been added Wishlist", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+    const newItem = {
+      id: wishListItem.id,
+      title: wishListItem.title,
+      price: wishListItem.price,
+      avatar: wishListItem.avatar,
+      date: wishListItem.date,
+    };
+    dispatch(addToWish(newItem));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
   return (
     <section id="intro">
       <div className="container">
@@ -126,11 +173,39 @@ function Intro({ data }) {
                             <div>
                               <p>Starting at 20 $</p>
                               <ButtonDiv>
-                                <ButtonBuy>BUY NOW</ButtonBuy>
-                                <Wish>
-                                  <IconWish src={wish} alt="" />
-                                  <ButtonWish>Add to wishlist</ButtonWish>
-                                </Wish>
+                                <ButtonBuy
+                                  to={`/detail/${decodeURI(dat.title)}-${
+                                    dat.id
+                                  }`}
+                                >
+                                  BUY NOW
+                                </ButtonBuy>
+                                {isLogin && (
+                                  <Wish
+                                    onClick={() => handleActionWishList(dat.id)}
+                                  >
+                                    {isOpen ? (
+                                      <>
+                                        <IconWish src={wish} alt="" />
+                                        <ButtonWish>Add to wishlist</ButtonWish>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <IconWish src={wishlistTick} alt="" />
+                                        <ButtonWish>Add to wishlist</ButtonWish>
+                                      </>
+                                    )}
+                                  </Wish>
+                                )}
+                                {!isLogin && (
+                                  <Wish
+                                    onClick={() => handleActionWishList(dat.id)}
+                                  >
+                                    <Link to={"/signin"}>
+                                      <IconWish src={wish} alt="" />
+                                    </Link>
+                                  </Wish>
+                                )}
                               </ButtonDiv>
                             </div>
                           </Text>

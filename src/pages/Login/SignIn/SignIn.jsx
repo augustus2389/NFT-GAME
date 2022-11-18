@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axiosClient from "../../../api/axiosClient";
@@ -67,10 +67,16 @@ const Title = styled.p`
 `;
 function SignIn() {
   const navigate = useNavigate();
+  const isLogin = useSelector((state) => state.auth.isLogin);
   const { register, handleSubmit } = useForm();
   const [checkEmail, setCheckEmail] = useState(true);
   const [checkPassWord, setCheckPassWord] = useState(true);
+
   const dispatch = useDispatch();
+  if (isLogin) {
+    navigate("/");
+    return;
+  }
   const onSubmit = async (data) => {
     console.log(data);
     const emailExist = await axiosClient(`/users?Email=${data.Email}`);
@@ -79,7 +85,6 @@ function SignIn() {
       const res = await axiosClient(
         `/users?Email=${data.Email}&Password=${data.Password}`
       );
-      console.log(res);
 
       if (!res.length) {
         setCheckPassWord(false);

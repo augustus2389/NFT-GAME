@@ -2,13 +2,15 @@ import wishlist from "../../../../asset/image/wishlist.svg";
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import {
   fetchProduct,
   fetchProductBySearch,
-  setFilter,
+  setProductListNew,
 } from "../../../../redux/productSlice";
+import productApi from "../../../../api/productApi";
+import { useState } from "react";
 
 export const ImageCard = styled.img`
   border-radius: 20px 20px 0 0;
@@ -110,11 +112,23 @@ export const ListSearch = styled.div`
 function ListProduct({ input }) {
   const dispatch = useDispatch();
   const { products, filterList } = useSelector((state) => state.product);
+  const [productList, setProductList] = useState([]);
+
+  const [searchParams] = useSearchParams();
+  const link = searchParams.get("tag");
 
   useEffect(() => {
     dispatch(fetchProductBySearch(input));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, filterList]);
+  console.log(filterList);
+  useEffect(() => {
+    productApi.getProducts(link).then((data) => {
+      setProductList(data);
+      dispatch(setProductListNew(data));
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="list">
       <div className="container">

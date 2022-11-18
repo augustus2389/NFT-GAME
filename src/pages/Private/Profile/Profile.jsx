@@ -74,7 +74,6 @@ function EditProfile() {
   });
   const onSubmit = async (data) => {
     const resImageUrl = await upLoadImage(avatar);
-    console.log(resImageUrl);
     let imageUrl = [
       `//images.weserv.nl?url=http://103.237.147.34:8888${resImageUrl}`,
     ];
