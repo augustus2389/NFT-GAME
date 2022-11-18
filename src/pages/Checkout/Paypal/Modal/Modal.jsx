@@ -1,16 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./modal.scss";
 import userCheckOut from "../../../../asset/image/userCheckOut.svg";
 import Card from "../../../../asset/image/card.svg";
 import styled from "styled-components";
-import useLocalStorage from "../../../../hooks/useLocalStorage";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCart } from "../../../../redux/cartSlice";
-import { fetchAuth } from "../../../../redux/authSlice";
 import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
 import images from "react-payment-inputs/images";
+import { addOrder, removeCart } from "../../../../redux/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const CardVisit = styled.div`
   background-color: #f2f2f2;
@@ -43,17 +42,7 @@ const ListItem = styled.li`
   font-size: 16px;
   margin-bottom: 0.8em;
 `;
-const Label = styled.label`
-  font-size: 14px;
-  color: gray;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  &:hover {
-    color: white;
-  }
-`;
+
 const Text = styled.p`
   font-size: 12px;
   color: gray;
@@ -110,23 +99,20 @@ const ERROR_MESSAGES = {
 };
 
 function MyVerticallyCenteredModal(props) {
+  const [cardNumber, setCardNumber] = useState();
+  const [expiryDate, setExpiry] = useState();
+  const [cvc, setCVC] = useState();
+  const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { account } = useSelector((state) => state.auth);
-  const [order, setOrder] = useLocalStorage("oders", "");
-
-  useEffect(() => {
-    dispatch(fetchAuth());
-  }, []);
   const [isOpen, setIsOpen] = useState(false);
+  const isDisable = true;
   const toggling = () => {
     setIsOpen(!isOpen);
   };
 
   const { carts } = useSelector((state) => state.cart);
-
-  useEffect(() => {
-    dispatch(fetchCart);
-  }, []);
   const subTotal = useMemo(() => {
     return carts.reduce((total, product) => {
       if (isNaN(product.price)) {
@@ -136,11 +122,7 @@ function MyVerticallyCenteredModal(props) {
     }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [carts]);
-  const [cardNumber, setCardNumber] = useState();
-  const [expiryDate, setExpiry] = useState();
-  const [cvc, setCVC] = useState();
-  const [checked, setChecked] = useState(true);
-  const isDisable = true;
+
   const {
     wrapperProps,
     getCardImageProps,
@@ -151,24 +133,26 @@ function MyVerticallyCenteredModal(props) {
     errorMessages: ERROR_MESSAGES,
   });
 
-  const handleSubmit = (data) => {
+  const handleSubmit = () => {
     if (account.id) {
       const newOrder = {
-        id: account.lenght + 1,
+        id: account.id + 1,
         userId: account.id,
-        items: data,
-        createAt: new Date(),
+        items: carts,
+        createAt: Date(),
         payMethod: "Card Credit",
+        price: subTotal + 13,
       };
-      setOrder(newOrder);
+      dispatch(addOrder(newOrder));
+      navigate("/");
+      carts.forEach((cart) => dispatch(removeCart(cart.id)));
     }
     if (wrapperProps.error) {
-      setChecked(!isDisable);
+      setIsOpen(!isOpen);
     } else {
       setChecked(isDisable);
     }
   };
-  console.log(order);
   const handleChange = (e) => {
     const target = e.target;
     if (target.name === "cardNumber") {
@@ -289,7 +273,7 @@ function MyVerticallyCenteredModal(props) {
                   <TotalFont>13 $</TotalFont>
                 </CreditCard>
               </Credit>
-              <button disabled className="button-22" onClick={handleSubmit}>
+              <button className="button-22" onClick={handleSubmit}>
                 make payment
               </button>
             </OderrSummary>
@@ -301,7 +285,6 @@ function MyVerticallyCenteredModal(props) {
 }
 
 function ModalComponent({ cart }) {
-  const { account } = useSelector((state) => state.auth);
   const [modalShow, setModalShow] = useState(false);
 
   return (

@@ -43,7 +43,14 @@ hr {
 }
 #profile {
   background: #f8f8f8;
-  font-family: BrutalTypeMedium;
+  height: 100vh;
+}
+#history {
+  background: #f8f8f8;
+  height: 100vh;
+}
+#footer {
+  height: 60px;
 }
 @keyframes App-logo-spin {
   from {

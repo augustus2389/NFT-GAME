@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import window from "../../asset/image/window.svg";
 import wishlist from "../../asset/image/wishlist.svg";
-import { fetchCart, removeCart } from "../../redux/cartSlice";
+import { clearCart, fetchCart, removeCart } from "../../redux/cartSlice";
 import empty from "../../asset/image/empty.svg";
 import { Link } from "react-router-dom";
 import ModalComponent from "./Paypal/Modal/Modal";
@@ -135,7 +135,6 @@ function CheckOut() {
   };
   const subTotal = useMemo(() => {
     return carts.reduce((total, product) => {
-      console.log(product.price);
       if (isNaN(product.price)) {
         return total;
       }

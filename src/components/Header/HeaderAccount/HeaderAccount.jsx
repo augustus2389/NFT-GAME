@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { fetchAuth, setLogout } from "../../../redux/authSlice";
+import { setAccountSuccess, setLogout } from "../../../redux/authSlice";
 import user from "../../../asset/image/user.svg";
 import online from "../../../asset/image/online.svg";
+import { fetchUser } from "../../../redux/userSlice";
 
 const User = styled.div`
   display: flex;
@@ -58,15 +59,15 @@ const SuccesLogin = styled.div`
 `;
 const AvatarUser = styled.img`
   position: relative;
-  width: 30px;
+  width: 40px;
   border-radius: 50%;
   height: 40px;
 `;
 const OnlineImage = styled.img`
   position: absolute;
   width: 20px;
-  top: 40%;
-  left: 30%;
+  top: 50%;
+  left: 25%;
 `;
 const DropDownListContainer = styled.ul`
   padding: 0;
@@ -80,19 +81,27 @@ const DropDownListContainer = styled.ul`
 `;
 function HeaderAccount() {
   const { account, isLogin } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const { users } = useSelector((state) => state.user);
+  console.log(users);
 
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => {
     setIsOpen(!isOpen);
   };
-  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
+
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("auth"));
     if (items) {
-      setItems(items);
+      dispatch(setAccountSuccess(items));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const handleLogOut = () => {
     localStorage.removeItem("auth");
     dispatch(setLogout());
@@ -112,10 +121,7 @@ function HeaderAccount() {
             <DropDownHeader onClick={toggling}>
               <SuccesLogin>
                 <div>
-                  <AvatarUser
-                    src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/277739598_1805644129628896_1458345998357600728_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=5o3SFs5gI_oAX8qOelR&tn=eJtxndjvgf3N5-5A&_nc_ht=scontent.fhan17-1.fna&oh=00_AfAg8TozRTlcu2gT1Hg1Maejy3rIjrvKmOuHNJnydhRMoA&oe=6377D2C0"
-                    alt=""
-                  />
+                  <AvatarUser src={account.avatar} alt="" />
                   <OnlineImage src={online} alt="" />
                 </div>
                 <Text>{account.LastName}</Text>

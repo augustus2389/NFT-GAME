@@ -72,7 +72,6 @@ const PriceFilter = styled.div`
 function Filter() {
   const [arrow, setArrows] = useState(Arrow);
   const [isOpen, setIsOpen] = useState(true);
-  const [selectedOption, setSelectedOption] = useState(null);
   const toggling = () => {
     setIsOpen(!isOpen);
   };
@@ -86,26 +85,7 @@ function Filter() {
     }
     setChecked(updatedList);
   };
-  const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
-    setIsOpen(false);
-  };
-  // const inputRef = useRef();
-  // const [price, setPrice] = useState(40);
-  // const handleInput = (e) => {
-  //   setPrice(e.target.value);
-  // };
-  // useEffect(() => {
-  //   if (inputRef.current.value) {
-  //     return;
-  //   }
-  //   setPrice(inputRef.current.value);
-  // }, [inputRef.current]);
-  // const hotels = [
-  //   { name: "A", price: 40 },
-  //   { name: "B", price: 50 },
-  //   { name: "C", price: 60 },
-  // ];
+
   const [value, setValue] = React.useState([2, 10]);
 
   // Changing State when volume increases/decreases
@@ -124,7 +104,6 @@ function Filter() {
       <DropDownFilter>
         <DropDownContainer>
           <DropDownHeader onClick={toggling}>
-            {selectedOption || "Listing type"}
             {isOpen ? <FilterIcon src={arrow} /> : <FilterIcon src={ArrowUp} />}
           </DropDownHeader>
           {isOpen && (
@@ -160,28 +139,6 @@ function Filter() {
           )}
         </DropDownContainer>
       </DropDownFilter>
-      {/* <div className="App">
-        <input
-          type="range"
-          ref={inputRef}
-          value={price}
-          onInput={handleInput}
-        />
-        <FluctuatePrice>Price: {price}</FluctuatePrice>
-        <div>
-          {hotels
-            .filter((hotel) => {
-              return hotel.price > parseInt(price, 10);
-            })
-            .map((hotel) => {
-              return (
-                <p key={hotel.name}>
-                  {hotel.name} | {hotel.price} &euro;{" "}
-                </p>
-              );
-            })}
-        </div>
-      </div> */}
       <PriceFilter>
         <Typography id="range-slider" gutterBottom>
           Select Price Range:

@@ -9,6 +9,8 @@ import More from "./More/More";
 import Next from "./Next/Next";
 import Popular from "./Popular/Popular";
 import Typiccal from "./Typical/Typiccal";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -17,6 +19,28 @@ function Home() {
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
+  const [isFetching, setIsFetching] = useState(true);
+  useEffect(() => {
+    setTimeout(function () {
+      console.log("Delayed for 5 second.");
+      setIsFetching(false);
+    }, 2000);
+  }, []);
+
+  if (isFetching) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          height: "100vh",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
   return (
     <>
       <Intro data={data} />

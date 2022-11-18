@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -73,12 +72,15 @@ function SignIn() {
   const [checkPassWord, setCheckPassWord] = useState(true);
   const dispatch = useDispatch();
   const onSubmit = async (data) => {
-    const emailExist = await axiosClient(`/users?email=${data.Email}`);
+    console.log(data);
+    const emailExist = await axiosClient(`/users?Email=${data.Email}`);
 
     if (emailExist.length) {
       const res = await axiosClient(
-        `/users?email=${data.Email}&password=${data.Password}`
+        `/users?Email=${data.Email}&Password=${data.Password}`
       );
+      console.log(res);
+
       if (!res.length) {
         setCheckPassWord(false);
         return;
@@ -123,10 +125,7 @@ function SignIn() {
               <p className="text-danger">Password incorrect</p>
             )}
           </InputForm>
-          <label htmlFor="">
-            <input type="checkbox" />
-            Remember me
-          </label>
+
           <Forgot>Forgot Your Password</Forgot>
           <LoginButton>Login In Now</LoginButton>
         </form>

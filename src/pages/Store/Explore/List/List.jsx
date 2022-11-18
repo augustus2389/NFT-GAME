@@ -115,20 +115,6 @@ function ListProduct({ input }) {
     dispatch(fetchProductBySearch(input));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, filterList]);
-  // const filteredData = products.filter((el) => {
-  //   //if no input the return the original
-  //   if (input === "") {
-  //     return el;
-  //   }
-  //   //return the item which contains the user input
-  //   else {
-  //     return el.title.toLowerCase().includes(input);
-  //   }
-  // });
-
-  // useEffect(() => {
-  //   dispatch(setFilter(filteredData));
-  // }, []);
   return (
     <div className="list">
       <div className="container">

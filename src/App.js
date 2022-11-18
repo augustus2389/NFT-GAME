@@ -13,10 +13,9 @@ import SignIn from "./pages/Login/SignIn/SignIn";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import PrivateRoutes from "./pages/Private/PrivateRoutes/PrivateRoutes";
 import OrderHistory from "./pages/Private/OrderHistory/OrderHistory";
-import SecurityAccount from "./pages/Private/SecurityAccount/SecurityAccount";
-import Profile from "./pages/Private/Profile/Profile";
-import AdminGame from "./components/Admin/Admin";
 import FAQ from "./pages/FAQ/FAQ";
+import EditSuccess from "./pages/Private/Profile/EditSuccess/EditSuccess";
+import EditProfile from "./pages/Private/Profile/Profile";
 
 function App() {
   return (
@@ -36,13 +35,12 @@ function App() {
             <Route path="/FAQ" element={<FAQ />} />
             <Route element={<PrivateRoutes />}>
               <Route path="/history" element={<OrderHistory />} />
-              <Route path="/security" element={<SecurityAccount />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile" element={<EditSuccess />} />
+              <Route path="/editprofile" element={<EditProfile />} />
             </Route>
           </Route>
         </Routes>
       </div>
-      {/* <AdminGame /> */}
     </>
   );
 }

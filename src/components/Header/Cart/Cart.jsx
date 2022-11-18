@@ -32,12 +32,10 @@ const CountCart = styled.p`
   text-align: center;
 `;
 function Cart() {
-  const [cart, setCart] = useState([]);
   const { account, isLogin } = useSelector((state) => state.auth);
+  const { carts } = useSelector((state) => state.cart);
   console.log(account);
-  useEffect(() => {
-    cartApi.getCart().then((data) => setCart(data));
-  }, []);
+
   return (
     <>
       {isLogin && (
@@ -55,7 +53,7 @@ function Cart() {
             >
               Cart
             </TextCart>
-            <CountCart>{cart.length}</CountCart>
+            <CountCart>{carts.length}</CountCart>
           </div>
         </ActionCart>
       )}
