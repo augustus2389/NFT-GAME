@@ -66,7 +66,7 @@ function Free() {
             <ButtonMore>View More</ButtonMore>
           </Present>
           <div className="row">
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6">
               <FreeItem>
                 <FreeImage>
                   <Image
@@ -81,7 +81,7 @@ function Free() {
                 </FreeInfo>
               </FreeItem>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6">
               <FreeItem>
                 <FreeImage>
                   <Image
@@ -96,7 +96,7 @@ function Free() {
                 </FreeInfo>
               </FreeItem>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6">
               <FreeItem>
                 <FreeImage>
                   <Image
@@ -111,7 +111,7 @@ function Free() {
                 </FreeInfo>
               </FreeItem>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6">
               <FreeItem>
                 <FreeImage>
                   <Image

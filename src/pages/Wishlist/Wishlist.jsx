@@ -118,6 +118,7 @@ function Wishlist() {
   const dispatch = useDispatch();
   const { carts } = useSelector((state) => state.cart);
   const { wishs } = useSelector((state) => state.wish);
+  console.log(wishs);
   useEffect(() => {
     dispatch(fetchWish());
     dispatch(fetchCart());
@@ -127,7 +128,8 @@ function Wishlist() {
     dispatch(removeWish(id));
   };
   const handleAddToCart = (id) => {
-    const IsExist = carts.some((wish) => wish.id === id);
+    const IsExist = carts.find((wish) => wish.id === id);
+    console.log(IsExist);
     if (IsExist) {
       toast.warn("This game has already been added to Wishlist!", {
         position: "bottom-right",
@@ -152,14 +154,14 @@ function Wishlist() {
       theme: "dark",
     });
     const newItem = {
-      id: wishs.id,
-      title: wishs.title,
-      price: wishs.price,
-      avatar: wishs.avatar,
-      date: wishs.date,
+      title: carts.title,
+      price: carts.price,
+      avatar: carts.avatar,
+      date: carts.date,
     };
     dispatch(addToCart(newItem));
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log(newItem);
   };
   return (
     <section id="checkout">

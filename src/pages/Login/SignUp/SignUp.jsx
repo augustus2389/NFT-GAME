@@ -71,7 +71,12 @@ const Name = styled.div`
 function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState(true);
-  const { register, handleSubmit, control } = useForm({
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       address: {},
     },
@@ -80,7 +85,7 @@ function SignUp() {
   const onSubmit = async (data) => {
     const emailExist = await axiosClient(`/users?Email=${data.Email}`);
 
-    if (!emailExist.data.length) {
+    if (!emailExist.data) {
       axios.post("https://json-server-augustus-game.herokuapp.com/users", data);
       navigate("/signin");
     } else {
@@ -115,7 +120,9 @@ function SignUp() {
                 render={({ field }) => (
                   <select className="form-select" {...field}>
                     {option.map((province, index) => (
-                      <option key={index}>{province.name}</option>
+                      <option className="bgr-dark" key={index}>
+                        {province.name}
+                      </option>
                     ))}
                   </select>
                 )}
@@ -127,8 +134,9 @@ function SignUp() {
               <input
                 type="text"
                 required
-                {...register("LastName", { required: true, maxLength: 80 })}
+                {...register("LastName", { minLength: 3, maxLength: 80 })}
               />
+              {errors.LastName && <p>{errors.LastName.message}</p>}
               <div className="underline"></div>
               <label>Last name</label>
             </div>
@@ -136,8 +144,9 @@ function SignUp() {
               <input
                 type="text"
                 required
-                {...register("FirstName", { required: true, maxLength: 80 })}
+                {...register("FirstName", { minLength: 3, maxLength: 80 })}
               />
+              {errors.FirstName && <p>{errors.FirstName.message}</p>}
               <div className="underline"></div>
               <label>First name</label>
             </div>
@@ -151,12 +160,16 @@ function SignUp() {
                 pattern: /^\S+@\S+$/i,
               })}
             />
+            {errors.Email && <p>{errors.Email.message}</p>}
+
             <div className="underline"></div>
             {!email && <p className="text-danger ">Emaill already exist</p>}
             <label>Email</label>
           </div>
           <div className="input-form">
             <input type="password" required {...register("Password")} />
+            {errors.Email && <p>{errors.Email.message}</p>}
+
             <div className="underline"></div>
             <label>Password</label>
           </div>

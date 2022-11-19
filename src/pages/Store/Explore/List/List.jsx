@@ -133,7 +133,7 @@ function ListProduct({ input }) {
       <div className="container">
         <div className="row">
           {products.map((product) => (
-            <div key={product.id} className="col-lg-3">
+            <div key={product.id} className="col-lg-3 col-md-4">
               <Link to={`/detail/${decodeURI(product.title)}-${product.id}`}>
                 <Card>
                   <Image className="position-relative">

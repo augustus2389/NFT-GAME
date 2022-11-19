@@ -20,6 +20,9 @@ const Download = styled(Link)`
   color: white;
   font-size: 12px;
   padding: 20px 40px;
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);

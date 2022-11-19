@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../../redux/userSlice";
 import styled from "styled-components";
 import AddUser from "./AddUser/AddUser";
-import EditUser from "./EditUser/EditUser";
-import { Link } from "react-router-dom";
 
 const ActionButton = styled.div`
   display: flex;
@@ -23,7 +21,6 @@ const RemoveButton = styled.button`
   border-radius: 10px;
   border: none;
   height: 80%;
-  margin-top: 20px;
   color: white;
   font-weight: 700;
 `;
@@ -63,9 +60,6 @@ export default function UserState() {
       renderCell: (params) => {
         return (
           <ActionButton>
-            <ViewButton>
-              <Link to={`/${params.id}`}>Edit</Link>
-            </ViewButton>
             <RemoveButton onClick={() => handleRemoveUser(params.id)}>
               Delete
             </RemoveButton>

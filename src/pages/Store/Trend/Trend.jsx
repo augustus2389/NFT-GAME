@@ -33,6 +33,11 @@ const SuggestImage = styled.img`
 const TitleGame = styled.span`
   color: #f5f5f5;
   font-size: 14px;
+  width: 100px;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export default function Trend() {

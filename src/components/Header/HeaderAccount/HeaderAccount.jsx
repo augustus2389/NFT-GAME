@@ -120,7 +120,10 @@ function HeaderAccount() {
             <DropDownHeader onClick={toggling}>
               <SuccesLogin>
                 <div>
-                  <AvatarUser src={account.avatar} alt="" />
+                  <AvatarUser
+                    src={!account?.avatar ? user : account.avatar}
+                    alt=""
+                  />
                   <OnlineImage src={online} alt="" />
                 </div>
                 <Text>{account.LastName}</Text>

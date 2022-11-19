@@ -159,7 +159,7 @@ function InfoGame({ detail, checkId }) {
     dispatch(fetchWish());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const handleAddToCart = () => {
+  const handleAddToCart = (id) => {
     const IsExist = carts.some((cart) => cart.id === +checkId);
     if (IsExist) {
       toast.warn("This game has already been added to cart!", {
