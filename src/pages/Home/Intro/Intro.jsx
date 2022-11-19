@@ -76,68 +76,17 @@ const ButtonBuy = styled.button`
   border-radius: 4px;
   margin-right: 10px;
 `;
-const Wish = styled.div`
-  display: flex;
-  align-items: center;
-  z-index: 10;
-`;
-const IconWish = styled.img`
-  width: 25px !important;
-  height: auto !important;
-`;
 const IntroImage = styled.img`
   border-radius: 20px;
 `;
 
 function Intro({ data }) {
-  const [isOpen, setIsOpen] = useState(true);
-  const { wishs } = useSelector((state) => state.wish);
-  const { isLogin } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
   const divStyle = {
     marginBottom: "100px",
     marginTop: "35px",
     aspectRatio: "12/6",
   };
-  const handleActionWishList = (id) => {
-    setIsOpen(!isOpen);
-    const wishListItem = data.find((wish) => wish.id === id);
-    const IsExist = wishs.some((wish) => wish.id === id);
-    console.log(IsExist);
-    if (IsExist) {
-      toast.warn("This game removed the game from to Wishlist!", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      dispatch(removeWish(id));
-      return;
-    }
-    toast.success("This game has been added Wishlist", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-    const newItem = {
-      id: wishListItem.id,
-      title: wishListItem.title,
-      price: wishListItem.price,
-      avatar: wishListItem.avatar,
-      date: wishListItem.date,
-    };
-    dispatch(addToWish(newItem));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  };
+
   return (
     <section id="intro">
       <div className="container">
@@ -180,32 +129,6 @@ function Intro({ data }) {
                                 >
                                   BUY NOW
                                 </ButtonBuy>
-                                {/* {isLogin && (
-                                  <Wish
-                                    onClick={() => handleActionWishList(dat.id)}
-                                  >
-                                    {isOpen ? (
-                                      <>
-                                        <IconWish src={wish} alt="" />
-                                        <ButtonWish>Add to wishlist</ButtonWish>
-                                      </>
-                                    ) : (
-                                      <>
-                                        <IconWish src={wishlistTick} alt="" />
-                                        <ButtonWish>Add to wishlist</ButtonWish>
-                                      </>
-                                    )}
-                                  </Wish>
-                                )}
-                                {!isLogin && (
-                                  <Wish
-                                    onClick={() => handleActionWishList(dat.id)}
-                                  >
-                                    <Link to={"/signin"}>
-                                      <IconWish src={wish} alt="" />
-                                    </Link>
-                                  </Wish>
-                                )} */}
                               </ButtonDiv>
                             </div>
                           </Text>

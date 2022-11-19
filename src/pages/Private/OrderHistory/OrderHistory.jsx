@@ -39,8 +39,8 @@ function OrderHistory() {
                 <td>{order.createAt}</td>
                 <td>
                   {order.paymentMethod === "transfer"
-                    ? "Chuyển khoản"
-                    : "Đóng tiền trực tiếp"}
+                    ? "Paypal"
+                    : "Card Credits"}
                 </td>
                 <td>{order.price}$</td>
               </tr>

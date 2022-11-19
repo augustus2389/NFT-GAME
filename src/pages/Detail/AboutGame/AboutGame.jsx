@@ -14,32 +14,7 @@ const Title = styled.h2`
 const Description = styled.p`
   color: black;
 `;
-const Language = styled.table`
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  margin: 40px 0;
-`;
-const List = styled.td`
-  color: #8f98a0;
-  font-weight: 700;
-  list-style-type: none;
-  padding: 5px 15px;
-  border-bottom: 1px solid #8f98a0;
-`;
-const LisTh = styled.th`
-  border-bottom: 1px solid #8f98a0;
-  text-align: left;
-  white-space: nowrap;
-  padding: 8px 17px 0 16px;
-`;
 
-const Success = styled.img`
-  width: 20px;
-`;
-const CheckCol = styled.th`
-  color: #1199fa;
-  padding: 10px 0 0 20px;
-`;
 const Tag = styled.span`
   font-weight: 700;
   padding: 10px 0;

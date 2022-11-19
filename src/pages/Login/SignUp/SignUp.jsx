@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axiosClient from "../../../api/axiosClient";
 import logo from "../../../asset/image/logo.png";
 import "./style.scss";
 
@@ -77,14 +78,10 @@ function SignUp() {
   });
 
   const onSubmit = async (data) => {
-    const emailExist = await axios.get(
-      `http://localhost:3000/users?Email=${data.Email}`
-    );
+    const emailExist = await axiosClient(`/users?Email=${data.Email}`);
 
     if (!emailExist.data.length) {
-      axios
-        .post("http://localhost:3000/users", data)
-        .then((data) => console.log(data.data));
+      axios.post("https://json-server-augustus-game.herokuapp.com/users", data);
       navigate("/signin");
     } else {
       setEmail(false);
