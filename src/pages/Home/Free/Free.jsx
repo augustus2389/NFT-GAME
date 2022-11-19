@@ -73,11 +73,11 @@ function Free() {
                     src="https://cdn1.epicgames.com/spt-assets/5a72e62648d747189d2f5e7abb47444c/download-filament-offer-mk58q.jpg?h=854&resize=1&w=640"
                     alt=""
                   />
-                  <FreeNowText>Free now</FreeNowText>
+                  <FreeNowText>Release Soon</FreeNowText>
                 </FreeImage>
                 <FreeInfo>
                   <p>Filament</p>
-                  <TimeFree>Free Now - Nov 10 at 11:00pm</TimeFree>
+                  <TimeFree>Free Now - Dec at 11:00pm</TimeFree>
                 </FreeInfo>
               </FreeItem>
             </div>
@@ -88,11 +88,11 @@ function Free() {
                     src="https://cdn1.epicgames.com/3542a1df211e492bb2abecb7c734f7f9/offer/EGS_RisingStorm2Vietnam_AntimatterGamesTripwireInteractive_S4-1200x1600-5e3b2f8107e17cc008237e52761d67e5.jpg?h=854&resize=1&w=640"
                     alt=""
                   />
-                  <FreeNowText>Free now</FreeNowText>
+                  <FreeNowText>Release Soon</FreeNowText>
                 </FreeImage>
                 <FreeInfo>
                   <p>Rising Storm 2: Vietnam</p>
-                  <TimeFree>Free Now - Nov 10 at 11:00pm</TimeFree>
+                  <TimeFree>Release Soon - Dec 10 at 11:00pm</TimeFree>
                 </FreeInfo>
               </FreeItem>
             </div>
@@ -103,7 +103,7 @@ function Free() {
                     src="https://cdn1.epicgames.com/spt-assets/c816cec291404812a9eacc03387dcbca/download-alba--a-wildlife-adventure-offer-zbvu8.jpg?h=854&resize=1&w=640"
                     alt="Alba - A Wildlife Adventure"
                   />
-                  <FreeNowText>Free now</FreeNowText>
+                  <FreeNowText>Release Soon</FreeNowText>
                 </FreeImage>
                 <FreeInfo>
                   <p>Alba - A Wildlife Adventure</p>
@@ -118,7 +118,7 @@ function Free() {
                     src="https://cdn1.epicgames.com/undefined/offer/EGS_MimimiGames_ShadowTacticsBladesoftheShogun_S4-510x680-f62935abb1b2bd42b2f19f9385da7fe7.jpg?h=854&resize=1&w=640"
                     alt="Shadow Tactics: Blades of the Shogun"
                   />
-                  <FreeNowText>Free now</FreeNowText>
+                  <FreeNowText>Release Soon</FreeNowText>
                 </FreeImage>
                 <FreeInfo>
                   <p>Blades of the Shogun</p>

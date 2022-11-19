@@ -189,7 +189,6 @@ function InfoGame({ detail, checkId }) {
   };
   const handleActionWishList = (id) => {
     const IsExist = wishs.some((wish) => wish.id === id);
-    console.log(IsExist);
     if (IsExist) {
       toast.warn("This game has already been added to Wishlist!", {
         position: "bottom-right",

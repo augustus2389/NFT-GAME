@@ -73,7 +73,6 @@ function EditSuccess() {
   const [isFetching, setIsFetching] = useState(true);
   useEffect(() => {
     setTimeout(function () {
-      console.log("Delayed for 5 second.");
       setIsFetching(false);
     }, 3000);
   }, []);

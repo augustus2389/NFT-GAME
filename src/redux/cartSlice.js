@@ -65,9 +65,6 @@ const cartSlice = createSlice({
     builder.addCase(addOrder.fulfilled, (state, action) => {
       state.orders.push(action.payload);
     });
-    builder.addCase(clearCart.fulfilled, (state, action) => {
-      console.log(action);
-    });
   },
 });
 export const { setOrderSuccess } = cartSlice.actions;

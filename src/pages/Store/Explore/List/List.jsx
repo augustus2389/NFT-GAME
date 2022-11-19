@@ -121,7 +121,6 @@ function ListProduct({ input }) {
     dispatch(fetchProductBySearch(input));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, filterList]);
-  console.log(filterList);
   useEffect(() => {
     productApi.getProducts(link).then((data) => {
       setProductList(data);

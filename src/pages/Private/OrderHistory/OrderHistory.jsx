@@ -10,7 +10,6 @@ function OrderHistory() {
   const { orders } = useSelector((state) => state.cart);
   const { account } = useSelector((state) => state.auth);
   const userOrder = orders.filter((order) => order.userId === account.id);
-  console.log(userOrder);
   return (
     <section id="history" className="py-5">
       <div className="container">

@@ -58,7 +58,6 @@ const productSlice = createSlice({
         // const filter = []
         // filter = state.products.filter(item=> item.title = )
       });
-      console.log(productFilter);
       state.products = productFilter;
     });
   },

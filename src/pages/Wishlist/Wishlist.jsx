@@ -159,7 +159,6 @@ function Wishlist() {
       date: wishs.date,
     };
     dispatch(addToCart(newItem));
-    console.log(newItem);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
   return (

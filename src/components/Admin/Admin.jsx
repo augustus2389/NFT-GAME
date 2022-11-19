@@ -8,7 +8,7 @@ function Admin() {
   return (
     <div className="container-fluid" id="admin">
       <div className="row">
-        <div className="col-md-2 bg-dark min-height-100vh">
+        <div className="col-md-2  min-height-100vh">
           <MenuAdmin />
         </div>
         <div className="col-md-10">

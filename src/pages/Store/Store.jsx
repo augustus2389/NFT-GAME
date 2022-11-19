@@ -10,8 +10,6 @@ const TopTrendTitle = styled.h2`
 `;
 
 function Store() {
-  // const position = useScrollPosition();
-  // console.log(position);
   return (
     <section id="store">
       <div className="top-trend">

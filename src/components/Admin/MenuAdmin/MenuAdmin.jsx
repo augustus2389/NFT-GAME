@@ -4,27 +4,21 @@ import { NavLink } from "react-router-dom";
 function MenuAdmin() {
   return (
     <>
-      <h2 className="my-3 text-white text-center">Application</h2>
+      <h2 className="my-3  text-center">Application</h2>
       <div className="pt-3">
         <ul className="nav nav-pills flex-column">
           <li className="nav-item">
-            <NavLink to="/" className="nav-link text-white fw-bold" end>
+            <NavLink to="/" className="nav-link  fw-bold" end>
               Dashboard
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink
-              to="/admin/usersList"
-              className="nav-link text-white fw-bold"
-            >
+            <NavLink to="/admin/usersList" className="nav-link  fw-bold">
               User
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink
-              to="/admin/productList"
-              className="nav-link text-white fw-bold"
-            >
+            <NavLink to="/admin/productList" className="nav-link fw-bold">
               Products
             </NavLink>
           </li>

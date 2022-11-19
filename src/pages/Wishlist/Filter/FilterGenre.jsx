@@ -91,7 +91,6 @@ function FilterType() {
   const handleChange = (e) => {
     const { value, checked } = e.target;
     dispatch(fetchProductBySearch(value));
-    console.log(`${value}`);
     // const product = await axios.get(
     //   `https://json-server-augustus-game.herokuapp.com/products?q=${value}`
     // );

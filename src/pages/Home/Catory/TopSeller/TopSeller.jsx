@@ -41,7 +41,6 @@ function TopSellerGame() {
   const handleActionWishList = (id) => {
     setIsOpen(!isOpen);
     const wishListItem = data.find((wish) => wish.id === id);
-    console.log(wishListItem);
     const IsExist = wishs.some((wish) => wish.id === id);
     if (IsExist) {
       toast.warn("This game removed the game from to Wishlist!", {

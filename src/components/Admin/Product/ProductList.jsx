@@ -41,7 +41,6 @@ export default function ProductList() {
   useEffect(() => {
     dispatch(fetchProduct());
   }, []);
-  console.log(products);
   const dispatch = useDispatch();
   const handleRemoveUser = (id) => {
     dispatch(removeUser(id));

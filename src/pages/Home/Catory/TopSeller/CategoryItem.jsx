@@ -25,7 +25,6 @@ import {
 import { Link } from "react-router-dom";
 
 function CategoryItem({ top }) {
-  console.log(top);
   const { wishs } = useSelector((state) => state.wish);
   const [isOpen, setIsOpen] = useState(true);
   const [data, setData] = useState([]);
@@ -43,7 +42,6 @@ function CategoryItem({ top }) {
   const handleActionWishList = (id) => {
     setIsOpen(!isOpen);
     const wishListItem = data.find((wish) => wish.id === id);
-    console.log(wishListItem);
     const IsExist = wishs.some((wish) => wish.id === id);
     if (IsExist) {
       toast.warn("This game removed the game from to Wishlist!", {
