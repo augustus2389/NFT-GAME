@@ -180,7 +180,7 @@ function Intro({ data }) {
                                 >
                                   BUY NOW
                                 </ButtonBuy>
-                                {isLogin && (
+                                {/* {isLogin && (
                                   <Wish
                                     onClick={() => handleActionWishList(dat.id)}
                                   >
@@ -205,7 +205,7 @@ function Intro({ data }) {
                                       <IconWish src={wish} alt="" />
                                     </Link>
                                   </Wish>
-                                )}
+                                )} */}
                               </ButtonDiv>
                             </div>
                           </Text>

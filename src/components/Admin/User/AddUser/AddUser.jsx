@@ -1,13 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
-import upLoadImage from "../../../uploadImage/upload";
-import user from "../../../asset/image/userLogin.svg";
-import { addUser } from "../../../redux/userSlice";
+import upLoadImage from "../../../../uploadImage/upload";
+import user from "../../../../asset/image/userLogin.svg";
+import { addUser } from "../../../../redux/userSlice";
 
 const OderrSummary = styled.div`
   background-color: #f2f2f2;

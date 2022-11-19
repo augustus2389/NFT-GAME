@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import productApi from "../../api/productApi";
 import { isEmpty } from "../../utils";
 import AboutGame from "./AboutGame/AboutGame";
-import AddCommnet from "./Comment/AddComment/AddComment";
-import CommentUser from "./Comment/Comment";
 import InfoGame from "./InfoGame/InfoGame";
 import IntroGame from "./Intro/IntroGame";
 import SuggestGame from "./SuggestGame/SuggestGame";
@@ -35,8 +33,6 @@ function Detail() {
         </div>
         <div className="row">
           <AboutGame detail={detail} />
-          <CommentUser />
-          <AddCommnet />
           <SuggestGame />
         </div>
       </div>

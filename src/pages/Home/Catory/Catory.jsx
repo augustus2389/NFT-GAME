@@ -8,43 +8,43 @@ import wishlist from "../../../asset/image/wishlist.svg";
 import { addToWish, removeWish } from "../../../redux/wishlistSlice";
 import wishlistTick from "../../../asset/image/wishlistTick.svg";
 
-const Container = styled.div`
+export const Container = styled.div`
   max-width: 1024px;
   margin: auto;
 `;
-const TopSeller = styled.div`
+export const TopSeller = styled.div`
   border-right: 1px solid gray;
 `;
-const Seller = styled.div`
+export const Seller = styled.div`
   display: flex;
   gap: 20px;
   margin: 20px 0;
 `;
-const IconWishList = styled.img`
+export const IconWishList = styled.img`
   width: 15px !important;
 `;
-const TagSeller = styled.div`
+export const TagSeller = styled.div`
   width: 60px;
   position: relative;
   border-radius: 4px;
 `;
-const Image = styled.img`
+export const Image = styled.img`
   aspect-ratio: 5/6;
   width: 100%;
   height: auto;
   position: relative;
   border-radius: 4px;
 `;
-const HeaderCatory = styled.div`
+export const HeaderCatory = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-const Heading = styled.h3`
+export const Heading = styled.h3`
   color: white;
   font-size: 18px;
 `;
-const ButtonMore = styled.button`
+export const ButtonMore = styled.button`
   margin: 0 10px;
   background-color: transparent;
   outline: none;
@@ -57,7 +57,7 @@ const ButtonMore = styled.button`
     background-color: gray;
   }
 `;
-const ActionWish = styled.div`
+export const ActionWish = styled.div`
   /* display: none; */
   position: absolute;
   z-index: 10;
@@ -65,7 +65,7 @@ const ActionWish = styled.div`
   right: 5%;
   cursor: pointer;
 `;
-const CatgoryItem = styled.div`
+export const CatgoryItem = styled.div`
   position: relative;
   &:hover {
     ${Seller} > ${TagSeller} > ${ActionWish} {
@@ -73,7 +73,7 @@ const CatgoryItem = styled.div`
     }
   }
 `;
-const LinkPerfect = styled(Link)`
+export const LinkPerfect = styled(Link)`
   width: 100%;
   position: absolute;
   top: 0;
@@ -82,7 +82,7 @@ const LinkPerfect = styled(Link)`
   right: 0;
 `;
 
-const TagInfo = styled.div``;
+export const TagInfo = styled.div``;
 function Catory({ data }) {
   const { wishs } = useSelector((state) => state.wish);
   const dispatch = useDispatch();
@@ -107,8 +107,8 @@ function Catory({ data }) {
   const handleActionWishList = (id) => {
     setIsOpen(!isOpen);
     const wishListItem = data.find((wish) => wish.id === id);
+    console.log(wishListItem);
     const IsExist = wishs.some((wish) => wish.id === id);
-    console.log(IsExist);
     if (IsExist) {
       toast.warn("This game removed the game from to Wishlist!", {
         position: "bottom-right",

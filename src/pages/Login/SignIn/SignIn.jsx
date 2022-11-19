@@ -78,14 +78,11 @@ function SignIn() {
     return;
   }
   const onSubmit = async (data) => {
-    console.log(data);
     const emailExist = await axiosClient(`/users?Email=${data.Email}`);
-
     if (emailExist.length) {
       const res = await axiosClient(
         `/users?Email=${data.Email}&Password=${data.Password}`
       );
-
       if (!res.length) {
         setCheckPassWord(false);
         return;

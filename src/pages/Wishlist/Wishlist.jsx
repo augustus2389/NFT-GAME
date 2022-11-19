@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import FilterType from "./Filter/FilterGenre";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWish, removeWish } from "../../redux/wishlistSlice";
+import { addToCart, fetchCart } from "../../redux/cartSlice";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   max-width: 1040px;
@@ -102,40 +104,11 @@ const TextCheckout = styled.div`
   justify-content: space-between;
   padding: 15px 0;
 `;
-const ButtonCheckout = styled.button`
-  width: 100%;
-  text-transform: uppercase;
-  outline: none;
-  border: none;
-  background-color: rgb(0, 116, 228);
-  box-shadow: rgba(245, 244, 247, 0.25) 0 1px 1px inset;
-  transition: all 0.3s cubic-bezier(0.05, 0.03, 0.35, 1);
-  color: rgb(245, 245, 245);
-  line-height: 15px;
-  padding: 0px 20px;
-  font-weight: 500;
-  height: 50px;
-  border-radius: 5px;
-  &:hover {
-    opacity: 0.7;
-  }
-`;
+
 const BaseGame = styled.div`
   width: 300px;
 `;
-const Nothing = styled.p`
-  color: gray;
-  font-size: 24px;
-`;
-const Empty = styled.div`
-  text-align: center;
-`;
-const EmptyIcon = styled.img`
-  max-width: 50px;
-`;
-const CustomLink = styled(Link)`
-  color: gray;
-`;
+
 const HeadingH3 = styled.h3`
   color: white;
   font-size: 14px;
@@ -143,14 +116,51 @@ const HeadingH3 = styled.h3`
 `;
 function Wishlist() {
   const dispatch = useDispatch();
-  // const { carts } = useSelector((state) => state.cart);
+  const { carts } = useSelector((state) => state.cart);
   const { wishs } = useSelector((state) => state.wish);
   useEffect(() => {
     dispatch(fetchWish());
+    dispatch(fetchCart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleRemoveWishlist = (id) => {
     dispatch(removeWish(id));
+  };
+  const handleAddToCart = (id) => {
+    const IsExist = carts.some((wish) => wish.id === id);
+    if (IsExist) {
+      toast.warn("This game has already been added to Wishlist!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    toast.success("This game has been added Wishlist", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+    const newItem = {
+      id: wishs.id,
+      title: wishs.title,
+      price: wishs.price,
+      avatar: wishs.avatar,
+      date: wishs.date,
+    };
+    dispatch(addToCart(newItem));
+    console.log(newItem);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   };
   return (
     <section id="checkout">
@@ -188,7 +198,9 @@ function Wishlist() {
                       <Type onClick={() => handleRemoveWishlist(wish.id)}>
                         Remove
                       </Type>
-                      <AddToCart>Add To Cart</AddToCart>
+                      <AddToCart onClick={() => handleAddToCart(wish.id)}>
+                        Add To Cart
+                      </AddToCart>
                     </ActionType>
                   </Total>
                 </WishItem>

@@ -6,10 +6,13 @@ import agelimit from "../../../asset/image/13.svg";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./styles.css";
-
 // import required modules
 import { Autoplay, Navigation, Pagination } from "swiper";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchProduct } from "../../../redux/productSlice";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   width: 100%;
@@ -22,6 +25,7 @@ const divStyle = {
   boxShadow:
     "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
   padding: "30px 10px",
+  height: "421px",
 };
 const Button = styled.button`
   margin-bottom: 10px;
@@ -56,6 +60,7 @@ const Title = styled.div`
 `;
 const TitleText = styled.h3`
   font-size: 14px;
+  height: 40px;
   padding: 10px;
   text-align: center;
   color: #8f98a0;
@@ -67,9 +72,16 @@ const Price = styled.div`
 `;
 const SuggestImage = styled.img`
   border-radius: 20px 20px 0 0;
+  aspect-ratio: 10/10;
 `;
 
 export default function SuggestGame() {
+  const { products } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProduct());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <Swiper
@@ -99,248 +111,29 @@ export default function SuggestGame() {
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/632470/hero_capsule.jpg?t=1666619712"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/261550/hero_capsule.jpg?t=1666681403"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/594650/hero_capsule.jpg?t=1666109756"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/294100/library_600x900.jpg?t=1666542432"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/322330/hero_capsule_alt_assets_33.jpg?t=1666284006"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1919590/hero_capsule.jpg?t=1666364639"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1167630/hero_capsule_alt_assets_0.jpg?t=1666292775"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/hero_capsule.jpg?t=1650554420"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1904540/hero_capsule.jpg?t=1666694694"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1248130/hero_capsule.jpg?t=1659447814"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
-        <SwiperSlide
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            aspectRatio: "16/20",
-          }}
-        >
-          <SuggestImage
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/hero_capsule.jpg?t=1665784964"
-            alt=""
-          />
-          <Info>
-            <Title>
-              <TitleText>Disco Elysium - The Final Cut</TitleText>
-              <AgeLimit src={agelimit} alt="" />
-            </Title>
-            <Price>
-              <p style={{ color: "black" }}>50$</p>
-              <Button>Make Offer</Button>
-            </Price>
-          </Info>
-        </SwiperSlide>
+        {products.map((product) => (
+          <SwiperSlide
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+            key={product.id}
+          >
+            <Link to={`/detail/${decodeURI(product.title)}-${product.id}`}>
+              <SuggestImage src={product.avatar} alt="" />
+              <Info>
+                <Title>
+                  <TitleText>{product.title}</TitleText>
+                  <AgeLimit src={agelimit} alt="" />
+                </Title>
+                <Price>
+                  <p style={{ color: "black" }}>{product.price}$</p>
+                  <Button>Make Offer</Button>
+                </Price>
+              </Info>
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

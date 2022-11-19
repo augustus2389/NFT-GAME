@@ -7,7 +7,7 @@ import warnning from "../../../asset/image/16.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, fetchCart } from "../../../redux/cartSlice";
 import { toast, ToastContainer } from "react-toastify";
-import { addToWish } from "../../../redux/wishlistSlice";
+import { addToWish, fetchWish } from "../../../redux/wishlistSlice";
 
 const Description = styled.p`
   color: #000;
@@ -156,6 +156,7 @@ function InfoGame({ detail, checkId }) {
   const { isLogin } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(fetchCart());
+    dispatch(fetchWish());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleAddToCart = () => {
@@ -255,13 +256,19 @@ function InfoGame({ detail, checkId }) {
                 buy for {detail?.price}$
               </Link>
             ) : (
-              <Link to={"/login"} className="text-white">
+              <Link to={"/signin"} className="text-white">
                 buy for {detail?.price}$
               </Link>
             )}
           </Button>
           <ButtonOffer onClick={() => handleActionWishList(detail?.id)}>
-            Add to wishlist
+            {isLogin ? (
+              <Link className="text-black">Add to wishlist</Link>
+            ) : (
+              <Link to={"/signin"} className="text-black">
+                Add to wishlist
+              </Link>
+            )}
           </ButtonOffer>
         </Action>
         <Description>{detail?.description}</Description>

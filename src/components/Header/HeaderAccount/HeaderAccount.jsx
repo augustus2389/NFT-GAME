@@ -16,9 +16,6 @@ const LogoUser = styled.img`
   width: 25px;
   margin: 0 10px;
 `;
-const DropDownAccount = styled.div`
-  position: relative;
-`;
 
 const DropDownContainer = styled.div`
   margin: 0 auto;
@@ -79,6 +76,9 @@ const DropDownListContainer = styled.ul`
   padding: 0 30px;
   border-radius: 4px;
 `;
+const DropDownAccount = styled.div`
+  position: relative;
+`;
 function HeaderAccount() {
   const { account, isLogin } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.user);
@@ -130,18 +130,28 @@ function HeaderAccount() {
               <DropDownListContainer>
                 <DropDownList>
                   <ListItem>
-                    <Link to={"/profile"}>Account</Link>
+                    <Link className="text-white" to={"/profile"}>
+                      Account
+                    </Link>
                   </ListItem>
                   <ListItem>
-                    <Link to={"/wishlist"}>Wishlist</Link>
+                    <Link className="text-white" to={"/wishlist"}>
+                      Wishlist
+                    </Link>
                   </ListItem>
                   <ListItem>
-                    <Link to={"/history"}>History</Link>
+                    <Link className="text-white" to={"/history"}>
+                      History
+                    </Link>
                   </ListItem>
                   <ListItem>
-                    <Link to={"/admin"}>Admin</Link>
+                    <Link className="text-white" to={"/admin"}>
+                      Admin
+                    </Link>
                   </ListItem>
-                  <ListItem onClick={handleLogOut}>Sign Out</ListItem>
+                  <ListItem className="text-white" onClick={handleLogOut}>
+                    Sign Out
+                  </ListItem>
                 </DropDownList>
               </DropDownListContainer>
             )}

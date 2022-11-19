@@ -14,6 +14,10 @@ const TextFooter = styled.p`
   line-height: 16px;
   margin: 0 10px;
 `;
+const CustomLink = styled(Link)`
+  color: white;
+  margin: 0 10px;
+`;
 function Footer() {
   // const Link = ({className,children}) => {
   //   <a className="link-footer">
@@ -35,11 +39,11 @@ function Footer() {
               </TextFooter>
               <TextFooter>
                 VAT included in all prices where applicable
-                <Link>Privacy Policy</Link>
-                <Link>Legal</Link>
-                <Link>Steam Subscriber Agreement</Link>
-                <Link>Refunds</Link>
-                <Link>Cookies</Link>
+                <CustomLink>Privacy Policy</CustomLink>
+                <CustomLink>Legal</CustomLink>
+                <CustomLink>Steam Subscriber Agreement</CustomLink>
+                <CustomLink>Refunds</CustomLink>
+                <CustomLink>Cookies</CustomLink>
               </TextFooter>
             </div>
             <Image src="https://store.cloudflare.steamstatic.com/public/images/v6/logo_steam_footer.png" />

@@ -10,6 +10,7 @@ import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
 import images from "react-payment-inputs/images";
 import { addOrder, removeCart } from "../../../../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CardVisit = styled.div`
   background-color: #f2f2f2;
@@ -111,6 +112,7 @@ function MyVerticallyCenteredModal(props) {
   const toggling = () => {
     setIsOpen(!isOpen);
   };
+  const [alert, setAlert] = useState(true);
 
   const { carts } = useSelector((state) => state.cart);
   const subTotal = useMemo(() => {
@@ -134,24 +136,36 @@ function MyVerticallyCenteredModal(props) {
   });
 
   const handleSubmit = () => {
-    if (account.id) {
-      const newOrder = {
-        id: account.id + 1,
-        userId: account.id,
-        items: carts,
-        createAt: Date(),
-        payMethod: "Card Credit",
-        price: subTotal + 13,
-      };
-      dispatch(addOrder(newOrder));
-      navigate("/");
-      carts.forEach((cart) => dispatch(removeCart(cart.id)));
-    }
-    if (wrapperProps.error) {
-      setIsOpen(!isOpen);
-    } else {
-      setChecked(isDisable);
-    }
+    toast.success("Congratulations! Your order has been paid", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    setTimeout(() => {
+      if (wrapperProps.error) {
+        setAlert(!alert);
+      } else {
+        setAlert(alert);
+      }
+      if (account.id) {
+        const newOrder = {
+          id: account.id + 1,
+          userId: account.id,
+          items: carts,
+          createAt: Date(),
+          payMethod: "Card Credit",
+          price: subTotal + 13,
+        };
+        dispatch(addOrder(newOrder));
+        navigate("/");
+        carts.forEach((cart) => dispatch(removeCart(cart.id)));
+      }
+    }, [2000]);
   };
   const handleChange = (e) => {
     const target = e.target;
@@ -273,9 +287,16 @@ function MyVerticallyCenteredModal(props) {
                   <TotalFont>13 $</TotalFont>
                 </CreditCard>
               </Credit>
-              <button className="button-22" onClick={handleSubmit}>
-                make payment
-              </button>
+              {alert && (
+                <button className="button-22" onClick={handleSubmit}>
+                  make payment
+                </button>
+              )}
+              {!alert && (
+                <button disabled className="button-22" onClick={handleSubmit}>
+                  make payment
+                </button>
+              )}
             </OderrSummary>
           </div>
         </div>

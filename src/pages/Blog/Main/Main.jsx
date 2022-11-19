@@ -70,7 +70,7 @@ function Main() {
         <LatestArticle>
           <ImageNews>
             <Image
-              src="https://cdn2.unrealengine.com/return-to-moria-3840x2160-a0f95ad3c555.png?h=480&resize=1&w=854"
+              src="https://cdn2.unrealengine.com/nikefanclash-16x9-1920x1079-fc4f2f767062.jpg?h=480&resize=1&w=854"
               alt=""
               className="image"
             />
@@ -80,9 +80,7 @@ function Main() {
           </ImageNews>
           <TitleNews>
             <Day>2D ago</Day>
-            <p>
-              Digging into The Lord of the Rings: Return to Moria development
-            </p>
+            <p>Rocket League Ignites the Pitch with Nike FC Cup</p>
             <More>
               <Span to="/">Read More</Span>
             </More>
@@ -93,7 +91,7 @@ function Main() {
         <LatestArticle>
           <ImageNews>
             <Image
-              src="https://cdn2.unrealengine.com/return-to-moria-3840x2160-a0f95ad3c555.png?h=480&resize=1&w=854"
+              src="https://cdn2.unrealengine.com/be-the-goat-goat-simulator-3-is-out-now-exclusively-on-epic-games-store-1920x1080-7046247a9f55.jpg?h=480&resize=1&w=854"
               alt=""
               className="image"
             />
@@ -104,7 +102,8 @@ function Main() {
           <TitleNews>
             <Day>2D ago</Day>
             <p>
-              Digging into The Lord of the Rings: Return to Moria development
+              Be the goat. Goat Simulator 3 is out now, exclusively on Epic
+              Games Store
             </p>
             <More>
               <Span to="/">Read More</Span>

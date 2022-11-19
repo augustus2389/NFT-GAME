@@ -17,6 +17,9 @@ import FAQ from "./pages/FAQ/FAQ";
 import EditSuccess from "./pages/Private/Profile/EditSuccess/EditSuccess";
 import EditProfile from "./pages/Private/Profile/Profile";
 import Admin from "./components/Admin/Admin";
+import UserState from "./components/Admin/User/User";
+import ProductList from "./components/Admin/Product/ProductList";
+import EditUser from "./components/Admin/User/EditUser/EditUser";
 
 function App() {
   return (
@@ -38,7 +41,12 @@ function App() {
               <Route path="/history" element={<OrderHistory />} />
               <Route path="/profile" element={<EditSuccess />} />
               <Route path="/editprofile" element={<EditProfile />} />
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin" element={<Admin />}>
+                <Route path="/admin/usersList" element={<UserState />}>
+                  <Route path=":userId" element={<EditUser />} />
+                </Route>
+                <Route path="/admin/productList" element={<ProductList />} />
+              </Route>
             </Route>
           </Route>
         </Routes>

@@ -34,9 +34,10 @@ function Home() {
           justifyContent: "center",
           height: "100vh",
           alignItems: "center",
+          color: "grey.500",
         }}
       >
-        <CircularProgress />
+        <CircularProgress color="inherit" />
       </Box>
     );
   }
