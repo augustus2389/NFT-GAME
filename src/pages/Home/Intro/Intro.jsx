@@ -6,15 +6,11 @@ import wishlistTick from "../../../asset/image/wishlistTick.svg";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-// import required modules
 import { Autoplay, Navigation } from "swiper";
 import styled from "styled-components";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { addToWish, removeWish } from "../../../redux/wishlistSlice";
 
 const Container = styled.div`
   max-width: 1024px;
@@ -46,9 +42,18 @@ const TextFont = styled.p`
   cursor: pointer;
   font-size: 18px;
   width: 50%;
+  @media (max-width: 990px) {
+    font-size: 14px;
+  }
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 const IconGame = styled.div`
   max-width: 200px;
+  @media (max-width: 768px) {
+    width: 100px;
+  }
 `;
 const ButtonDiv = styled.div`
   margin: 10px 0;
@@ -75,29 +80,48 @@ const ButtonBuy = styled.button`
   line-height: 40px;
   border-radius: 4px;
   margin-right: 10px;
+  @media (max-width: 768px) {
+    padding: 0px 15px;
+    font-size: 8px;
+  }
 `;
 const IntroImage = styled.img`
+  display: none;
   border-radius: 20px;
+  @media (max-width: 768px) {
+    display: none !important;
+  }
 `;
-
+const IntroGameMini = styled.img``;
+const SwiperCustom = styled(Swiper)`
+  margin-bottom: 100px;
+  margin-top: 35px;
+  height: 500px;
+  aspect-ratio: 12/6;
+`;
+const Test = styled.div`
+  aspect-ratio: 10 / 10;
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
 function Intro({ data }) {
-  const divStyle = {
-    marginBottom: "100px",
-    marginTop: "35px",
-    aspectRatio: "12/6",
-  };
-
   return (
     <section id="intro">
       <div className="container">
         <Container>
-          <Swiper
+          <SwiperCustom
             navigation={false}
             loop={true}
-            autoplay={true}
-            style={divStyle}
-            modules={[Navigation, Autoplay]}
             // autoplay={true}
+            modules={[Navigation, Autoplay]}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+            }}
             className="mySwiper slide"
           >
             {data.map((dat) => {
@@ -107,7 +131,12 @@ function Intro({ data }) {
                     <Link to={`/detail/${decodeURI(dat.title)}-${dat.id}`}>
                       <Media>
                         <Ads className="ads position-relative">
-                          <IntroImage src={dat?.intro} alt="" />
+                          <div>
+                            <IntroImage src={dat?.intro} alt="" />
+                          </div>
+                          <Test>
+                            <IntroGameMini src={dat?.avatar} alt="" />
+                          </Test>
                           <Text>
                             <IconGame>
                               <motion.img
@@ -139,7 +168,7 @@ function Intro({ data }) {
                 );
               }
             })}
-          </Swiper>
+          </SwiperCustom>
         </Container>
       </div>
     </section>

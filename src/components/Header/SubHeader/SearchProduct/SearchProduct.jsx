@@ -15,7 +15,6 @@ export const ListSearch = styled.div`
   box-shadow: rgb(0 0 0 / 30%) 0px 5px 10px;
   background: rgb(32, 32, 32);
   ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: gray;
   }
@@ -26,7 +25,6 @@ export const ListSearch = styled.div`
 
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
   }
 `;
@@ -51,6 +49,7 @@ const InfoList = styled.div`
   justify-content: center;
 `;
 const LinkCustom = styled(Link)`
+  width: 100%;
   display: flex;
 `;
 function SearchProduct(props) {
@@ -61,12 +60,9 @@ function SearchProduct(props) {
   }, []);
   const { products } = useSelector((state) => state.product);
   const filteredData = products.filter((el) => {
-    //if no input the return the original
     if (props.input === "") {
       return el;
-    }
-    //return the item which contains the user input
-    else {
+    } else {
       return el.title.toLowerCase().includes(props.input);
     }
   });

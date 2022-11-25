@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +6,8 @@ import styled from "styled-components";
 import axiosClient from "../../../api/axiosClient";
 import logo from "../../../asset/image/logo.png";
 import { setAccountSuccess } from "../../../redux/authSlice";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 import "./style.css";
 
@@ -71,6 +73,13 @@ function SignIn() {
   const { register, handleSubmit } = useForm();
   const [checkEmail, setCheckEmail] = useState(true);
   const [checkPassWord, setCheckPassWord] = useState(true);
+  const [isFetching, setIsFetching] = useState(true);
+
+  useEffect(() => {
+    setTimeout(function () {
+      setIsFetching(false);
+    }, 2000);
+  }, []);
 
   const dispatch = useDispatch();
   if (isLogin) {
@@ -94,6 +103,22 @@ function SignIn() {
       setCheckEmail(false);
     }
   };
+
+  if (isFetching) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          height: "100vh",
+          alignItems: "center",
+          color: "grey.500",
+        }}
+      >
+        <CircularProgress color="inherit" />
+      </Box>
+    );
+  }
   return (
     <FromLogin>
       <Form>

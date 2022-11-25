@@ -1,8 +1,6 @@
 import React from "react";
-import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import MenuAdmin from "./MenuAdmin/MenuAdmin";
-import ProductList from "./Product/ProductList";
-import UserState from "./User/User";
 
 function Admin() {
   return (

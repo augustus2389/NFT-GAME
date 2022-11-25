@@ -74,63 +74,65 @@ export default function Popular() {
   }, []);
   return (
     <>
-      <Container>
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={10}
-          navigation={true}
-          loop={true}
-          // autoplay={true}
-          pagination={{
-            el: ".swiper-pagination",
-            type: "totalClass",
-          }}
-          style={divStyle}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
-          modules={[Pagination, Navigation, Autoplay]}
-          className="mySwiper"
-        >
-          <MostTitle>Most Popular </MostTitle>
-          {popular.map((most) => (
-            <SwiperSlide
-              key={most.id}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                aspectRatio: "16/20",
-                borderRadius: "20px",
-                backgroundColor: "transparent",
-              }}
-            >
-              <Link to={`/detail/${decodeURI(most.title)}-${most.id}`}>
-                <MostPopular>
-                  <SuggestImage src={most.avatar} alt="" />
-                </MostPopular>
-              </Link>
+      <div className="container">
+        <Container>
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={10}
+            navigation={true}
+            loop={true}
+            // autoplay={true}
+            pagination={{
+              el: ".swiper-pagination",
+              type: "totalClass",
+            }}
+            style={divStyle}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination, Navigation, Autoplay]}
+            className="mySwiper"
+          >
+            <MostTitle>Most Popular </MostTitle>
+            {popular.map((most) => (
+              <SwiperSlide
+                key={most.id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  aspectRatio: "16/20",
+                  borderRadius: "20px",
+                  backgroundColor: "transparent",
+                }}
+              >
+                <Link to={`/detail/${decodeURI(most.title)}-${most.id}`}>
+                  <MostPopular>
+                    <SuggestImage src={most.avatar} alt="" />
+                  </MostPopular>
+                </Link>
 
-              <Info>
-                <BaseGame>BASE GAME</BaseGame>
-                <TitleGame>{most.title}</TitleGame>
-                <Now>now on august</Now>
-                <p>{most.price} $</p>
-              </Info>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Container>
+                <Info>
+                  <BaseGame>BASE GAME</BaseGame>
+                  <TitleGame>{most.title}</TitleGame>
+                  <Now>now on august</Now>
+                  <p>{most.price} $</p>
+                </Info>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Container>
+      </div>
     </>
   );
 }

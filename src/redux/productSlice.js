@@ -15,6 +15,13 @@ export const fetchProductBySearch = createAsyncThunk(
     return response;
   }
 );
+export const fetchProductBySell = createAsyncThunk(
+  "product/fetchProductBySeller",
+  async () => {
+    const response = await axiosClient.get(`products?tag=Seller`);
+    return response;
+  }
+);
 
 const productSlice = createSlice({
   name: "product",

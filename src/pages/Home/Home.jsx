@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import Catalog from "./Catalog/Catalog";
-import Catory from "./Catory/Catory";
 import Free from "./Free/Free";
 import Intro from "./Intro/Intro";
 import More from "./More/More";
@@ -11,6 +10,7 @@ import Popular from "./Popular/Popular";
 import Typiccal from "./Typical/Typiccal";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import Category from "./Category/Category";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -46,7 +46,7 @@ function Home() {
       <Intro data={data} />
       <Next />
       <Free />
-      <Catory data={data} />
+      <Category />
       <More />
       <Catalog data={data} />
       <Popular />

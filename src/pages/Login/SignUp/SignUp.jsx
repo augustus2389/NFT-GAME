@@ -1,11 +1,14 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import axiosClient from "../../../api/axiosClient";
 import logo from "../../../asset/image/logo.png";
 import "./style.scss";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import "rsuite/dist/rsuite.min.css";
+import axios from "axios";
+import axiosClient from "../../../api/axiosClient";
 
 const FromLogin = styled.div`
   margin: 150px auto;
@@ -32,8 +35,10 @@ const Forgot = styled(Link)`
 const ContinueButton = styled.button`
   background-color: #0074e4;
   color: white;
-  padding: 10px;
+  padding: 10px 40px;
+  margin: auto;
   font-weight: 500;
+  display: flex;
   outline: none;
   border-radius: 10px;
   border: none;
@@ -70,7 +75,13 @@ const Name = styled.div`
 
 function SignUp() {
   const navigate = useNavigate();
+  const [option, setOption] = useState([]);
   const [email, setEmail] = useState(true);
+  useEffect(() => {
+    fetch("https://restcountries.com/v2/all")
+      .then((response) => response.json())
+      .then((data) => setOption(data));
+  }, []);
   const {
     register,
     handleSubmit,
@@ -81,24 +92,72 @@ function SignUp() {
       address: {},
     },
   });
+  const handleRegistration = (data) => console.log(data);
+  const handleError = (errors) => {};
+  const registerOptions = {
+    name: {
+      required: "Name is required",
+      minLength: {
+        value: 3,
+        message: "Name must have at least 8 words",
+      },
+    },
+    email: { required: "Email is required" },
+    lastName: {
+      required: "Last Name is required",
+      minLength: {
+        value: 3,
+        message: "Last name must have at least 3 words",
+      },
+    },
+    firstName: {
+      required: "First Name is required",
+      minLength: {
+        value: 3,
+        message: "First name must have at least 3 words",
+      },
+    },
+    password: {
+      required: "Password is required",
+      minLength: {
+        value: 8,
+        message: "Password must have at least 8 characters",
+      },
+    },
+  };
+  const [isFetching, setIsFetching] = useState(true);
+  useEffect(() => {
+    setTimeout(function () {
+      setIsFetching(false);
+    }, 2000);
+  }, []);
 
+  if (isFetching) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          height: "100vh",
+          alignItems: "center",
+          color: "grey.500",
+        }}
+      >
+        <CircularProgress color="inherit" />
+      </Box>
+    );
+  }
   const onSubmit = async (data) => {
     const emailExist = await axiosClient(`/users?Email=${data.Email}`);
-
     if (!emailExist.data) {
       axios.post("https://json-server-augustus-game.herokuapp.com/users", data);
+      console.log(data);
       navigate("/signin");
     } else {
       setEmail(false);
     }
   };
-  const [option, setOption] = useState([]);
 
-  useEffect(() => {
-    fetch("https://restcountries.com/v2/all")
-      .then((response) => response.json())
-      .then((data) => setOption(data));
-  }, []);
   return (
     <FromLogin>
       <Form>
@@ -106,11 +165,83 @@ function SignUp() {
           <LogoImg src={logo} />
           <Title>Sign Up</Title>
         </Logo>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="d-flex flex-column justify-content-around"
-        >
-          <div className="div">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Name>
+            <div className="input-form">
+              <input
+                name="name"
+                type="text"
+                required
+                {...register("LastName", registerOptions.lastName)}
+              />
+
+              <div className="underline"></div>
+              <small className="text-danger">
+                {errors?.lastName && errors.lastName.message}
+              </small>
+              <label>Last Name</label>
+            </div>
+            <div className="input-form">
+              <input
+                name="name"
+                type="text"
+                required
+                {...register("FirstName", registerOptions.firstName)}
+              />
+
+              <div className="underline"></div>
+              <small className="text-danger">
+                {errors?.FirstName && errors.FirstName.message}
+              </small>
+              <label>First Name</label>
+            </div>
+          </Name>
+          <Name>
+            <div className="input-form">
+              <input
+                name="name"
+                type="text"
+                required
+                {...register("DisplayName", registerOptions.name)}
+              />
+
+              <div className="underline"></div>
+              <small className="text-danger">
+                {errors?.name && errors.name.message}
+              </small>
+              <label>Display Name</label>
+            </div>
+          </Name>
+          <Name>
+            <div className="input-form">
+              <input
+                type="email"
+                required
+                name="email"
+                {...register("Email", registerOptions.email)}
+              />
+              <small className="text-danger">
+                {errors?.email && errors.email.message}
+              </small>
+              <div className="underline"></div>
+              <label>Email</label>
+            </div>
+          </Name>
+
+          <Name>
+            <div className="input-form">
+              <input
+                type="password"
+                name="password"
+                required
+                {...register("Password", registerOptions.password)}
+              />
+              <small className="text-danger">
+                {errors?.password && errors.password.message}
+              </small>
+              <div className="underline"></div>
+              <label>Password</label>
+            </div>
             <div className="input-form">
               <div className="underline"></div>
               <Controller
@@ -128,55 +259,11 @@ function SignUp() {
                 )}
               />
             </div>
-          </div>
-          <Name>
-            <div className="input-form">
-              <input
-                type="text"
-                required
-                {...register("LastName", { minLength: 3, maxLength: 80 })}
-              />
-              {errors.LastName && <p>{errors.LastName.message}</p>}
-              <div className="underline"></div>
-              <label>Last name</label>
-            </div>
-            <div className="input-form">
-              <input
-                type="text"
-                required
-                {...register("FirstName", { minLength: 3, maxLength: 80 })}
-              />
-              {errors.FirstName && <p>{errors.FirstName.message}</p>}
-              <div className="underline"></div>
-              <label>First name</label>
-            </div>
           </Name>
-          <div className="input-form">
-            <input
-              type="text"
-              required
-              {...register("Email", {
-                required: true,
-                pattern: /^\S+@\S+$/i,
-              })}
-            />
-            {errors.Email && <p>{errors.Email.message}</p>}
 
-            <div className="underline"></div>
-            {!email && <p className="text-danger ">Emaill already exist</p>}
-            <label>Email</label>
-          </div>
-          <div className="input-form">
-            <input type="password" required {...register("Password")} />
-            {errors.Email && <p>{errors.Email.message}</p>}
-
-            <div className="underline"></div>
-            <label>Password</label>
-          </div>
-
-          {/* <Upload /> */}
           <ContinueButton> Continue </ContinueButton>
         </form>
+
         <Note>
           <Text>Don’t have an Augustus Games account? </Text>
           <Forgot to="/signin">Sign In</Forgot>

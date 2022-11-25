@@ -39,7 +39,7 @@ function More() {
         <Container>
           <div className="row">
             {eventgame.map((product) => (
-              <div className="col-lg-4" key={product.id}>
+              <div className="col-4" key={product.id}>
                 <Link to={`/detail/${decodeURI(product.title)}-${product.id}`}>
                   <div>
                     <div>

@@ -81,7 +81,6 @@ const DropDownAccount = styled.div`
 `;
 function HeaderAccount() {
   const { account, isLogin } = useSelector((state) => state.auth);
-  const { users } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -126,7 +125,7 @@ function HeaderAccount() {
                   />
                   <OnlineImage src={online} alt="" />
                 </div>
-                <Text>{account.LastName}</Text>
+                <Text>{account.DisplayName}</Text>
               </SuccesLogin>
             </DropDownHeader>
             {isOpen && (

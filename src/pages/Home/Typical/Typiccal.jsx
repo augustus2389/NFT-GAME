@@ -46,7 +46,7 @@ function Typiccal() {
       <div className="container">
         <Container>
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-6">
               <TypicalItem>
                 <TypicalImage>
                   <Image
@@ -65,7 +65,7 @@ function Typiccal() {
                 </TypicalInfo>
               </TypicalItem>
             </div>
-            <div className="col-lg-6">
+            <div className="col-6">
               <TypicalItem>
                 <TypicalImage>
                   <Image
