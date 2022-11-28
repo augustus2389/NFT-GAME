@@ -4,11 +4,6 @@ import styled from "styled-components";
 import searchIcon from "../../../asset/image/search.svg";
 import Cart from "../Cart/Cart";
 import SearchProduct, { ListSearch } from "./SearchProduct/SearchProduct";
-
-const Container = styled.div`
-  max-width: 1024px;
-  margin: auto;
-`;
 const Search = styled.div`
   display: flex;
   height: 40px;
@@ -38,8 +33,6 @@ const SearchIcon = styled.img`
   max-width: 18px;
 `;
 const SubMenu = styled.div`
-  max-width: 1024px;
-  margin: auto;
   position: sticky;
   top: 0;
   left: 0;
@@ -95,55 +88,58 @@ function SecondarybHeader() {
     }
   };
 
+  window.addEventListener("click", () => {
+    setInputText("");
+    setShowProductList(false);
+  });
   return (
-    <section id="sub-header">
-      <div className="container">
-        <SubMenu>
-          <SubHeader>
-            <div className="d-flex">
-              <Search>
-                <SearchItem>
-                  <SearchIcon src={searchIcon} alt="" />
-                </SearchItem>
-                {showProductList && <SearchProduct input={inputText} />}
-                <Input
-                  type="text"
-                  placeholder="Search item"
-                  onChange={inputHandler}
+    <>
+      <SubMenu>
+        <SubHeader>
+          <div className="d-flex">
+            <Search>
+              <SearchItem>
+                <SearchIcon src={searchIcon} alt="" />
+              </SearchItem>
+              {showProductList && (
+                <SearchProduct
+                  input={inputText}
+                  setInputText={setInputText}
+                  setShowProductList={setShowProductList}
                 />
-              </Search>
-              <Menu>
-                <List
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? "active" : "inactive"
-                  }
-                >
-                  Discover
-                </List>
-                <List
-                  to="/store"
-                  className={({ isActive }) =>
-                    isActive ? "active" : "inactive"
-                  }
-                >
-                  Browse
-                </List>
-                <List
-                  to="/blog"
-                  className={({ isActive }) =>
-                    isActive ? "active" : "inactive"
-                  }
-                >
-                  News
-                </List>
-              </Menu>
-            </div>
-            <Cart />
-          </SubHeader>
-        </SubMenu>
-      </div>
-    </section>
+              )}
+              <Input
+                type="text"
+                placeholder="Search item"
+                onChange={inputHandler}
+                value={inputText}
+              />
+            </Search>
+            <Menu>
+              <List
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
+                Discover
+              </List>
+              <List
+                to="/store"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
+                Browse
+              </List>
+              <List
+                to="/blog"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
+                News
+              </List>
+            </Menu>
+          </div>
+          <Cart />
+        </SubHeader>
+      </SubMenu>
+    </>
   );
 }
 export default SecondarybHeader;

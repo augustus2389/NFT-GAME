@@ -11,6 +11,7 @@ import {
 } from "../../../../redux/productSlice";
 import productApi from "../../../../api/productApi";
 import { useState } from "react";
+import FilterAz from "../FilterAZ/FilterAz";
 
 export const ImageCard = styled.img`
   border-radius: 20px 20px 0 0;
@@ -112,18 +113,14 @@ export const ListSearch = styled.div`
 function ListProduct({ input }) {
   const dispatch = useDispatch();
   const { products, filterList } = useSelector((state) => state.product);
-  const [productList, setProductList] = useState([]);
-
   const [searchParams] = useSearchParams();
   const link = searchParams.get("tag");
-
   useEffect(() => {
     dispatch(fetchProductBySearch(input));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, filterList]);
   useEffect(() => {
     productApi.getProducts(link).then((data) => {
-      setProductList(data);
       dispatch(setProductListNew(data));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -131,6 +128,11 @@ function ListProduct({ input }) {
   return (
     <div className="list">
       <div className="container">
+        <p>
+          Show:
+          <FilterAz />
+        </p>
+
         <div className="row">
           {products.map((product) => (
             <div key={product.id} className="col-lg-3 col-md-4">

@@ -1,0 +1,9 @@
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: none;
+  background: transparent;
+  color: rgb(245, 245, 245);
+}
+svg:not(:root) {
+  overflow: hidden;
+  color: gray;
+}

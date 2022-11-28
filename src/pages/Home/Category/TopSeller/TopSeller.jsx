@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import productApi from "../../../../api/productApi";
 import {
   HeaderCatory,
   Heading,
@@ -13,9 +14,14 @@ import {
   LinkPerfect,
 } from "../Category";
 import HandleAction from "./TopSellerItem/HandleAction/HandleAction";
-import TopSellerItem from "./TopSellerItem/TopSellerItem";
 
-function TopSellerList({ eventgame }) {
+function TopSellerList() {
+  const [gameTop, setTop] = useState([]);
+  useEffect(() => {
+    productApi.getProductBySeller().then((data) => setTop(data));
+  }, []);
+  console.log(gameTop);
+  const eventgame = gameTop.filter((a) => a.id < 14);
   return (
     <TopSeller>
       <HeaderCatory>

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import productApi from "../../../api/productApi";
+import MostPopular from "./MostPopular/MostPopular";
+import NewGaming from "./NewGaming/NewGaming";
 import TopSellerList from "./TopSeller/TopSeller";
 
 export const TagInfo = styled.div``;
@@ -80,33 +82,19 @@ export const LinkPerfect = styled(Link)`
 `;
 
 function Category() {
-  const [gameTop, setTop] = useState([]);
-  const [gameMost, setMost] = useState([]);
-  const [gameNew, setNew] = useState([]);
-  useEffect(() => {
-    productApi.getProductBySeller().then((data) => setTop(data));
-  }, []);
-  useEffect(() => {
-    productApi.getProductByMost().then((data) => setMost(data));
-  }, []);
-  useEffect(() => {
-    productApi.getProductByNew().then((data) => setNew(data));
-  }, []);
-  console.log(gameTop);
-  const eventgame = gameTop.filter((a) => a.id < 14);
   return (
     <section id="catory">
       <div className="container">
         <Container>
           <div className="row">
             <div className="col-lg-4 col-md-4 col-sm-6 ">
-              <TopSellerList eventgame={eventgame} />
+              <TopSellerList />
             </div>
             <div className="col-lg-4 col-md-4 col-sm-6 ">
-              {/* <TopSellerList gameMost={gameMost} /> */}
+              <MostPopular />
             </div>
             <div className="col-lg-4 col-md-4 col-sm-6 ">
-              {/* <TopSellerList gameNew={gameNew} /> */}
+              <NewGaming />
             </div>
           </div>
         </Container>

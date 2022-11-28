@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import productApi from "../../api/productApi";
 import { isEmpty } from "../../utils";
@@ -9,6 +10,7 @@ import SuggestGame from "./SuggestGame/SuggestGame";
 
 function Detail() {
   const [detail, setDetail] = useState({});
+  const data = useSelector((state) => state.status.new);
   const { productId } = useParams();
   const checkId = productId.split("-")[1];
   useEffect(() => {
@@ -18,7 +20,7 @@ function Detail() {
     };
     fetchPost(checkId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data, productId]);
 
   return (
     <section id="detail">

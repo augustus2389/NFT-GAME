@@ -40,19 +40,6 @@ const Image = styled.img`
 const TimeFree = styled.p`
   font-size: 13px;
 `;
-const ButtonMore = styled.button`
-  margin: 0 10px;
-  background-color: transparent;
-  outline: none;
-  transition: all 0.5s linear;
-  color: white;
-  border-radius: 4px;
-  padding: 5px 20px;
-  border: 1px solid gray;
-  &:hover {
-    background-color: gray;
-  }
-`;
 function Free() {
   return (
     <section id="free">
@@ -61,9 +48,8 @@ function Free() {
           <Present>
             <Div>
               <PresentIcon src={present} alt="" />
-              <p>Free Games</p>
+              <p>Coming Soon</p>
             </Div>
-            <ButtonMore>View More</ButtonMore>
           </Present>
           <div className="row">
             <div className="col-lg-3 col-6">
@@ -77,7 +63,7 @@ function Free() {
                 </FreeImage>
                 <FreeInfo>
                   <p>Filament</p>
-                  <TimeFree>Free Now - Dec at 11:00pm</TimeFree>
+                  <TimeFree>Release Soon - Dec 10 at 11:00pm</TimeFree>
                 </FreeInfo>
               </FreeItem>
             </div>
@@ -107,7 +93,7 @@ function Free() {
                 </FreeImage>
                 <FreeInfo>
                   <p>Alba - A Wildlife Adventure</p>
-                  <TimeFree>Free Now - Nov 10 at 11:00pm</TimeFree>
+                  <TimeFree>Release Soon - Dec 10 at 11:00pm</TimeFree>
                 </FreeInfo>
               </FreeItem>
             </div>
@@ -122,7 +108,7 @@ function Free() {
                 </FreeImage>
                 <FreeInfo>
                   <p>Blades of the Shogun</p>
-                  <TimeFree>Free Now - Nov 10 at 11:00pm</TimeFree>
+                  <TimeFree>Release Soon - Dec 10 at 11:00pm</TimeFree>
                 </FreeInfo>
               </FreeItem>
             </div>

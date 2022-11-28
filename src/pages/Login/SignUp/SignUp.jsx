@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import "rsuite/dist/rsuite.min.css";
 import axios from "axios";
 import axiosClient from "../../../api/axiosClient";
+import { Button } from "antd";
 
 const FromLogin = styled.div`
   margin: 150px auto;
@@ -75,6 +76,7 @@ const Name = styled.div`
 
 function SignUp() {
   const navigate = useNavigate();
+  const [loadings, setLoadings] = useState([]);
   const [option, setOption] = useState([]);
   const [email, setEmail] = useState(true);
   useEffect(() => {
@@ -157,7 +159,20 @@ function SignUp() {
       setEmail(false);
     }
   };
-
+  const enterLoading = (index) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 6000);
+  };
   return (
     <FromLogin>
       <Form>
@@ -261,7 +276,10 @@ function SignUp() {
             </div>
           </Name>
 
-          <ContinueButton> Continue </ContinueButton>
+          <ContinueButton loading={true} onClick={() => enterLoading(0)}>
+            {" "}
+            Continue{" "}
+          </ContinueButton>
         </form>
 
         <Note>

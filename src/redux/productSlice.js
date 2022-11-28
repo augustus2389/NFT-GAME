@@ -22,7 +22,20 @@ export const fetchProductBySell = createAsyncThunk(
     return response;
   }
 );
-
+export const fetchProductByMost = createAsyncThunk(
+  "product/fetchProductBySeller",
+  async () => {
+    const response = await axiosClient.get(`products?tag=Most`);
+    return response;
+  }
+);
+export const fetchProductByNew = createAsyncThunk(
+  "product/fetchProductBySeller",
+  async () => {
+    const response = await axiosClient.get(`products?tag=New`);
+    return response;
+  }
+);
 const productSlice = createSlice({
   name: "product",
   initialState: {

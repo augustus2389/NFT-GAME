@@ -21,10 +21,10 @@ const Info = styled.div`
 const divStyle = {
   width: "100%",
   borderRadius: "10px",
-  height: "100%",
   boxShadow:
-    "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
+    "rgba(33, 23, 23, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
   padding: "30px 10px",
+  height: "421px",
 };
 const Button = styled.button`
   margin-bottom: 10px;

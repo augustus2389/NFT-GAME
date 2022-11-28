@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchProduct } from "../../../../redux/productSlice";
+import { updateState } from "../../../../redux/statusSlice";
 
 export const ListSearch = styled.div`
   position: absolute;
@@ -15,6 +16,8 @@ export const ListSearch = styled.div`
   box-shadow: rgb(0 0 0 / 30%) 0px 5px 10px;
   background: rgb(32, 32, 32);
   ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: gray;
   }
@@ -25,6 +28,8 @@ export const ListSearch = styled.div`
 
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
   }
 `;
@@ -37,9 +42,6 @@ const ListItem = styled.div`
   margin: 10px 0;
   padding: 0px 20px;
   display: flex;
-  &:hover {
-    box-shadow: 1px 0px 9px gray;
-  }
 `;
 const InfoList = styled.div`
   display: flex;
@@ -49,37 +51,56 @@ const InfoList = styled.div`
   justify-content: center;
 `;
 const LinkCustom = styled(Link)`
-  width: 100%;
   display: flex;
+  &:hover {
+    box-shadow: 1px 0px 9px gray;
+  }
 `;
 function SearchProduct(props) {
+  const { setInputText, setShowProductList } = props;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProduct());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { products } = useSelector((state) => state.product);
+  const data = useSelector((state) => state.status.new);
   const filteredData = products.filter((el) => {
+    //if no input the return the original
     if (props.input === "") {
       return el;
-    } else {
+    }
+    //return the item which contains the user input
+    else {
       return el.title.toLowerCase().includes(props.input);
     }
   });
-
+  const handleClick = (value) => {
+    setInputText("");
+    setShowProductList(false);
+    dispatch(updateState(value));
+  };
   return (
     <ListSearch>
-      {filteredData.map((item) => (
-        <ListItem key={item.id} style={{ color: "white" }}>
-          <LinkCustom to={`/detail/${decodeURI(item.title)}-${item.id}`}>
-            <ImageList src={item.avatar} alt="" />
-            <InfoList>
-              <p>{item.title}</p>
-              <p>{item.price} $</p>
-            </InfoList>
+      {filteredData.length === 0 ? (
+        <h1 style={{ color: "#fff" }}>Khong tim thay</h1>
+      ) : (
+        filteredData.map((item) => (
+          <LinkCustom
+            key={item.id}
+            onClick={() => handleClick(item.id)}
+            to={`/detail/${decodeURI(item.title)}-${item.id}`}
+          >
+            <ListItem style={{ color: "white" }}>
+              <ImageList src={item.avatar} alt="" />
+              <InfoList>
+                <p>{item.title}</p>
+                <p>{item.price} $</p>
+              </InfoList>
+            </ListItem>
           </LinkCustom>
-        </ListItem>
-      ))}
+        ))
+      )}
     </ListSearch>
   );
 }

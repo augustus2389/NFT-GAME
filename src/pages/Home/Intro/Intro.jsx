@@ -1,8 +1,6 @@
 /* eslint-disable array-callback-return */
-import React, { useState } from "react";
+import React from "react";
 import "./intro.scss";
-import wish from "../../../asset/image/wishlist.svg";
-import wishlistTick from "../../../asset/image/wishlistTick.svg";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -34,6 +32,11 @@ const Text = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  @media (max-width: 768px) {
+    display: block;
+    top: 50%;
+  }
 `;
 const TextFont = styled.p`
   color: rgb(245, 245, 245);
@@ -47,6 +50,8 @@ const TextFont = styled.p`
   }
   @media (max-width: 768px) {
     font-size: 10px;
+    width: 100%;
+    font-weight: 700;
   }
 `;
 const IconGame = styled.div`
@@ -58,16 +63,10 @@ const IconGame = styled.div`
 const ButtonDiv = styled.div`
   margin: 10px 0;
   display: flex;
-`;
-const ButtonWish = styled.button`
-  outline: none;
-  border: none;
-  background-color: transparent;
-  color: white;
-  font-size: 12px;
-  line-height: 40px;
-  border-radius: 4px;
-  margin: 0 5px;
+  @media (max-width: 768px) {
+    display: none;
+    top: 40%;
+  }
 `;
 const ButtonBuy = styled.button`
   outline: none;

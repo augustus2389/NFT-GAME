@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HeaderCatory, Heading, ButtonMore, TopSeller } from "../Category";
-import TopSellerItem from "./TopSellerItem/TopSellerItem";
+import productApi from "../../../../api/productApi";
+import {
+  HeaderCatory,
+  Heading,
+  ButtonMore,
+  TopSeller,
+  CatgoryItem,
+  Seller,
+  TagSeller,
+  Image,
+  TagInfo,
+  LinkPerfect,
+} from "../Category";
+import HandleActionNew from "./HandleActionNew";
 
-function NewGaming({ gameNew }) {
+function NewGaming() {
+  const [gameNew, setNew] = useState([]);
+  useEffect(() => {
+    productApi.getProductByNew().then((data) => setNew(data));
+  }, []);
   return (
     <TopSeller>
       <HeaderCatory>
@@ -14,7 +30,21 @@ function NewGaming({ gameNew }) {
           </Link>
         </ButtonMore>
       </HeaderCatory>
-      <TopSellerItem gameNew={gameNew} />
+      {gameNew.map((top) => (
+        <CatgoryItem key={top.id}>
+          <Seller>
+            <TagSeller>
+              <Image src={top.avatar} alt="" />
+              <HandleActionNew top={top} />
+            </TagSeller>
+            <TagInfo>
+              <p>{top.title}</p>
+              <p>{top.price} $</p>
+            </TagInfo>
+          </Seller>
+          <LinkPerfect to={`/detail/${decodeURI(top.title)}-${top.id}`} />
+        </CatgoryItem>
+      ))}
     </TopSeller>
   );
 }

@@ -46,7 +46,11 @@ function Catalog() {
                   Browse by genre, features, price, and more to find your next
                   favorite game.
                 </Text>
-                <ButtonLearn>LEARN MORE</ButtonLearn>
+                <ButtonLearn>
+                  <Link to="/store" className="text-black">
+                    LEARN MORE
+                  </Link>
+                </ButtonLearn>
               </InfoClick>
             </div>
           </div>

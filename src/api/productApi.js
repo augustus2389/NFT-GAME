@@ -24,5 +24,13 @@ const productApi = {
     const url = `/products?tag=New`;
     return axiosClient.get(url);
   },
+  getProductByPrice(value) {
+    const url = `products?_sort=price&_order=${value}`;
+    return axiosClient.get(url);
+  },
+  getProductBySort(value) {
+    const url = `products?${value}`;
+    return axiosClient.get(url);
+  },
 };
 export default productApi;
