@@ -16,7 +16,7 @@ function FilterAz() {
   return (
     <>
       <Select
-        defaultValue="Please choose your select"
+        defaultValue="Please choose your choice"
         onChange={handleChange}
         style={{
           maxWidth: 300,
